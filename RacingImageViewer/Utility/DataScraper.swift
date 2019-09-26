@@ -1,5 +1,5 @@
 //
-//  ViewBindable.swift
+//  LinkLoader.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -7,10 +7,12 @@
 //
 
 import Foundation
-import RxRelay
+import RxSwift
 
-protocol ViewBinable {
-    associatedtype Element
+protocol DataScraper {
+   associatedtype Element
     
-    var relay: BehaviorRelay<[Element]> {get}
+    func scrapData(url baseURL: String) -> Observable<Element>
 }
+
+

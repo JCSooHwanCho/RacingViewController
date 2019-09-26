@@ -10,10 +10,11 @@ import Foundation
 import Kanna
 import RxSwift
 
-class ImageLinkLoader {
+class ImageLinkScraper: DataScraper  {
     typealias Element = ImageVO
     
-    func loadLinks(url baseURL: String) ->Observable<Element> {
+    // MARK:- Loading Observable
+    func scrapData(url baseURL: String) ->Observable<Element> {
         guard let url = URL(string: baseURL) else {
             return Observable.error(NSError())
         }
@@ -33,11 +34,9 @@ class ImageLinkLoader {
                                 let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://") // http요청을 위해 https를 http로 바꾼다.
                                 let image = Element(imageURL: httpURL)
                                 observable.onNext(image)
-    
                             }
                         }
                     }
-                    
                     observable.onCompleted()
                 } catch {
                     observable.onError(NSError())

@@ -10,10 +10,13 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
+    // MARK:- Identifier
     static let identifier = "ImageTableViewCell"
     
+    // MARK:- Outlet
     @IBOutlet var photoView: UIImageView!
     
+    // MARK:- Configure Method
     func configureCell(_ tableView: UITableView, imageData image: ImageVO,cellForRowAt indexPath: IndexPath ) {
         self.selectionStyle = .none
         
@@ -55,6 +58,7 @@ class ImageTableViewCell: UITableViewCell {
 
     }
     
+    // MARK:- PrepareForReuse
     override func prepareForReuse() {
         self.photoView.image = UIImage(named: "placeholder")
     }

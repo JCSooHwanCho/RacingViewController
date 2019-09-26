@@ -1,5 +1,5 @@
 //
-//  LinkLoader.swift
+//  ViewBindable.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -7,12 +7,10 @@
 //
 
 import Foundation
-import RxSwift
+import RxRelay
 
-protocol LinkLoader {
-   associatedtype Element
+protocol SequenceDataViewBinable {
+    associatedtype Element
     
-    func loadLinks(url baseURL: String) -> Observable<Element>
+    var relay: BehaviorRelay<[Element]> {get}
 }
-
-

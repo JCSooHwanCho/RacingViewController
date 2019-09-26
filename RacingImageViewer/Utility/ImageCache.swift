@@ -13,7 +13,6 @@ class ImageCache {
     static var shared = ImageCache()
     
     private var cache: [String:(Data,CGSize)] = [:]
-    
     private init() {}
     
     subscript (index: String) -> (Data,CGSize)?{

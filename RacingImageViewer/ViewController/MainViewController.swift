@@ -18,11 +18,8 @@ class MainViewController: UIViewController {
     
     // MARK:- Property
     var disposeBag = DisposeBag()
-    private var items: [ImageVO] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    
     // MARK:- VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,30 +27,30 @@ class MainViewController: UIViewController {
         bindItem()
     }
     
+    // MARK:- Configure Method
     private func bindItem() {
         let viewModel = ImageListViewModel()
         viewModel.relay
-            .subscribe { event in
-                
-                switch event {
-                case let .next(value):
-                    self.items = value
-                default:
-                    break;
-                }
-                
-        }.disposed(by: disposeBag)
+        .bind(to: self.items)
+            .disposed(by:disposeBag)
+        
+        self.items
+            .subscribe(onNext: { _ in
+            self.tableView.reloadData()
+            }).disposed(by: disposeBag)
     }
     
+    // MARK:- Deinit
     deinit {
         disposeBag = DisposeBag()
     }
     
 }
 
+// MARK:- TableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return self.items.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,17 +59,20 @@ extension MainViewController: UITableViewDataSource {
         guard let imageCell = cell as? ImageTableViewCell else {
             return cell
         }
-
-        imageCell.configureCell(tableView,imageData: self.items[indexPath.row], cellForRowAt:indexPath)
+        
+        let itemList = self.items.value
+        imageCell.configureCell(tableView,imageData: itemList[indexPath.row], cellForRowAt:indexPath)
         
         return imageCell
     }
 }
 
+// MARK:- TableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let (_,size) = ImageCache.shared[self.items[indexPath.row].imageURL] else { // 아직 캐싱되지 않은 경우
+        let itemList = self.items.value
+        guard let (_,size) = ImageCache.shared[itemList[indexPath.row].imageURL] else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension
         }
         
@@ -80,5 +80,4 @@ extension MainViewController: UITableViewDelegate {
         return (safeAreaSize.width * size.height)/size.width
     }
 }
-
 

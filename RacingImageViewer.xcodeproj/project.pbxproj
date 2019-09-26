@@ -15,11 +15,11 @@
 		FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5E233AF7240045E010 /* Assets.xcassets */; };
 		FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */; };
 		FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */; };
-		FFAC5F9C233C415E001D4B62 /* ImageLinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */; };
+		FFAC5F9C233C415E001D4B62 /* ImageLinkScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */; };
 		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
 		FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */; };
-		FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */; };
-		FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */; };
+		FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* DataScraper.swift */; };
+		FFAC5FA6233CA997001D4B62 /* SequenceDataViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */; };
 		FFAC5FA9233CB7AE001D4B62 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +36,11 @@
 		FF94DE61233AF7240045E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF94DE63233AF7240045E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinkLoader.swift; sourceTree = "<group>"; };
+		FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinkScraper.swift; sourceTree = "<group>"; };
 		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
 		FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
-		FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLoader.swift; sourceTree = "<group>"; };
-		FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBindable.swift; sourceTree = "<group>"; };
+		FFAC5FA3233C9059001D4B62 /* DataScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraper.swift; sourceTree = "<group>"; };
+		FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataViewBindable.swift; sourceTree = "<group>"; };
 		FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +99,6 @@
 				FFAC5F9A233C4116001D4B62 /* Model */,
 				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
 				FFAC5F95233C3E14001D4B62 /* ViewController */,
-				FFAC5F96233C3F21001D4B62 /* Delegate */,
 				FF94DE55233AF7200045E010 /* AppDelegate.swift */,
 				FF94DE57233AF7200045E010 /* SceneDelegate.swift */,
 				FF94DE5B233AF7200045E010 /* Main.storyboard */,
@@ -116,13 +115,6 @@
 				FF94DE59233AF7200045E010 /* MainViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		FFAC5F96233C3F21001D4B62 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Delegate;
 			sourceTree = "<group>";
 		};
 		FFAC5F97233C3FA3001D4B62 /* TableViewCell */ = {
@@ -144,8 +136,8 @@
 		FFAC5FA7233CAB45001D4B62 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */,
-				FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */,
+				FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */,
+				FFAC5FA3233C9059001D4B62 /* DataScraper.swift */,
 				FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */,
 			);
 			path = Utility;
@@ -155,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */,
-				FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */,
+				FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -278,11 +270,11 @@
 				FFAC5FA9233CB7AE001D4B62 /* ImageCache.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */,
-				FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */,
+				FFAC5FA6233CA997001D4B62 /* SequenceDataViewBindable.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
-				FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */,
-				FFAC5F9C233C415E001D4B62 /* ImageLinkLoader.swift in Sources */,
+				FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */,
+				FFAC5F9C233C415E001D4B62 /* ImageLinkScraper.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
 				FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */,
 			);

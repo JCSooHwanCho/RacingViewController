@@ -10,9 +10,10 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class ImageListViewModel: ViewBinable {
+class ImageListViewModel: SequenceDataViewBinable {
     typealias Element = ImageVO
     
+    // MARK:- Property
     private let imagesRelay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
     var relay: BehaviorRelay<[ImageVO]> {
         return imagesRelay
@@ -28,17 +29,20 @@ class ImageListViewModel: ViewBinable {
             return _requestURL
         }
     }
-    
     var disposeBag = DisposeBag()
     
+    // MARK:- Initializer
     init() {
         requestData()
     }
     
+    // MARK:- Loading Method
     private func requestData() {
-        let loader = ImageLinkLoader()
+        disposeBag = DisposeBag() // 기존 구독을 해지한다.
         
-        loader.loadLinks(url: self.requestURL)
+        let loader = ImageLinkScraper()
+        
+        loader.scrapData(url: self.requestURL)
             .toArray()
             .subscribe { event in
                 switch event {
