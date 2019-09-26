@@ -21,6 +21,7 @@
 		FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */; };
 		FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */; };
 		FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */; };
+		FFAC5FA9233CB7AE001D4B62 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
 		FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLoader.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBindable.swift; sourceTree = "<group>"; };
+		FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */,
 				FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */,
+				FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFAC5FA9233CB7AE001D4B62 /* ImageCache.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */,
 				FFAC5FA0233C5D5F001D4B62 /* ImageOrientation.swift in Sources */,

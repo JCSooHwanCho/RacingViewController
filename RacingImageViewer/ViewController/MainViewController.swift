@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.tableView.rowHeight = UITableView.automaticDimension
         bindItem()
     }
     
@@ -59,8 +60,20 @@ extension MainViewController: UITableViewDataSource {
             return cell
         }
 
-        imageCell.configureCell(imageData: self.items[indexPath.row])
+        imageCell.configureCell(tableView,imageData: self.items[indexPath.row], cellForRowAt:indexPath)
         
         return imageCell
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        guard let (_,size) = ImageCache.shared[self.items[indexPath.row].imageURL] else {
+            return UITableView.automaticDimension
+        }
+        
+        let safeAreaSize = self.view.safeAreaLayoutGuide.layoutFrame.size
+        return (safeAreaSize.width * size.height)/size.width
     }
 }

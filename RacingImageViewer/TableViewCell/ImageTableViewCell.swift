@@ -25,7 +25,18 @@ class ImageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(imageData image: ImageVO) {
+    func configureCell(_ tableView: UITableView, imageData image: ImageVO,cellForRowAt indexPath: IndexPath ) {
+        self.selectionStyle = .none
+        
+        let cache = ImageCache.shared
+        
+        if let (data,_) = cache[image.imageURL] {
+            guard let photo = UIImage(data:data) else {
+                return
+            }
+            
+            self.photoView.image = photo
+        } else {
             guard let url = URL(string: image.imageURL) else {
                 return
             }
@@ -41,12 +52,22 @@ class ImageTableViewCell: UITableViewCell {
                     return
                 }
                 
+                cache[image.imageURL] = (data,photo.size)
                 DispatchQueue.main.async {
-                    self.photoView.image = photo
+                    if(tableView.cellForRow(at: indexPath) == self) {
+                        self.layoutIfNeeded()
+                        self.photoView.image = photo
+                    }
                 }
             }
-        
-        task.resume()
+            
+            task.resume()
+        }
+
+    }
+    
+    override func prepareForReuse() {
+        self.photoView.image = UIImage(named: "placeholder")
     }
 
 }
