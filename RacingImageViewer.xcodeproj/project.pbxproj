@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
+		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
+		FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE57233AF7200045E010 /* SceneDelegate.swift */; };
+		FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* MainViewController.swift */; };
+		FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5B233AF7200045E010 /* Main.storyboard */; };
+		FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5E233AF7240045E010 /* Assets.xcassets */; };
+		FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */; };
+		FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */; };
+		FFAC5F9C233C415E001D4B62 /* ImageLinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */; };
+		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
+		FFAC5FA0233C5D5F001D4B62 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */; };
+		FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */; };
+		FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */; };
+		FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
+		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF94DE57233AF7200045E010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FF94DE59233AF7200045E010 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FF94DE5C233AF7200045E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF94DE5E233AF7240045E010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF94DE61233AF7240045E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FF94DE63233AF7240045E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinkLoader.swift; sourceTree = "<group>"; };
+		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
+		FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrientation.swift; sourceTree = "<group>"; };
+		FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
+		FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLoader.swift; sourceTree = "<group>"; };
+		FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBindable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF94DE4F233AF7200045E010 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3524076D84AFB5EFBF85F53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC6E97469EAEC79BAAEEB89F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */,
+				49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF94DE49233AF7200045E010 = {
+			isa = PBXGroup;
+			children = (
+				FF94DE54233AF7200045E010 /* RacingImageViewer */,
+				FF94DE53233AF7200045E010 /* Products */,
+				FC6E97469EAEC79BAAEEB89F /* Pods */,
+				E3524076D84AFB5EFBF85F53 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FF94DE53233AF7200045E010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF94DE52233AF7200045E010 /* RacingImageViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF94DE54233AF7200045E010 /* RacingImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5FA7233CAB45001D4B62 /* Utility */,
+				FFAC5F9A233C4116001D4B62 /* Model */,
+				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
+				FFAC5F95233C3E14001D4B62 /* ViewController */,
+				FFAC5F96233C3F21001D4B62 /* Delegate */,
+				FF94DE55233AF7200045E010 /* AppDelegate.swift */,
+				FF94DE57233AF7200045E010 /* SceneDelegate.swift */,
+				FF94DE5B233AF7200045E010 /* Main.storyboard */,
+				FF94DE5E233AF7240045E010 /* Assets.xcassets */,
+				FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */,
+				FF94DE63233AF7240045E010 /* Info.plist */,
+			);
+			path = RacingImageViewer;
+			sourceTree = "<group>";
+		};
+		FFAC5F95233C3E14001D4B62 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FF94DE59233AF7200045E010 /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FFAC5F96233C3F21001D4B62 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		FFAC5F97233C3FA3001D4B62 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		FFAC5F9A233C4116001D4B62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */,
+				FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */,
+				FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */,
+				FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFAC5FA7233CAB45001D4B62 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */,
+				FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF94DE51233AF7200045E010 /* RacingImageViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF94DE66233AF7240045E010 /* Build configuration list for PBXNativeTarget "RacingImageViewer" */;
+			buildPhases = (
+				BB128C0B060BCAFDD079CE4D /* [CP] Check Pods Manifest.lock */,
+				FF94DE4E233AF7200045E010 /* Sources */,
+				FF94DE4F233AF7200045E010 /* Frameworks */,
+				FF94DE50233AF7200045E010 /* Resources */,
+				D2593A5D117C775014E86F47 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RacingImageViewer;
+			productName = RacingImageViewer;
+			productReference = FF94DE52233AF7200045E010 /* RacingImageViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF94DE4A233AF7200045E010 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "조수환";
+				TargetAttributes = {
+					FF94DE51233AF7200045E010 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = FF94DE4D233AF7200045E010 /* Build configuration list for PBXProject "RacingImageViewer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF94DE49233AF7200045E010;
+			productRefGroup = FF94DE53233AF7200045E010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF94DE51233AF7200045E010 /* RacingImageViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF94DE50233AF7200045E010 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */,
+				FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */,
+				FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB128C0B060BCAFDD079CE4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RacingImageViewer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2593A5D117C775014E86F47 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF94DE4E233AF7200045E010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
+				FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */,
+				FFAC5FA0233C5D5F001D4B62 /* ImageOrientation.swift in Sources */,
+				FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */,
+				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
+				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
+				FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */,
+				FFAC5F9C233C415E001D4B62 /* ImageLinkLoader.swift in Sources */,
+				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
+				FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FF94DE5B233AF7200045E010 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF94DE5C233AF7200045E010 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF94DE61233AF7240045E010 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF94DE64233AF7240045E010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FF94DE65233AF7240045E010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FF94DE67233AF7240045E010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNJ2M3BZTY;
+				INFOPLIST_FILE = RacingImageViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SoohwanCho.RacingImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF94DE68233AF7240045E010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TNJ2M3BZTY;
+				INFOPLIST_FILE = RacingImageViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SoohwanCho.RacingImageViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF94DE4D233AF7200045E010 /* Build configuration list for PBXProject "RacingImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF94DE64233AF7240045E010 /* Debug */,
+				FF94DE65233AF7240045E010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF94DE66233AF7240045E010 /* Build configuration list for PBXNativeTarget "RacingImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF94DE67233AF7240045E010 /* Debug */,
+				FF94DE68233AF7240045E010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF94DE4A233AF7200045E010 /* Project object */;
+}
