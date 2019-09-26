@@ -25,16 +25,15 @@ class ImageLinkLoader {
                     let doc = try HTML(html: htmlText,encoding: .utf8)
                     
                     let selector = try CSS.toXPath("div[class=grid-item image-item col-md-4]")
+                    
                     for node in doc.xpath(selector) {
                         if let imageNode = node.at_css("img") {
                             if let imageURL = imageNode["data-src"] {
-                                if node["data-orientation"] == "Horizontal" {
-                                   let image = Element(imageURL: imageURL, orientation: .horizontal);
-                                    observable.onNext(image)
-                                } else {
-                                    let image = Element(imageURL: imageURL, orientation: .vertical);
-                                    observable.onNext(image)
-                                }
+                                
+                                let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://") // http요청을 위해 https를 http로 바꾼다.
+                                let image = Element(imageURL: httpURL)
+                                observable.onNext(image)
+    
                             }
                         }
                     }

@@ -12,22 +12,21 @@ import RxCocoa
 import RxRelay
 
 class MainViewController: UIViewController {
-
+    
+    // MARK:- Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK:- Property
+    var disposeBag = DisposeBag()
     private var items: [ImageVO] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
-    
-    var disposeBag = DisposeBag()
-    
+    // MARK:- VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        self.tableView.rowHeight = UITableView.automaticDimension
         bindItem()
     }
     
@@ -44,6 +43,10 @@ class MainViewController: UIViewController {
                 }
                 
         }.disposed(by: disposeBag)
+    }
+    
+    deinit {
+        disposeBag = DisposeBag()
     }
     
 }
@@ -69,7 +72,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let (_,size) = ImageCache.shared[self.items[indexPath.row].imageURL] else {
+        guard let (_,size) = ImageCache.shared[self.items[indexPath.row].imageURL] else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension
         }
         
@@ -77,3 +80,5 @@ extension MainViewController: UITableViewDelegate {
         return (safeAreaSize.width * size.height)/size.width
     }
 }
+
+

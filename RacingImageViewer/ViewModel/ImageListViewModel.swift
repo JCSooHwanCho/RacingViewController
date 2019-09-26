@@ -13,13 +13,12 @@ import RxRelay
 class ImageListViewModel: ViewBinable {
     typealias Element = ImageVO
     
-    private let _imagesRelay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
-    private var _requestURL: String = "http://www.gettyimagesgallery.com/collection/auto-racing/"
-    
+    private let imagesRelay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
     var relay: BehaviorRelay<[ImageVO]> {
-        return _imagesRelay
+        return imagesRelay
     }
     
+    private var _requestURL: String = "http://www.gettyimagesgallery.com/collection/auto-racing/"
     var requestURL: String {
         set {
             _requestURL = newValue

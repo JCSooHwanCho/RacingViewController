@@ -14,17 +14,6 @@ class ImageTableViewCell: UITableViewCell {
     
     @IBOutlet var photoView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func configureCell(_ tableView: UITableView, imageData image: ImageVO,cellForRowAt indexPath: IndexPath ) {
         self.selectionStyle = .none
         
@@ -55,8 +44,8 @@ class ImageTableViewCell: UITableViewCell {
                 cache[image.imageURL] = (data,photo.size)
                 DispatchQueue.main.async {
                     if(tableView.cellForRow(at: indexPath) == self) {
-                        self.layoutIfNeeded()
                         self.photoView.image = photo
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
             }

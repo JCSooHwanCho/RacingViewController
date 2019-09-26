@@ -10,6 +10,5 @@ import Foundation
 
 struct ImageVO {
     let imageURL: String
-    let orientation: ImageOrientation
 }
 

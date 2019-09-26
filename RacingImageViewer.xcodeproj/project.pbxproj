@@ -17,7 +17,6 @@
 		FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */; };
 		FFAC5F9C233C415E001D4B62 /* ImageLinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */; };
 		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
-		FFAC5FA0233C5D5F001D4B62 /* ImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */; };
 		FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */; };
 		FFAC5FA4233C9059001D4B62 /* LinkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */; };
 		FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */; };
@@ -39,7 +38,6 @@
 		FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		FFAC5F9B233C415E001D4B62 /* ImageLinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinkLoader.swift; sourceTree = "<group>"; };
 		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
-		FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrientation.swift; sourceTree = "<group>"; };
 		FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
 		FFAC5FA3233C9059001D4B62 /* LinkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLoader.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBindable.swift; sourceTree = "<group>"; };
@@ -96,6 +94,7 @@
 		FF94DE54233AF7200045E010 /* RacingImageViewer */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC5FAA233CDE6D001D4B62 /* ViewModel */,
 				FFAC5FA7233CAB45001D4B62 /* Utility */,
 				FFAC5F9A233C4116001D4B62 /* Model */,
 				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
@@ -138,9 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */,
-				FFAC5F9F233C5D5F001D4B62 /* ImageOrientation.swift */,
-				FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */,
-				FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +149,15 @@
 				FFAC5FA8233CB7AE001D4B62 /* ImageCache.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		FFAC5FAA233CDE6D001D4B62 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5FA1233C618D001D4B62 /* ImageListViewModel.swift */,
+				FFAC5FA5233CA997001D4B62 /* ViewBindable.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +278,6 @@
 				FFAC5FA9233CB7AE001D4B62 /* ImageCache.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ImageListViewModel.swift in Sources */,
-				FFAC5FA0233C5D5F001D4B62 /* ImageOrientation.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* ViewBindable.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,

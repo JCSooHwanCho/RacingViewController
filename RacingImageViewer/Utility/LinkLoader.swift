@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import RxRelay
 
 protocol LinkLoader {
    associatedtype Element
