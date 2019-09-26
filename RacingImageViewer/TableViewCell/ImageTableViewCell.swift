@@ -20,40 +20,44 @@ class ImageTableViewCell: UITableViewCell {
     func configureCell(_ tableView: UITableView, imageData image: ImageVO,cellForRowAt indexPath: IndexPath ) {
         self.selectionStyle = .none
         
-        let cache = ImageCache.shared
+        let cache = ImageOperationCache.shared
         
-        if let (data,_) = cache[image.imageURL] {
-            guard let photo = UIImage(data:data) else {
+        let loadingCompelteHandler: (Data?)->() = { [weak self, weak tableView] data in
+            guard let self = self,
+            let tableView = tableView,
+            let data = data,
+            let photo = UIImage(data:data) else {
                 return
             }
             
-            self.photoView.image = photo
+            DispatchQueue.main.async {
+                if tableView.indexPath(for: self) == indexPath {
+                       self.photoView.image = photo
+                       tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+
+        }
+        
+        if let operation = cache[indexPath] {
+            
+            if operation.isFinished { // 로딩이 완료된 상태
+                guard let data = operation.imageData,
+                    let photo = UIImage(data: data) else {
+                    return
+                }
+            
+                self.photoView.image = photo
+            } else { //로딩이 아직 안끝난 상태
+                operation.loadingCompletionHandler = loadingCompelteHandler
+            }
         } else {
-            guard let url = URL(string: image.imageURL) else {
-                return
-            }
+            let imageOperation = ImageLoadOperation(image)
+            imageOperation.loadingCompletionHandler = loadingCompelteHandler
             
-            let task = URLSession.shared.dataTask(with: url) {
-                (data, response,error) in
-                
-                guard let data = data else {
-                    return
-                }
-                
-                guard let photo = UIImage(data: data) else {
-                    return
-                }
-                
-                cache[image.imageURL] = (data,photo.size)
-                DispatchQueue.main.async {
-                    if(tableView.cellForRow(at: indexPath) == self) {
-                        self.photoView.image = photo
-                        tableView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                }
-            }
+            cache[indexPath] = imageOperation
             
-            task.resume()
+            OperationQueue().addOperation(imageOperation)
         }
 
     }

@@ -16,10 +16,10 @@ class ImageLinkScraper: DataScraper  {
     // MARK:- Loading Observable
     func scrapData(url baseURL: String) ->Observable<Element> {
         guard let url = URL(string: baseURL) else {
-            return Observable.error(NSError())
+            return Observable.error(RxError.noElements)
         }
         
-        let observable = Observable<Element>.create { observable in
+        let dataObservable = Observable<Element>.create { observable in
             DispatchQueue.main.async {
                 do {
                     let htmlText = try String(contentsOf: url, encoding: .utf8)
@@ -37,15 +37,15 @@ class ImageLinkScraper: DataScraper  {
                             }
                         }
                     }
+                    
                     observable.onCompleted()
                 } catch {
-                    observable.onError(NSError())
+                    observable.onError(RxError.unknown)
                 }
             }
-            
             return Disposables.create()
         }
 
-        return observable
+        return dataObservable
     }
 }

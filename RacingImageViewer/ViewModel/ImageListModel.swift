@@ -19,16 +19,12 @@ class ImageListViewModel: SequenceDataViewBinable {
         return imagesRelay
     }
     
-    private var _requestURL: String = "http://www.gettyimagesgallery.com/collection/auto-racing/"
-    var requestURL: String {
-        set {
-            _requestURL = newValue
-            requestData()
-        }
-        get {
-            return _requestURL
+    private var requestURL: String = "http://www.gettyimagesgallery.com/collection/auto-racing/" {
+        didSet {
+            self.requestData()
         }
     }
+ 
     var disposeBag = DisposeBag()
     
     // MARK:- Initializer

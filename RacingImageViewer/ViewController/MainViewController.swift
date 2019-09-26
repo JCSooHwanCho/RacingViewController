@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 import RxRelay
 
 class MainViewController: UIViewController {
@@ -29,7 +28,7 @@ class MainViewController: UIViewController {
     
     // MARK:- Configure Method
     private func bindItem() {
-        let viewModel = ImageListViewModel()
+        let viewModel = ImageListModel()
         viewModel.relay
         .bind(to: self.items)
             .disposed(by:disposeBag)
@@ -71,8 +70,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let itemList = self.items.value
-        guard let (_,size) = ImageCache.shared[itemList[indexPath.row].imageURL] else { // 아직 캐싱되지 않은 경우
+        guard let size = ImageOperationCache.shared[indexPath]?.imageSize else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension
         }
         
@@ -81,3 +79,21 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
+// MARK:- TableViewDatasourcePrefetching
+extension MainViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let cache = ImageOperationCache.shared
+        
+        for indexPath in indexPaths {
+            if let _ = cache[indexPath] {
+                continue
+            }
+            let operation = ImageLoadOperation(self.items.value[indexPath.row])
+            
+            cache[indexPath] = operation
+            OperationQueue().addOperation(operation)
+        }
+    }
+    
+    
+}
