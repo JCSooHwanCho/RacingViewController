@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class ImageListViewModel: SequenceDataViewBinable {
+class ImageListModel: SequenceDataViewBinable {
     typealias Element = ImageVO
     
     // MARK:- Property

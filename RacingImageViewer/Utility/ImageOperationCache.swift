@@ -29,6 +29,10 @@ class ImageOperationCache {
         }
     }
     
+    func removeOperation(forKey key: IndexPath) {
+        cache.removeValue(forKey: key)
+    }
+    
     func clearCache() {
         cache.removeAll()
     }

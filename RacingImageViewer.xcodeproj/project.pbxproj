@@ -99,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				FFAC5FAC233CF71F001D4B62 /* VO */,
-				FFAC5FAA233CDE6D001D4B62 /* ViewModel */,
 				FFAC5FA7233CAB45001D4B62 /* Utility */,
 				FFAC5F9A233C4116001D4B62 /* Model */,
 				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
@@ -133,8 +132,10 @@
 		FFAC5F9A233C4116001D4B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC5FA1233C618D001D4B62 /* ImageListModel.swift */,
 				FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */,
 				FFAC5FA3233C9059001D4B62 /* DataScraper.swift */,
+				FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,15 +148,6 @@
 				FF14309E233D7EC900226963 /* ImageCache.swift */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		FFAC5FAA233CDE6D001D4B62 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FFAC5FA1233C618D001D4B62 /* ImageListModel.swift */,
-				FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FFAC5FAC233CF71F001D4B62 /* VO */ = {

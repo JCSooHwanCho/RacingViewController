@@ -8,11 +8,8 @@
 
 import Foundation
 import CoreGraphics
-import UIKit.UIImage
 
 class ImageLoadOperation: Operation {
-    var imageData: Data?
-    var imageSize: CGSize?
     var loadingCompletionHandler: ((Data?)->())?
     
     private var image: ImageVO
@@ -36,11 +33,9 @@ class ImageLoadOperation: Operation {
                 let data = data
                 else { return }
             
-            guard let image = UIImage(data: data) else { return }
-            
-            self.imageData = data
-            self.imageSize = image.size
-            self.loadingCompletionHandler?(self.imageData)
+            let imageCache = ImageCache.shared
+            imageCache.addData(forKey: self.image.imageURL, withData: data)
+            self.loadingCompletionHandler?(data)
         }.resume()
     }
     

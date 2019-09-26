@@ -60,7 +60,7 @@ extension MainViewController: UITableViewDataSource {
         }
         
         let itemList = self.items.value
-        imageCell.configureCell(tableView,imageData: itemList[indexPath.row], cellForRowAt:indexPath)
+        imageCell.configureCell(tableView,withImageLinkData: itemList[indexPath.row], cellForRowAt:indexPath)
         
         return imageCell
     }
@@ -70,11 +70,14 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let size = ImageOperationCache.shared[indexPath]?.imageSize else { // 아직 캐싱되지 않은 경우
-            return UITableView.automaticDimension
+        let imageLink = self.items.value[indexPath.row]
+        guard let (_,size) = ImageCache.shared[imageLink.imageURL] else { // 아직 캐싱되지 않은 경우
+            return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.
         }
         
         let safeAreaSize = self.view.safeAreaLayoutGuide.layoutFrame.size
+        // (cell width) : (cell height) = (image Width) : (image height)
+        // cell width == safe area width
         return (safeAreaSize.width * size.height)/size.width
     }
 }
@@ -82,15 +85,25 @@ extension MainViewController: UITableViewDelegate {
 // MARK:- TableViewDatasourcePrefetching
 extension MainViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let cache = ImageOperationCache.shared
+        let operationCache = ImageOperationCache.shared
+        let imageCache = ImageCache.shared
         
         for indexPath in indexPaths {
-            if let _ = cache[indexPath] {
+            let imageLink = self.items.value[indexPath.row]
+            if let _ = imageCache[imageLink.imageURL] {
+                continue
+            }
+            
+            if let _ = operationCache[indexPath] {
                 continue
             }
             let operation = ImageLoadOperation(self.items.value[indexPath.row])
             
-            cache[indexPath] = operation
+            operation.loadingCompletionHandler = { _ in
+                operationCache.removeOperation(forKey: indexPath)
+            }
+            
+            operationCache[indexPath] = operation
             OperationQueue().addOperation(operation)
         }
     }

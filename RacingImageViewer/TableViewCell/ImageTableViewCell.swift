@@ -17,12 +17,13 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView!
     
     // MARK:- Configure Method
-    func configureCell(_ tableView: UITableView, imageData image: ImageVO,cellForRowAt indexPath: IndexPath ) {
+    func configureCell(_ tableView: UITableView, withImageLinkData imageLink: ImageVO,cellForRowAt indexPath: IndexPath ) {
         self.selectionStyle = .none
         
-        let cache = ImageOperationCache.shared
+        let operationCache = ImageOperationCache.shared
+        let imageCache = ImageCache.shared
         
-        let loadingCompelteHandler: (Data?)->() = { [weak self, weak tableView] data in
+        let loadingCompleteHandler: (Data?)->() = { [weak self, weak tableView] data in
             guard let self = self,
             let tableView = tableView,
             let data = data,
@@ -36,26 +37,23 @@ class ImageTableViewCell: UITableViewCell {
                        tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
-
+            
+            operationCache.removeOperation(forKey: indexPath)
         }
         
-        if let operation = cache[indexPath] {
-            
-            if operation.isFinished { // 로딩이 완료된 상태
-                guard let data = operation.imageData,
-                    let photo = UIImage(data: data) else {
+        if let (imageData,_) = imageCache[imageLink.imageURL] { // 캐싱까지 완료된 상태
+                guard let photo = UIImage(data: imageData) else {
                     return
                 }
             
                 self.photoView.image = photo
-            } else { //로딩이 아직 안끝난 상태
-                operation.loadingCompletionHandler = loadingCompelteHandler
-            }
+        } else  if let operation = operationCache[indexPath] {
+            operation.loadingCompletionHandler = loadingCompleteHandler
         } else {
-            let imageOperation = ImageLoadOperation(image)
-            imageOperation.loadingCompletionHandler = loadingCompelteHandler
+            let imageOperation = ImageLoadOperation(imageLink)
+            imageOperation.loadingCompletionHandler = loadingCompleteHandler
             
-            cache[indexPath] = imageOperation
+            operationCache[indexPath] = imageOperation
             
             OperationQueue().addOperation(imageOperation)
         }
