@@ -26,15 +26,15 @@ class ScrapListModel<E>: SequenceDataModel<E> {
         }
     }
     
-    var scrapingHandler: ((String) throws -> [E])?
+    var scrapingCommand: ScrapCommand<E>?
     var disposeBag = DisposeBag()
     
     // MARK:- Initializer
-    init(withURL url: String, scrapingHandler closure:@escaping (String) throws -> [E]) {
+    init(withURL url: String, scrapingCommand command: ScrapCommand<E>) {
         super.init()
         
         requestURL = url
-        scrapingHandler = closure
+        scrapingCommand = command
         bind()
     }
     
@@ -45,11 +45,11 @@ class ScrapListModel<E>: SequenceDataModel<E> {
         let loader = BasicScraper<E>()
         
         guard let url = requestURL,
-            let closure = self.scrapingHandler else {
+            let command = self.scrapingCommand else {
             return
         }
         
-        loader.scrapData(url: url,scrapingHandler: closure)
+        loader.scrapData(url: url,scrapingCommand: command)
             .subscribe { event in
                 switch event {
                 case let .next(images):

@@ -13,6 +13,10 @@
 		FF1430A6233DC6CC00226963 /* SequenceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */; };
 		FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */; };
 		FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */; };
+		FF1430AC233DEE7D00226963 /* ScrapCommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */; };
+		FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* ScrapCommand.swift */; };
+		FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */; };
+		FF1430B5233E011500226963 /* GlobalOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B4233E011500226963 /* GlobalOperationQueue.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE57233AF7200045E010 /* SceneDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* MainViewController.swift */; };
@@ -23,7 +27,7 @@
 		FFAC5F9C233C415E001D4B62 /* BasicScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */; };
 		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
 		FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */; };
-		FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* DataScraper.swift */; };
+		FFAC5FA4233C9059001D4B62 /* DataScraperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* DataScraperProtocol.swift */; };
 		FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */; };
 		FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */; };
 		FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */; };
@@ -38,6 +42,10 @@
 		FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModel.swift; sourceTree = "<group>"; };
 		FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDatasource.swift; sourceTree = "<group>"; };
 		FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewPrefetcingDatasource.swift; sourceTree = "<group>"; };
+		FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommandProtocol.swift; sourceTree = "<group>"; };
+		FF1430AF233DEFC700226963 /* ScrapCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommand.swift; sourceTree = "<group>"; };
+		FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGCollectionScrapingCommand.swift; sourceTree = "<group>"; };
+		FF1430B4233E011500226963 /* GlobalOperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalOperationQueue.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF94DE57233AF7200045E010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +58,7 @@
 		FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScraper.swift; sourceTree = "<group>"; };
 		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
 		FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
-		FFAC5FA3233C9059001D4B62 /* DataScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraper.swift; sourceTree = "<group>"; };
+		FFAC5FA3233C9059001D4B62 /* DataScraperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraperProtocol.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModelProtocol.swift; sourceTree = "<group>"; };
 		FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperationCache.swift; sourceTree = "<group>"; };
 		FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadOperation.swift; sourceTree = "<group>"; };
@@ -93,6 +101,25 @@
 				FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */,
 			);
 			path = TableViewDelegate;
+			sourceTree = "<group>";
+		};
+		FF1430AD233DEEE100226963 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */,
+				FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */,
+				FFAC5FA3233C9059001D4B62 /* DataScraperProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FF1430AE233DEEFB00226963 /* AbstractClass */ = {
+			isa = PBXGroup;
+			children = (
+				FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */,
+				FF1430AF233DEFC700226963 /* ScrapCommand.swift */,
+			);
+			path = AbstractClass;
 			sourceTree = "<group>";
 		};
 		FF94DE49233AF7200045E010 = {
@@ -151,11 +178,11 @@
 		FFAC5F9A233C4116001D4B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF1430AE233DEEFB00226963 /* AbstractClass */,
+				FF1430AD233DEEE100226963 /* Protocol */,
 				FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */,
 				FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */,
-				FFAC5FA3233C9059001D4B62 /* DataScraper.swift */,
-				FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */,
-				FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */,
+				FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +193,7 @@
 				FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */,
 				FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */,
 				FF14309E233D7EC900226963 /* ImageCache.swift */,
+				FF1430B4233E011500226963 /* GlobalOperationQueue.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -297,18 +325,22 @@
 				FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */,
+				FF1430B5233E011500226963 /* GlobalOperationQueue.swift in Sources */,
 				FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */,
 				FF14309F233D7EC900226963 /* ImageCache.swift in Sources */,
+				FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
-				FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */,
+				FFAC5FA4233C9059001D4B62 /* DataScraperProtocol.swift in Sources */,
+				FF1430AC233DEE7D00226963 /* ScrapCommandProtocol.swift in Sources */,
 				FFAC5F9C233C415E001D4B62 /* BasicScraper.swift in Sources */,
 				FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
 				FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */,
 				FF1430A4233DC42600226963 /* MainTableViewDelegate.swift in Sources */,
+				FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

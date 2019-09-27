@@ -55,7 +55,7 @@ class ImageTableViewCell: UITableViewCell {
             
             operationCache[indexPath] = imageOperation
             
-            OperationQueue().addOperation(imageOperation)
+            GlobalOperationQueue.global.addOperation(imageOperation)
         }
 
     }

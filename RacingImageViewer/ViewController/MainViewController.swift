@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxRelay
-import Kanna
 
 class MainViewController: UIViewController {
     
@@ -30,50 +29,33 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         createDataModel()
+        bindTableViewDelegate()
         bindItem()
-        bindTableView()
     }
     
     // MARK:- Configure Method
     private func createDataModel() {
         let baseURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
-        self.dataModel = ScrapListModel<ImageVO>(withURL: baseURL) { htmlText in
-            let doc = try HTML(html: htmlText,encoding: .utf8)
-                            
-            let selector = try CSS.toXPath("div[class=grid-item image-item col-md-4]")
-            
-            var arr: [ImageVO] = []
-            for node in doc.xpath(selector) {
-                if let imageNode = node.at_css("img") {
-                    if let imageURL = imageNode["data-src"] {
-                        
-                        let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://") // http요청을 위해 https를 http로 바꾼다.
-                        let image = ImageVO(imageURL: httpURL)
-                        arr.append(image)
-                    }
-                }
-            }
-            return arr
-        }
+        self.dataModel = ScrapListModel<ImageVO>(withURL: baseURL, scrapingCommand: GIGCollectionScrapingCommand())
     }
     
     private func bindItem() {
         guard let model = self.dataModel else {
             return
         }
-        
-        model.relay
-            .bind(to: self.items)
-            .disposed(by:disposeBag)
 
         self.items
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
+        
+        model.relay
+            .bind(to: self.items)
+            .disposed(by:disposeBag)
     }
     
-    private func bindTableView() {
+    private func bindTableViewDelegate() {
         guard let model = self.dataModel else {
             return
         }
@@ -97,5 +79,4 @@ class MainViewController: UIViewController {
     deinit {
         disposeBag = DisposeBag()
     }
-    
 }

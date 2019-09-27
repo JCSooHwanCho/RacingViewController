@@ -36,4 +36,10 @@ class ImageOperationCache {
     func clearCache() {
         cache.removeAll()
     }
+    
+    func cancelOperations() {
+        for (_, operation) in cache {
+            operation.cancel()
+        }
+    }
 }

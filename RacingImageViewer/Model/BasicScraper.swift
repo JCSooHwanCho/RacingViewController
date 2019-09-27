@@ -9,11 +9,11 @@
 import Foundation
 import RxSwift
 
-class BasicScraper<E>: DataScraper  {
+class BasicScraper<E>: DataScraperProtocol  {
     typealias Element = E
     
     // MARK:- Loading Observable
-    func scrapData(url baseURL: String, scrapingHandler closure: @escaping (String) throws ->([E])) ->Observable<[E]> {
+    func scrapData(url baseURL: String, scrapingCommand command: ScrapCommand<E>) ->Observable<[E]> {
         guard let url = URL(string: baseURL) else {
             return Observable.error(RxError.noElements)
         }
@@ -22,7 +22,7 @@ class BasicScraper<E>: DataScraper  {
                 do {
                     let htmlText = try String(contentsOf: url, encoding: .utf8)
                     
-                    let arr = try closure(htmlText)
+                    let arr = command.executeScraping(htmlText: htmlText)
                     
                     observable.onNext(arr)
                     observable.onCompleted()
