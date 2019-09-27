@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
 		FF14309F233D7EC900226963 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* ImageCache.swift */; };
+		FF1430A4233DC42600226963 /* MainTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* MainTableViewDelegate.swift */; };
+		FF1430A6233DC6CC00226963 /* SequenceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */; };
+		FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */; };
+		FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE57233AF7200045E010 /* SceneDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* MainViewController.swift */; };
@@ -16,11 +20,11 @@
 		FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5E233AF7240045E010 /* Assets.xcassets */; };
 		FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */; };
 		FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */; };
-		FFAC5F9C233C415E001D4B62 /* ImageLinkScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */; };
+		FFAC5F9C233C415E001D4B62 /* BasicScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */; };
 		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
-		FFAC5FA2233C618D001D4B62 /* ImageListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ImageListModel.swift */; };
+		FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */; };
 		FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* DataScraper.swift */; };
-		FFAC5FA6233CA997001D4B62 /* SequenceDataViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */; };
+		FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */; };
 		FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */; };
 		FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +34,10 @@
 		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		FF1430A3233DC42600226963 /* MainTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDelegate.swift; sourceTree = "<group>"; };
+		FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModel.swift; sourceTree = "<group>"; };
+		FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDatasource.swift; sourceTree = "<group>"; };
+		FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewPrefetcingDatasource.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF94DE57233AF7200045E010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,11 +47,11 @@
 		FF94DE61233AF7240045E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF94DE63233AF7240045E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinkScraper.swift; sourceTree = "<group>"; };
+		FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicScraper.swift; sourceTree = "<group>"; };
 		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
-		FFAC5FA1233C618D001D4B62 /* ImageListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListModel.swift; sourceTree = "<group>"; };
+		FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
 		FFAC5FA3233C9059001D4B62 /* DataScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraper.swift; sourceTree = "<group>"; };
-		FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataViewBindable.swift; sourceTree = "<group>"; };
+		FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModelProtocol.swift; sourceTree = "<group>"; };
 		FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperationCache.swift; sourceTree = "<group>"; };
 		FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +85,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FF1430A2233DC3FF00226963 /* TableViewDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FF1430A3233DC42600226963 /* MainTableViewDelegate.swift */,
+				FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */,
+				FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */,
+			);
+			path = TableViewDelegate;
+			sourceTree = "<group>";
+		};
 		FF94DE49233AF7200045E010 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +121,7 @@
 				FFAC5F9A233C4116001D4B62 /* Model */,
 				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
 				FFAC5F95233C3E14001D4B62 /* ViewController */,
+				FF1430A2233DC3FF00226963 /* TableViewDelegate */,
 				FF94DE55233AF7200045E010 /* AppDelegate.swift */,
 				FF94DE57233AF7200045E010 /* SceneDelegate.swift */,
 				FF94DE5B233AF7200045E010 /* Main.storyboard */,
@@ -132,10 +151,11 @@
 		FFAC5F9A233C4116001D4B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC5FA1233C618D001D4B62 /* ImageListModel.swift */,
-				FFAC5F9B233C415E001D4B62 /* ImageLinkScraper.swift */,
+				FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */,
+				FFAC5F9B233C415E001D4B62 /* BasicScraper.swift */,
 				FFAC5FA3233C9059001D4B62 /* DataScraper.swift */,
-				FFAC5FA5233CA997001D4B62 /* SequenceDataViewBindable.swift */,
+				FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */,
+				FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,18 +293,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1430A6233DC6CC00226963 /* SequenceDataModel.swift in Sources */,
+				FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
-				FFAC5FA2233C618D001D4B62 /* ImageListModel.swift in Sources */,
+				FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */,
 				FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */,
-				FFAC5FA6233CA997001D4B62 /* SequenceDataViewBindable.swift in Sources */,
+				FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */,
 				FF14309F233D7EC900226963 /* ImageCache.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* DataScraper.swift in Sources */,
-				FFAC5F9C233C415E001D4B62 /* ImageLinkScraper.swift in Sources */,
+				FFAC5F9C233C415E001D4B62 /* BasicScraper.swift in Sources */,
+				FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
 				FF94DE58233AF7200045E010 /* SceneDelegate.swift in Sources */,
+				FF1430A4233DC42600226963 /* MainTableViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

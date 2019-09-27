@@ -9,8 +9,10 @@
 import Foundation
 import RxRelay
 
-protocol SequenceDataViewBinable {
+protocol SequenceDataModelProtocol {
     associatedtype Element
     
     var relay: BehaviorRelay<[Element]> {get}
+    
+    func bind()
 }

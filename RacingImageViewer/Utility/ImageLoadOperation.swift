@@ -19,7 +19,7 @@ class ImageLoadOperation: Operation {
     }
     
     override func main() {
-        if isCancelled { return }
+        if isCancelled{ return }
         guard let url = URL(string: image.imageURL) else {
             return
         }

@@ -41,15 +41,15 @@ class ImageTableViewCell: UITableViewCell {
             operationCache.removeOperation(forKey: indexPath)
         }
         
-        if let (imageData,_) = imageCache[imageLink.imageURL] { // 캐싱까지 완료된 상태
+        if let (imageData,_) = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
                 guard let photo = UIImage(data: imageData) else {
                     return
                 }
             
                 self.photoView.image = photo
-        } else  if let operation = operationCache[indexPath] {
+        } else  if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
             operation.loadingCompletionHandler = loadingCompleteHandler
-        } else {
+        } else { // 요청조자 들어가지 않은 상태
             let imageOperation = ImageLoadOperation(imageLink)
             imageOperation.loadingCompletionHandler = loadingCompleteHandler
             

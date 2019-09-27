@@ -9,104 +9,93 @@
 import UIKit
 import RxSwift
 import RxRelay
+import Kanna
 
 class MainViewController: UIViewController {
     
     // MARK:- Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    let tableViewDelegate = MainTableViewDelegate()
+    let tableViewDataSource = MainTableViewDatasource()
+    let tableViewPrefetchingDataSource = MainTableViewPrefetcingDatasource()
+    
     // MARK:- Property
     var disposeBag = DisposeBag()
+    var dataModel: SequenceDataModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     
     // MARK:- VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createDataModel()
         bindItem()
+        bindTableView()
     }
     
     // MARK:- Configure Method
+    private func createDataModel() {
+        let baseURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
+        self.dataModel = ScrapListModel<ImageVO>(withURL: baseURL) { htmlText in
+            let doc = try HTML(html: htmlText,encoding: .utf8)
+                            
+            let selector = try CSS.toXPath("div[class=grid-item image-item col-md-4]")
+            
+            var arr: [ImageVO] = []
+            for node in doc.xpath(selector) {
+                if let imageNode = node.at_css("img") {
+                    if let imageURL = imageNode["data-src"] {
+                        
+                        let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://") // http요청을 위해 https를 http로 바꾼다.
+                        let image = ImageVO(imageURL: httpURL)
+                        arr.append(image)
+                    }
+                }
+            }
+            return arr
+        }
+    }
+    
     private func bindItem() {
-        let viewModel = ImageListModel()
-        viewModel.relay
-        .bind(to: self.items)
-            .disposed(by:disposeBag)
+        guard let model = self.dataModel else {
+            return
+        }
         
+        model.relay
+            .bind(to: self.items)
+            .disposed(by:disposeBag)
+
         self.items
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
+    }
+    
+    private func bindTableView() {
+        guard let model = self.dataModel else {
+            return
+        }
+        
+        model.relay
+            .bind(to: self.tableViewDelegate.itemRelay)
+            .disposed(by: disposeBag)
+        model.relay
+            .bind(to:self.tableViewDataSource.itemRelay)
+            .disposed(by: disposeBag)
+        model.relay
+            .bind(to: self.tableViewPrefetchingDataSource.itemRelay)
+            .disposed(by: disposeBag)
+        
+        tableView.dataSource = self.tableViewDataSource
+        tableView.delegate = self.tableViewDelegate
+        tableView.prefetchDataSource = self.tableViewPrefetchingDataSource
     }
     
     // MARK:- Deinit
     deinit {
         disposeBag = DisposeBag()
     }
-    
-}
-
-// MARK:- TableViewDataSource
-extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.value.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.identifier, for: indexPath)
-        
-        guard let imageCell = cell as? ImageTableViewCell else {
-            return cell
-        }
-        
-        let itemList = self.items.value
-        imageCell.configureCell(tableView,withImageLinkData: itemList[indexPath.row], cellForRowAt:indexPath)
-        
-        return imageCell
-    }
-}
-
-// MARK:- TableViewDelegate
-extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let imageLink = self.items.value[indexPath.row]
-        guard let (_,size) = ImageCache.shared[imageLink.imageURL] else { // 아직 캐싱되지 않은 경우
-            return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.
-        }
-        
-        let safeAreaSize = self.view.safeAreaLayoutGuide.layoutFrame.size
-        // (cell width) : (cell height) = (image Width) : (image height)
-        // cell width == safe area width
-        return (safeAreaSize.width * size.height)/size.width
-    }
-}
-
-// MARK:- TableViewDatasourcePrefetching
-extension MainViewController: UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let operationCache = ImageOperationCache.shared
-        let imageCache = ImageCache.shared
-        
-        for indexPath in indexPaths {
-            let imageLink = self.items.value[indexPath.row]
-            if let _ = imageCache[imageLink.imageURL] {
-                continue
-            }
-            
-            if let _ = operationCache[indexPath] {
-                continue
-            }
-            let operation = ImageLoadOperation(self.items.value[indexPath.row])
-            
-            operation.loadingCompletionHandler = { _ in
-                operationCache.removeOperation(forKey: indexPath)
-            }
-            
-            operationCache[indexPath] = operation
-            OperationQueue().addOperation(operation)
-        }
-    }
-    
     
 }
