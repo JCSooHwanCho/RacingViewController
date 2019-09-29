@@ -20,31 +20,28 @@ class ScrapListModel<E>: SequenceDataModel<E> {
         return _relay
     }
     
-    var requestURL: String? {
+    var scrapingCommand: ScrapCommand<E>? {
         didSet {
-            self.bind()
+            self.loadData()
         }
     }
-    
-    var scrapingCommand: ScrapCommand<E>?
     var disposeBag = DisposeBag()
     
     // MARK:- Initializer
-    init(withURL url: String, scrapingCommand command: ScrapCommand<E>) {
+    init(scrapingCommand command: ScrapCommand<E>) {
         super.init()
         
-        requestURL = url
         scrapingCommand = command
-        bind()
+        loadData()
     }
     
     // MARK:- Loading Method
-    override func bind() {
+    override func loadData() {
         disposeBag = DisposeBag() // 기존 구독을 해지한다.
         
         let loader = BasicScraper<E>()
         
-        guard let url = requestURL,
+        guard let url = scrapingCommand?.requestURL,
             let command = self.scrapingCommand else {
             return
         }

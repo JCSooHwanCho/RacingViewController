@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var disposeBag = DisposeBag()
     var dataModel: SequenceDataModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
     
     // MARK:- VC Life Cycle
     override func viewDidLoad() {
@@ -35,8 +36,10 @@ class MainViewController: UIViewController {
     
     // MARK:- Configure Method
     private func createDataModel() {
-        let baseURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
-        self.dataModel = ScrapListModel<ImageVO>(withURL: baseURL, scrapingCommand: GIGCollectionScrapingCommand())
+        let command = GIGCollectionScrapingCommand()
+        command.addPath("auto-racing")
+        
+        self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
     }
     
     private func bindItem() {

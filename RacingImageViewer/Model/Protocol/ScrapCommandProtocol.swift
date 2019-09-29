@@ -11,5 +11,7 @@ import Foundation
 protocol ScrapCommandProtocol {
     associatedtype Element
     
-    func executeScraping(htmlText text: String) -> [Element] 
+    var requestURL: URL { get set }
+    
+    func executeScraping(htmlText text: String) -> [Element]
 }

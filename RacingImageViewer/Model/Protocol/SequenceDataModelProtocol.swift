@@ -14,5 +14,5 @@ protocol SequenceDataModelProtocol {
     
     var relay: BehaviorRelay<[Element]> {get}
     
-    func bind()
+    func loadData()
 }

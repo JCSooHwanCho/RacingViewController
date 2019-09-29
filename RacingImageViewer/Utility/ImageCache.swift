@@ -18,11 +18,14 @@ class ImageCache {
     
     subscript (index: String) -> (Data,CGSize)?{
         set {
-            cache[index] = newValue
+            DispatchQueue.global().sync { // 캐시 일관성을 위해, 쓰기 작업은 동기적으로 수행한다.
+                cache[index] = newValue
+            }
         }
         get {
-            if let imageInfo = cache[index] {
-                return imageInfo
+            
+            if let indexKey = cache.index(forKey: index) {
+                return cache[indexKey].value
             }
             
             return nil
@@ -35,12 +38,14 @@ class ImageCache {
             return false
         }
         
-        cache[key] = (data,image.size)
+        DispatchQueue.global().sync { // 마찬가지로 동기적으로 수행한다.
+            cache[key] = (data,image.size)
+        }
         
         return true
     }
     
-    func clearCache() {
-        cache.removeAll()
+    static func clearCache() {
+         shared.cache.removeAll()
     }
 }

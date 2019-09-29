@@ -12,7 +12,7 @@ import RxSwift
 protocol DataScraperProtocol {
    associatedtype Element  
     
-    func scrapData(url baseURL: String, scrapingCommand command: ScrapCommand<Element>) ->Observable<[Element]>
+    func scrapData(url baseURL: URL, scrapingCommand command: ScrapCommand<Element>) ->Observable<[Element]>
 }
 
 

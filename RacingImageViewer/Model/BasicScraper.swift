@@ -13,14 +13,11 @@ class BasicScraper<E>: DataScraperProtocol  {
     typealias Element = E
     
     // MARK:- Loading Observable
-    func scrapData(url baseURL: String, scrapingCommand command: ScrapCommand<E>) ->Observable<[E]> {
-        guard let url = URL(string: baseURL) else {
-            return Observable.error(RxError.noElements)
-        }
-        
+    func scrapData(url requestURL: URL, scrapingCommand command: ScrapCommand<E>) ->Observable<[E]> {
+
         let dataObservable = Observable<[E]>.create { observable in
                 do {
-                    let htmlText = try String(contentsOf: url, encoding: .utf8)
+                    let htmlText = try String(contentsOf: requestURL, encoding: .utf8)
                     
                     let arr = command.executeScraping(htmlText: htmlText)
                     

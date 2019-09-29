@@ -18,7 +18,7 @@ class SequenceDataModel<E>: SequenceDataModelProtocol {
         }
     }
     
-    func bind() {
+    func loadData() {
         fatalError()
     }
 }
