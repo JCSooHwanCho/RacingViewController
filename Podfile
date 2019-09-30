@@ -8,6 +8,5 @@ target 'RacingImageViewer' do
   # Pods for RacingImageViewer
   pod 'Kanna', '~>5.0.0'
   pod 'RxSwift','~>5'
-  pod 'RxCocoa','~>5'
-  pod 'RxRelay'
+  pod 'RxRelay', '~>5'
 end

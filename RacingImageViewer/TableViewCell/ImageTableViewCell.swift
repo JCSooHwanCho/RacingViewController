@@ -24,11 +24,8 @@ class ImageTableViewCell: UITableViewCell {
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
         
-        let loadingCompleteHandler: (Data?) -> Void = { [weak self, weak tableView] data in
-            guard let self = self,
-            let tableView = tableView,
-            let data = data,
-            let photo = UIImage(data:data) else {
+        let loadingCompleteHandler: (Data?) -> Void = { data in
+            guard let data = data, let photo = UIImage(data:data) else {
                 return
             }
 
@@ -44,11 +41,7 @@ class ImageTableViewCell: UITableViewCell {
             operationCache.removeOperation(forKey: indexPath)
         }
 
-        let errorHandler: () -> Void = { [weak self, weak tableView] in
-
-            guard let self = self,let tableView = tableView else {
-                return
-            }
+        let errorHandler: () -> Void = {
             DispatchQueue.main.async {
                 if tableView.indexPath(for: self) == indexPath {
                    self.networkIndicator.stopAnimating()
@@ -77,7 +70,7 @@ class ImageTableViewCell: UITableViewCell {
             networkIndicator.startAnimating()
             networkIndicator.isHidden = false
 
-            operationCache[indexPath] = imageOperation
+            operationCache.addOperation(forKey: indexPath, operation: imageOperation)
             
         GlobalOperationQueue.global.addOperation(imageOperation)
         }

@@ -32,7 +32,7 @@ class MainTableViewPrefetcingDatasource: NSObject, UITableViewDataSourcePrefetch
                 operationCache.removeOperation(forKey: indexPath)
             }
             
-            operationCache[indexPath] = operation
+            operationCache.addOperation(forKey: indexPath, operation: operation)
             GlobalOperationQueue.global.addOperation(operation)
         }
     }

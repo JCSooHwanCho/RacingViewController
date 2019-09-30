@@ -12,6 +12,7 @@ import CoreGraphics
 class ImageLoadOperation: Operation {
     var loadingCompletionHandler: ((Data?)-> Void)?
     var errorHandler: (() -> Void)?
+    var session: URLSessionDataTask?
     private var image: ImageVO
     
     init(_ image: ImageVO) {
@@ -28,7 +29,7 @@ class ImageLoadOperation: Operation {
             return
         }
         
-        URLSession.shared.dataTask(with: url) {
+        session = URLSession.shared.dataTask(with: url) {
             data, response, error in
             
             guard let httpResponse = response as? HTTPURLResponse,
@@ -42,7 +43,15 @@ class ImageLoadOperation: Operation {
             let imageCache = ImageCache.shared
             imageCache.addData(forKey: self.image.imageURL, withData: data)
             self.loadingCompletionHandler?(data)
-        }.resume()
+        }
+
+        session?.resume()
+    }
+
+    override func cancel() {
+        super.cancel()
+
+        session?.cancel()
     }
     
 }

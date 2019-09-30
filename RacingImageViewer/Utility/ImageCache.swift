@@ -12,18 +12,16 @@ import UIKit.UIImage
 
 class ImageCache {
     static var shared = ImageCache()
-    
+
     private var cache: [String:(Data,CGSize)] = [:]
+    private let lock = NSLock()
+
     private init() {}
     
     subscript (index: String) -> (Data,CGSize)?{
-        set {
-            DispatchQueue.global().sync { // 캐시 일관성을 위해, 쓰기 작업은 동기적으로 수행한다.
-                cache[index] = newValue
-            }
-        }
         get {
-            
+            self.lock.lock()
+            defer { self.lock.unlock() }
             if let indexKey = cache.index(forKey: index) {
                 return cache[indexKey].value
             }
@@ -37,15 +35,22 @@ class ImageCache {
         guard let image = UIImage(data: data) else {
             return false
         }
-        
-        DispatchQueue.global().sync { // 마찬가지로 동기적으로 수행한다.
-            cache[key] = (data,image.size)
+
+        DispatchQueue.global().async {
+            self.lock.lock()
+            defer { self.lock.unlock() }
+            self.cache[key] = (data,image.size)
         }
-        
+
         return true
     }
     
     static func clearCache() {
-         shared.cache.removeAll()
+        DispatchQueue.global().async {
+            shared.lock.lock()
+            defer { shared.lock.unlock() }
+            shared.cache.removeAll()
+        }
+
     }
 }
