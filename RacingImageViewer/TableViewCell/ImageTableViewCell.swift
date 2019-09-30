@@ -41,7 +41,7 @@ class ImageTableViewCell: UITableViewCell {
             operationCache.removeOperation(forKey: indexPath)
         }
         
-        if let (imageData,_) = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
+        if let (imageData, _) = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
                 guard let photo = UIImage(data: imageData) else {
                     return
                 }

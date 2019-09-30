@@ -3,29 +3,4 @@
    uuid = "644FF2CA-E6D1-4F4C-8406-3D6090C2F64E"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
-         <BreakpointContent
-            uuid = "554F80E9-8B91-405C-AFF7-0A158772B449"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            symbolName = "UIApplicationEndBackgroundTaskError"
-            moduleName = "">
-            <Locations>
-               <Location
-                  uuid = "554F80E9-8B91-405C-AFF7-0A158772B449 - f2e10d4c094b9b69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UIApplicationEndBackgroundTaskError"
-                  moduleName = "UIKitCore"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
