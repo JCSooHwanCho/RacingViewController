@@ -10,22 +10,24 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
-    // MARK:- Identifier
+    // MARK: - Identifier
     static let identifier = "ImageTableViewCell"
-    
-    // MARK:- Outlet
+
+    // MARK: - Outlet
     @IBOutlet var photoView: UIImageView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
-    // MARK:- Configure Method
-    func configureCell(_ tableView: UITableView, withImageLinkData imageLink: ImageVO,cellForRowAt indexPath: IndexPath ) {
+    // MARK: - Configure Method
+    func configureCell(_ tableView: UITableView,
+                       withImageLinkData imageLink: ImageVO,
+                       cellForRowAt indexPath: IndexPath) {
         self.selectionStyle = .none
-        
+
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
-        
+
         let loadingCompleteHandler: (Data?) -> Void = { data in
-            guard let data = data, let photo = UIImage(data:data) else {
+            guard let data = data, let photo = UIImage(data: data) else {
                 return
             }
 
@@ -37,7 +39,6 @@ class ImageTableViewCell: UITableViewCell {
                        tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
-            
             operationCache.removeOperation(forKey: indexPath)
         }
 
@@ -54,15 +55,13 @@ class ImageTableViewCell: UITableViewCell {
                 guard let photo = UIImage(data: imageData) else {
                     return
                 }
-            
                 self.photoView.image = photo
-        } else  if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
+        } else if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
             networkIndicator.startAnimating()
             networkIndicator.isHidden = false
             operation.loadingCompletionHandler = loadingCompleteHandler
             operation.errorHandler = errorHandler
         } else { // 요청조자 들어가지 않은 상태
-            
             let imageOperation = ImageLoadOperation(imageLink)
             imageOperation.loadingCompletionHandler = loadingCompleteHandler
             imageOperation.errorHandler = errorHandler
@@ -71,13 +70,12 @@ class ImageTableViewCell: UITableViewCell {
             networkIndicator.isHidden = false
 
             operationCache.addOperation(forKey: indexPath, operation: imageOperation)
-            
         GlobalOperationQueue.global.addOperation(imageOperation)
         }
 
     }
-    
-    // MARK:- PrepareForReuse
+
+    // MARK: - PrepareForReuse
     override func prepareForReuse() {
         self.networkIndicator.stopAnimating()
         self.networkIndicator.isHidden = true

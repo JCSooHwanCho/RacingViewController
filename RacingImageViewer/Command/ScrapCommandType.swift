@@ -10,8 +10,8 @@ import Foundation
 
 protocol ScrapCommandType {
     associatedtype Element
-    
+
     var requestURL: URL { get set }
-    
+
     func executeScraping(htmlText text: String) -> [Element]
 }

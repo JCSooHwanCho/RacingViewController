@@ -10,5 +10,5 @@ import Foundation
 import RxRelay
 
 protocol NetworkStatusModelType {
-    var networkRelay: PublishRelay<(Bool,Error?)> { get }
+    var networkRelay: PublishRelay<(Bool, Error?)> { get }
 }

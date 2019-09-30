@@ -10,9 +10,9 @@ import Foundation
 
 class GlobalOperationQueue {
     static let global = OperationQueue()
-    
-    private init(){ }
-    
+
+    private init() {}
+
     static func cancelAllOperations() {
         global.cancelAllOperations()
     }

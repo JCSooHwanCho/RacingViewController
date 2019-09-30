@@ -10,9 +10,7 @@ import Foundation
 import RxSwift
 
 protocol DataScraperType {
-   associatedtype Element  
-    
+    associatedtype Element
+
     func scrapData(url baseURL: URL, scrapingCommand command: ScrapCommand<Element>) ->Observable<[Element]>
 }
-
-

@@ -11,27 +11,27 @@ import UIKit
 import RxRelay
 
 class MainTableViewPrefetcingDatasource: NSObject, UITableViewDataSourcePrefetching {
-    
+
     let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
-        
+
         for indexPath in indexPaths {
             let imageLink = self.itemRelay.value[indexPath.row]
-            if let _ = imageCache[imageLink.imageURL] { // 이미 다운로드된 이미지
+            if imageCache[imageLink.imageURL] != nil { // 이미 다운로드된 이미지
                 continue
             }
-            
-            if let _ = operationCache[indexPath] { // 현재 요청중인 이미지라면
+
+            if operationCache[indexPath] != nil { // 현재 요청중인 이미지라면
                 continue
             }
             let operation = ImageLoadOperation(self.itemRelay.value[indexPath.row])
-            
+
             operation.loadingCompletionHandler = { _ in
                 operationCache.removeOperation(forKey: indexPath)
             }
-            
+
             operationCache.addOperation(forKey: indexPath, operation: operation)
             GlobalOperationQueue.global.addOperation(operation)
         }

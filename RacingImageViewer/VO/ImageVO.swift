@@ -11,4 +11,3 @@ import Foundation
 struct ImageVO {
     let imageURL: String
 }
-

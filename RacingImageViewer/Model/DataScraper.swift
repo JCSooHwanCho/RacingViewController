@@ -9,18 +9,18 @@
 import Foundation
 import RxSwift
 
-class DataScraper<E>: DataScraperType  {
+class DataScraper<E>: DataScraperType {
     typealias Element = E
-    
-    // MARK:- Loading Observable
+
+    // MARK: - Loading Observable
     func scrapData(url requestURL: URL, scrapingCommand command: ScrapCommand<E>) ->Observable<[E]> {
 
         let dataObservable = Observable<[E]>.create { observable in
                 do {
                     let htmlText = try String(contentsOf: requestURL, encoding: .utf8)
-                    
+
                     let arr = command.executeScraping(htmlText: htmlText)
-                    
+
                     observable.onNext(arr)
                     observable.onCompleted()
                 } catch {
@@ -31,5 +31,5 @@ class DataScraper<E>: DataScraperType  {
 
         return dataObservable.subscribeOn(SerialDispatchQueueScheduler.init(qos: .background))
     }
-    
+
 }

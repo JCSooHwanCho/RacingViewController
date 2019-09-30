@@ -10,15 +10,15 @@ import Foundation
 import CoreGraphics
 
 class ImageLoadOperation: Operation {
-    var loadingCompletionHandler: ((Data?)-> Void)?
+    var loadingCompletionHandler: ((Data?) -> Void)?
     var errorHandler: (() -> Void)?
     var session: URLSessionDataTask?
     private var image: ImageVO
-    
+
     init(_ image: ImageVO) {
         self.image = image
     }
-    
+
     override func main() {
         if isCancelled {
             self.errorHandler?()
@@ -28,10 +28,8 @@ class ImageLoadOperation: Operation {
         guard let url = URL(string: image.imageURL) else {
             return
         }
-        
-        session = URLSession.shared.dataTask(with: url) {
-            data, response, error in
-            
+
+        session = URLSession.shared.dataTask(with: url) { data, response, _ in
             guard let httpResponse = response as? HTTPURLResponse,
                 httpResponse.statusCode == 200,
                 let data = data
@@ -39,7 +37,6 @@ class ImageLoadOperation: Operation {
                     self.errorHandler?()
                     return
                 }
-            
             let imageCache = ImageCache.shared
             imageCache.addData(forKey: self.image.imageURL, withData: data)
             self.loadingCompletionHandler?(data)
@@ -53,5 +50,4 @@ class ImageLoadOperation: Operation {
 
         session?.cancel()
     }
-    
 }

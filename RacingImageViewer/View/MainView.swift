@@ -11,25 +11,25 @@ import RxSwift
 import RxRelay
 
 class MainView: UIViewController {
-    
-    // MARK:- Outlets
+
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
-    let tableViewDelegate = MainTableViewDelegate()
-    let tableViewDataSource = MainTableViewDatasource()
-    let tableViewPrefetchingDataSource = MainTableViewPrefetcingDatasource()
-    
-    // MARK:- Property
+    // MARK: - Property
     var disposeBag = DisposeBag()
     var dataModel: NetworkSequenceViewModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
-    
-    // MARK:- VC Life Cycle
+
+    let tableViewDelegate = MainTableViewDelegate()
+    let tableViewDatasource = MainTableViewDatasource()
+    let tableViewPrefetchDatasource = MainTableViewPrefetcingDatasource()
+
+    // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         createDataModel()
         bindTableViewDelegate()
         bindItem()
@@ -42,14 +42,14 @@ class MainView: UIViewController {
         ImageCache.clearCache() // 메모리 부족시, 캐시를 삭제하여 메모리를 확보한다.
     }
 
-    // MARK:- Configure Method
+    // MARK: - Configure Method
     private func createDataModel() {
         let command = GIGCollectionScrapingCommand()
         command.addPath("auto-racing")
-        
+
         self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
     }
-    
+
     private func bindItem() {
         guard let model = self.dataModel else {
             return
@@ -60,27 +60,29 @@ class MainView: UIViewController {
             .subscribe(onNext: { _ in
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
-        
+
         model.relay
             .bind(to: self.items)
-            .disposed(by:disposeBag)
+            .disposed(by: disposeBag)
 
         model.networkRelay
             .subscribe { event in
 
-            switch(event) {
+            switch event {
             case let .next((isSuccess, _)):
-                if(isSuccess) {
+                if isSuccess {
                     DispatchQueue.main.async {
+                        print("test")
                         self.networkIndicator.stopAnimating()
                         self.networkIndicator.isHidden = true
                     }
                 } else {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController.getAlert(withTitle: "네트워크 오류", message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
+                        let alert = UIAlertController.getAlert(withTitle: "네트워크 오류",
+                                                               message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
                             model.loadData()
                         }
-                       self.present(alert,animated: true)
+                       self.present(alert, animated: true)
                     }
                 }
             default:
@@ -88,25 +90,25 @@ class MainView: UIViewController {
             }
         }.disposed(by: disposeBag)
     }
-    
+
     private func bindTableViewDelegate() {
         guard let model = self.dataModel else {
             return
         }
-        
+
         model.relay
             .bind(to: self.tableViewDelegate.itemRelay)
             .disposed(by: disposeBag)
         model.relay
-            .bind(to:self.tableViewDataSource.itemRelay)
+            .bind(to: self.tableViewDatasource.itemRelay)
             .disposed(by: disposeBag)
         model.relay
-            .bind(to: self.tableViewPrefetchingDataSource.itemRelay)
+            .bind(to: self.tableViewPrefetchDatasource.itemRelay)
             .disposed(by: disposeBag)
-        
-        tableView.dataSource = self.tableViewDataSource
-        tableView.delegate = self.tableViewDelegate
-        tableView.prefetchDataSource = self.tableViewPrefetchingDataSource
+
+        self.tableView.delegate = self.tableViewDelegate
+        self.tableView.dataSource = self.tableViewDatasource
+        self.tableView.prefetchDataSource = self.tableViewPrefetchDatasource
     }
 
     private func configureRefreshControl() {
@@ -115,7 +117,7 @@ class MainView: UIViewController {
 
     }
 
-    // MARK:- Action Method
+    // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
         defer {
             DispatchQueue.main.async {
@@ -125,7 +127,7 @@ class MainView: UIViewController {
         dataModel?.loadData()
     }
 
-    // MARK:- Deinit
+    // MARK: - Deinit
     deinit {
         disposeBag = DisposeBag()
     }
