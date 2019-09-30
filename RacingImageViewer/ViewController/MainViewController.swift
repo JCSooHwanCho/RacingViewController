@@ -14,14 +14,15 @@ class MainViewController: UIViewController {
     
     // MARK:- Outlets
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
+
     let tableViewDelegate = MainTableViewDelegate()
     let tableViewDataSource = MainTableViewDatasource()
     let tableViewPrefetchingDataSource = MainTableViewPrefetcingDatasource()
     
     // MARK:- Property
     var disposeBag = DisposeBag()
-    var dataModel: SequenceDataModel<ImageVO>?
+    var dataModel: NetworkSequenceDataModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
     
@@ -32,6 +33,9 @@ class MainViewController: UIViewController {
         createDataModel()
         bindTableViewDelegate()
         bindItem()
+
+
+        dataModel?.loadData()
     }
     
     // MARK:- Configure Method
@@ -56,6 +60,29 @@ class MainViewController: UIViewController {
         model.relay
             .bind(to: self.items)
             .disposed(by:disposeBag)
+
+        model.networkRelay
+            .subscribe { event in
+
+            switch(event) {
+            case let .next((isSuccess, _)):
+                if(isSuccess) {
+                    DispatchQueue.main.async {
+                        self.networkIndicator.stopAnimating()
+                        self.networkIndicator.isHidden = true
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController.getAlert(withTitle: "네트워크 오류", message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
+                            model.loadData()
+                        }
+                       self.present(alert,animated: true)
+                    }
+                }
+            default:
+                break
+            }
+        }.disposed(by: disposeBag)
     }
     
     private func bindTableViewDelegate() {

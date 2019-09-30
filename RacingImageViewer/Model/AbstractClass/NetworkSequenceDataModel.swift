@@ -1,5 +1,5 @@
 //
-//  AbstractSequenceDataModel.swift
+// NetworkSequenceDataModel.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/27.
@@ -9,14 +9,11 @@
 import Foundation
 import RxRelay
 
-class SequenceDataModel<E>: SequenceDataModelProtocol {
+class NetworkSequenceDataModel<E>: NetworkSequenceDataModelProtocol {
     typealias Element = E
-    
-    var relay: BehaviorRelay<[E]> {
-        get {
-            return BehaviorRelay<[E]>(value:[])
-        }
-    }
+
+    var relay: BehaviorRelay<[E]> = BehaviorRelay(value:[])
+    var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     
     func loadData() {
         fatalError()

@@ -15,7 +15,8 @@ class ImageTableViewCell: UITableViewCell {
     
     // MARK:- Outlet
     @IBOutlet var photoView: UIImageView!
-    
+    @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
+
     // MARK:- Configure Method
     func configureCell(_ tableView: UITableView, withImageLinkData imageLink: ImageVO,cellForRowAt indexPath: IndexPath ) {
         self.selectionStyle = .none
@@ -23,16 +24,18 @@ class ImageTableViewCell: UITableViewCell {
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
         
-        let loadingCompleteHandler: (Data?)->() = { [weak self, weak tableView] data in
+        let loadingCompleteHandler: (Data?) -> Void = { [weak self, weak tableView] data in
             guard let self = self,
             let tableView = tableView,
             let data = data,
             let photo = UIImage(data:data) else {
                 return
             }
-            
+
             DispatchQueue.main.async {
                 if tableView.indexPath(for: self) == indexPath {
+                       self.networkIndicator.stopAnimating()
+                       self.networkIndicator.isHidden = true
                        self.photoView.image = photo
                        tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
@@ -40,7 +43,20 @@ class ImageTableViewCell: UITableViewCell {
             
             operationCache.removeOperation(forKey: indexPath)
         }
-        
+
+        let errorHandler: () -> Void = { [weak self, weak tableView] in
+
+            guard let self = self,let tableView = tableView else {
+                return
+            }
+            DispatchQueue.main.async {
+                if tableView.indexPath(for: self) == indexPath {
+                   self.networkIndicator.stopAnimating()
+                   self.networkIndicator.isHidden = true
+                }
+            }
+        }
+
         if let (imageData, _) = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
                 guard let photo = UIImage(data: imageData) else {
                     return
@@ -48,20 +64,30 @@ class ImageTableViewCell: UITableViewCell {
             
                 self.photoView.image = photo
         } else  if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
+            networkIndicator.startAnimating()
+            networkIndicator.isHidden = false
             operation.loadingCompletionHandler = loadingCompleteHandler
+            operation.errorHandler = errorHandler
         } else { // 요청조자 들어가지 않은 상태
+            
             let imageOperation = ImageLoadOperation(imageLink)
             imageOperation.loadingCompletionHandler = loadingCompleteHandler
-            
+            imageOperation.errorHandler = errorHandler
+
+            networkIndicator.startAnimating()
+            networkIndicator.isHidden = false
+
             operationCache[indexPath] = imageOperation
             
-            GlobalOperationQueue.global.addOperation(imageOperation)
+        GlobalOperationQueue.global.addOperation(imageOperation)
         }
 
     }
     
     // MARK:- PrepareForReuse
     override func prepareForReuse() {
+        self.networkIndicator.stopAnimating()
+        self.networkIndicator.isHidden = true
         self.photoView.image = UIImage(named: "placeholder")
     }
 

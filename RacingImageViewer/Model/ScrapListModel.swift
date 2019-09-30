@@ -10,21 +10,16 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class ScrapListModel<E>: SequenceDataModel<E> {
+class ScrapListModel<E>: NetworkSequenceDataModel<E> {
     typealias Element = E
     
     // MARK:- Property
-    private let _relay: BehaviorRelay<[E]> = BehaviorRelay(value: [])
-    
-    override var relay: BehaviorRelay<[E]> {
-        return _relay
-    }
-    
     var scrapingCommand: ScrapCommand<E>? {
         didSet {
             self.loadData()
         }
     }
+
     var disposeBag = DisposeBag()
     
     // MARK:- Initializer
@@ -32,7 +27,6 @@ class ScrapListModel<E>: SequenceDataModel<E> {
         super.init()
         
         scrapingCommand = command
-        loadData()
     }
     
     // MARK:- Loading Method
@@ -41,8 +35,8 @@ class ScrapListModel<E>: SequenceDataModel<E> {
         
         let loader = BasicScraper<E>()
         
-        guard let url = scrapingCommand?.requestURL,
-            let command = self.scrapingCommand else {
+        guard  let command = self.scrapingCommand,
+            let url = scrapingCommand?.requestURL else {
             return
         }
         
@@ -51,8 +45,9 @@ class ScrapListModel<E>: SequenceDataModel<E> {
                 switch event {
                 case let .next(images):
                     self.relay.accept(images)
+                    self.networkRelay.accept((true,nil))
                 case let .error(error):
-                    print(error)
+                    self.networkRelay.accept((false,error))
                 case .completed:
                     break
                 }

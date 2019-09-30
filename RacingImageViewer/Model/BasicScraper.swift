@@ -24,7 +24,7 @@ class BasicScraper<E>: DataScraperProtocol  {
                     observable.onNext(arr)
                     observable.onCompleted()
                 } catch {
-                    observable.onError(RxError.unknown)
+                    observable.onError(error)
                 }
             return Disposables.create()
         }

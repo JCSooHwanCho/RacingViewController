@@ -10,7 +10,7 @@
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
 		FF14309F233D7EC900226963 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* ImageCache.swift */; };
 		FF1430A4233DC42600226963 /* MainTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* MainTableViewDelegate.swift */; };
-		FF1430A6233DC6CC00226963 /* SequenceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */; };
+		FF1430A6233DC6CC00226963 /* NetworkSequenceDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* NetworkSequenceDataModel.swift */; };
 		FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */; };
 		FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */; };
 		FF1430AC233DEE7D00226963 /* ScrapCommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */; };
@@ -31,6 +31,9 @@
 		FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */; };
 		FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */; };
 		FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */; };
+		FFAD925C234196AE006E7C61 /* NetworkStatusModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925B234196AE006E7C61 /* NetworkStatusModelProtocol.swift */; };
+		FFAD925E234198C6006E7C61 /* NetworkSequenceDataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925D234198C6006E7C61 /* NetworkSequenceDataModelProtocol.swift */; };
+		FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,7 @@
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		FF1430A3233DC42600226963 /* MainTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDelegate.swift; sourceTree = "<group>"; };
-		FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModel.swift; sourceTree = "<group>"; };
+		FF1430A5233DC6CC00226963 /* NetworkSequenceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSequenceDataModel.swift; sourceTree = "<group>"; };
 		FF1430A7233DCA7E00226963 /* MainTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewDatasource.swift; sourceTree = "<group>"; };
 		FF1430A9233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewPrefetcingDatasource.swift; sourceTree = "<group>"; };
 		FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommandProtocol.swift; sourceTree = "<group>"; };
@@ -62,6 +65,9 @@
 		FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModelProtocol.swift; sourceTree = "<group>"; };
 		FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperationCache.swift; sourceTree = "<group>"; };
 		FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadOperation.swift; sourceTree = "<group>"; };
+		FFAD925B234196AE006E7C61 /* NetworkStatusModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusModelProtocol.swift; sourceTree = "<group>"; };
+		FFAD925D234198C6006E7C61 /* NetworkSequenceDataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSequenceDataModelProtocol.swift; sourceTree = "<group>"; };
+		FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +112,11 @@
 		FF1430AD233DEEE100226963 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				FFAD925B234196AE006E7C61 /* NetworkStatusModelProtocol.swift */,
 				FF1430AB233DEE7D00226963 /* ScrapCommandProtocol.swift */,
 				FFAC5FA5233CA997001D4B62 /* SequenceDataModelProtocol.swift */,
 				FFAC5FA3233C9059001D4B62 /* DataScraperProtocol.swift */,
+				FFAD925D234198C6006E7C61 /* NetworkSequenceDataModelProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -116,7 +124,7 @@
 		FF1430AE233DEEFB00226963 /* AbstractClass */ = {
 			isa = PBXGroup;
 			children = (
-				FF1430A5233DC6CC00226963 /* SequenceDataModel.swift */,
+				FF1430A5233DC6CC00226963 /* NetworkSequenceDataModel.swift */,
 				FF1430AF233DEFC700226963 /* ScrapCommand.swift */,
 			);
 			path = AbstractClass;
@@ -194,6 +202,7 @@
 				FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */,
 				FF14309E233D7EC900226963 /* ImageCache.swift */,
 				FF1430B4233E011500226963 /* GlobalOperationQueue.swift */,
+				FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -321,12 +330,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF1430A6233DC6CC00226963 /* SequenceDataModel.swift in Sources */,
+				FF1430A6233DC6CC00226963 /* NetworkSequenceDataModel.swift in Sources */,
 				FF1430A8233DCA7E00226963 /* MainTableViewDatasource.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainViewController.swift in Sources */,
+				FFAD925E234198C6006E7C61 /* NetworkSequenceDataModelProtocol.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */,
 				FF1430B5233E011500226963 /* GlobalOperationQueue.swift in Sources */,
 				FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */,
+				FFAD925C234196AE006E7C61 /* NetworkStatusModelProtocol.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataModelProtocol.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */,
@@ -335,6 +346,7 @@
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* DataScraperProtocol.swift in Sources */,
 				FF1430AC233DEE7D00226963 /* ScrapCommandProtocol.swift in Sources */,
+				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
 				FFAC5F9C233C415E001D4B62 /* BasicScraper.swift in Sources */,
 				FF1430AA233DCBB400226963 /* MainTableViewPrefetcingDatasource.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
