@@ -10,7 +10,7 @@ import Foundation
 import CoreGraphics
 import UIKit.UIImage
 
-class ImageCache {
+final class ImageCache {
     static var shared = ImageCache()
 
     private var cache: NSCache<NSString,ImageData> = NSCache()

@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-class ImageLoadOperation: Operation {
+final class ImageLoadOperation: Operation {
     var loadingCompletionHandler: ((Data?) -> Void)?
     var errorHandler: (() -> Void)?
     var session: URLSessionDataTask?

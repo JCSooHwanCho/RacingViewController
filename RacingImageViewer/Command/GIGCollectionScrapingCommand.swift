@@ -9,7 +9,7 @@
 import Foundation
 import Kanna
 
-class GIGCollectionScrapingCommand: ScrapCommand {
+final class GIGCollectionScrapingCommand: ScrapCommand {
 
     let lock = NSLock()
 

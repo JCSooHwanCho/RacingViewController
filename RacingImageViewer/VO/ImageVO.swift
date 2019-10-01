@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageVO: StringVO {
+final class ImageVO: StringVO {
     var imageURL: String {
         set {
             values["imageURL"] = newValue

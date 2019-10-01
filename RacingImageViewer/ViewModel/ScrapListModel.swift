@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
+final class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
     typealias Element = VO
 
     // MARK: - Property

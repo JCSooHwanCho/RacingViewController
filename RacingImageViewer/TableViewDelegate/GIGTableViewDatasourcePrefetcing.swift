@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RxRelay
 
-class GIGTableViewDatasourcePrefetching: BaseTableViewDatasourcePrefetching {
+final class GIGTableViewDatasourcePrefetching: BaseTableViewDatasourcePrefetching {
 
     override func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let operationCache = ImageOperationCache.shared

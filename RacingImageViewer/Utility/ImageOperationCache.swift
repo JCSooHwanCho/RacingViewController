@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-class ImageOperationCache {
+final class ImageOperationCache {
     static var shared = ImageOperationCache()
 
     private let lock = NSLock()

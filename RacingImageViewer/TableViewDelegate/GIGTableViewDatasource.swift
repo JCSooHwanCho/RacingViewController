@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RxRelay
 
-class GIGTableViewDatasource: BaseTableViewDatasource {
+final class GIGTableViewDatasource: BaseTableViewDatasource {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemRelay.value.count
     }
