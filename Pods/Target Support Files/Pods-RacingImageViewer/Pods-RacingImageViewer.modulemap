@@ -1,6 +1,0 @@
-framework module Pods_RacingImageViewer {
-  umbrella header "Pods-RacingImageViewer-umbrella.h"
-
-  export *
-  module * { export * }
-}
