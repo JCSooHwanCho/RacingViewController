@@ -13,38 +13,34 @@ class ImageOperationCache {
     static var shared = ImageOperationCache()
 
     private let lock = NSLock()
-    private var cache: [IndexPath: ImageLoadOperation] = [:]
+    private var cache: NSCache<NSIndexPath,ImageLoadOperation> = NSCache()
     private let queue = OperationQueue()
     
     private init() {}
 
     subscript (index: IndexPath) -> ImageLoadOperation? {
-            self.lock.lock(); defer { self.lock.unlock() }
-            if let operation = cache[index] {
-                return operation
-            }
-
-            return nil
+        if let operation = cache.object(forKey: index as NSIndexPath){
+            return operation
+        }
+        
+        return nil
     }
 
     func removeOperation(forKey key: IndexPath) {
-        DispatchQueue.global().async {
-            self.lock.lock(); defer { self.lock.unlock() }
-            if let operation = self.cache[key] {
-                operation.cancel()
-                self.cache.removeValue(forKey: key)
-            }
+        let key = key as NSIndexPath
+        if let operation = self.cache.object(forKey: key) {
+            operation.cancel()
+            self.cache.removeObject(forKey: key)
          }
     }
 
     func addOperation(forKey key: IndexPath, operation: ImageLoadOperation) {
-        DispatchQueue.global().async {
-                self.lock.lock(); defer { self.lock.unlock() }
-                if self.cache[key] == nil {
-                    self.cache[key] = operation
-                    self.queue.addOperation(operation)
-                }
-            }
+        let key = key as NSIndexPath
+
+        if self.cache.object(forKey: key) == nil {
+            self.cache.setObject(operation, forKey: key)
+            self.queue.addOperation(operation)
+        }
     }
 
     func cancelAllOperations() {
@@ -52,8 +48,7 @@ class ImageOperationCache {
     }
 
     func clearCache() {
-        self.lock.lock(); defer { self.lock.unlock() }
-        self.cache.removeAll()
+        self.cache.removeAllObjects()
 
     }
 }

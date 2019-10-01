@@ -23,6 +23,7 @@
 		FF59928423432E5000526339 /* BaseTableViewDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59928323432E5000526339 /* BaseTableViewDataSourcePrefetching.swift */; };
 		FF599286234333BC00526339 /* ScrapCommand+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF599285234333BC00526339 /* ScrapCommand+Extension.swift */; };
 		FF599288234335A800526339 /* ScrapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF599287234335A800526339 /* ScrapType.swift */; };
+		FF59928A2343679300526339 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5992892343679300526339 /* ImageData.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* MainView.swift */; };
 		FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5B233AF7200045E010 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		FF59928323432E5000526339 /* BaseTableViewDataSourcePrefetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDataSourcePrefetching.swift; sourceTree = "<group>"; };
 		FF599285234333BC00526339 /* ScrapCommand+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrapCommand+Extension.swift"; sourceTree = "<group>"; };
 		FF599287234335A800526339 /* ScrapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapType.swift; sourceTree = "<group>"; };
+		FF5992892343679300526339 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF94DE59233AF7200045E010 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */,
 				FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */,
 				FF14309E233D7EC900226963 /* ImageCache.swift */,
+				FF5992892343679300526339 /* ImageData.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			files = (
 				FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */,
 				FF1430A8233DCA7E00226963 /* GIGTableViewDatasource.swift in Sources */,
+				FF59928A2343679300526339 /* ImageData.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainView.swift in Sources */,
 				FF599286234333BC00526339 /* ScrapCommand+Extension.swift in Sources */,
 				FFAD925E234198C6006E7C61 /* NetworkSequenceDataModelType.swift in Sources */,

@@ -51,8 +51,8 @@ class ImageTableViewCell: UITableViewCell {
             }
         }
 
-        if let (imageData, _) = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
-                guard let photo = UIImage(data: imageData) else {
+        if let imageData = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
+            guard let photo = UIImage(data: imageData.data) else {
                     return
                 }
                 self.photoView.image = photo

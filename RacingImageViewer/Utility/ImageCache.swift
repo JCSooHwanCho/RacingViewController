@@ -13,18 +13,17 @@ import UIKit.UIImage
 class ImageCache {
     static var shared = ImageCache()
 
-    private var cache: [String: (Data, CGSize)] = [:]
+    private var cache: NSCache<NSString,ImageData> = NSCache()
     private let lock = NSLock()
 
     private init() {}
 
-    subscript (index: String) -> (Data, CGSize)? {
-            self.lock.lock()
-            defer { self.lock.unlock() }
-            if let indexKey = cache.index(forKey: index) {
-                return cache[indexKey].value
-            }
+    subscript (index: String) -> ImageData? {
+        let index = index as NSString
 
+        if let value = cache.object(forKey: index) {
+            return value
+        }
             return nil
     }
 
@@ -33,22 +32,16 @@ class ImageCache {
         guard let image = UIImage(data: data) else {
             return false
         }
-
-        DispatchQueue.global().async {
-            self.lock.lock()
-            defer { self.lock.unlock() }
-            self.cache[key] = (data, image.size)
-        }
+        
+        let key = key as NSString
+        let imageData = ImageData(withImageData: data, imageSize: image.size)
+        self.cache.setObject(imageData, forKey: key)
 
         return true
     }
 
     static func clearCache() {
-        DispatchQueue.global().async {
-            shared.lock.lock()
-            defer { shared.lock.unlock() }
-            shared.cache.removeAll()
-        }
+        shared.cache.removeAllObjects()
 
     }
 }

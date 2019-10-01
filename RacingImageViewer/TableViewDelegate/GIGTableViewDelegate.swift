@@ -18,7 +18,7 @@ class GIGTableViewDelegate: BaseTableViewDelegate {
             return UITableView.automaticDimension
         }
 
-        guard let (_, size) = ImageCache.shared[imageLink.imageURL] else { // 아직 캐싱되지 않은 경우
+        guard let imageData = ImageCache.shared[imageLink.imageURL] else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.
         }
 
@@ -26,6 +26,8 @@ class GIGTableViewDelegate: BaseTableViewDelegate {
             .view.safeAreaLayoutGuide.layoutFrame.size else {
             return UITableView.automaticDimension
         }
+
+        let size = imageData.size
         // (cell width) : (cell height) = (image Width) : (image height)
         // cell width == safe area width
         return (safeAreaSize.width * size.height)/size.width
