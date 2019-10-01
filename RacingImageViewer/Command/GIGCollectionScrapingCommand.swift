@@ -11,17 +11,9 @@ import Kanna
 
 class GIGCollectionScrapingCommand: ScrapCommand<ImageVO> {
 
-    required init(withURL url: URL) {
-        super.init(withURL: url)
-        requestURL = url
-    }
-
-    convenience init() {
-        if let url = URL(string: "http://www.gettyimagesgallery.com/collection/") {
-            self.init(withURL: url)
-        } else {
-            self.init(withURL: URL(fileURLWithPath: ""))
-        }
+    required init(withAdditionalPath path: String) {
+        super.init(withAdditionalPath: path)
+        self.baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
     }
 
     override func executeScraping(htmlText text: String) -> [ImageVO] {
@@ -39,7 +31,6 @@ class GIGCollectionScrapingCommand: ScrapCommand<ImageVO> {
                     arr.append(image)
                 }
             }
-
             return arr
         } catch {
             return []

@@ -11,27 +11,13 @@ import Foundation
 class ScrapCommand<E>: ScrapCommandType {
     typealias Element = E
 
-    private var _requestURL: URL = URL(fileURLWithPath: "")
-    var requestURL: URL {
-        set {
-            _requestURL = newValue
-        }
-        get {
-            return _requestURL
-        }
+    var baseURL: URL?
+    var additionalPath: String
+
+    required init(withAdditionalPath path: String) {
+        self.additionalPath = path
     }
 
-    required init(withURL url: URL) {
-        _requestURL = url
-    }
-
-    convenience init() {
-        self.init(withURL: URL(fileURLWithPath: ""))
-    }
-
-    func addPath(_ path: String) {
-       requestURL = requestURL.appendingPathComponent(path)
-    }
 
     func executeScraping(htmlText text: String) -> [E] {
         return []

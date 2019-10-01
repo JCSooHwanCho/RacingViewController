@@ -44,8 +44,7 @@ class MainView: UIViewController {
 
     // MARK: - Configure Method
     private func createDataModel() {
-        let command = GIGCollectionScrapingCommand()
-        command.addPath("auto-racing")
+        let command = GIGCollectionScrapingCommand(withAdditionalPath: "auto-racing")
 
         self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
     }
@@ -72,7 +71,6 @@ class MainView: UIViewController {
             case let .next((isSuccess, _)):
                 if isSuccess {
                     DispatchQueue.main.async {
-                        print("test")
                         self.networkIndicator.stopAnimating()
                         self.networkIndicator.isHidden = true
                     }

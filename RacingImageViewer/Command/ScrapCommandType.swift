@@ -11,7 +11,17 @@ import Foundation
 protocol ScrapCommandType {
     associatedtype Element
 
-    var requestURL: URL { get set }
+    var baseURL: URL? { get }
 
+    var additionalPath: String { set get }
+
+    var requestURL: URL? { get }
+    
     func executeScraping(htmlText text: String) -> [Element]
+}
+
+extension ScrapCommandType {
+    var requestURL: URL? {
+        return baseURL?.appendingPathComponent(additionalPath)
+    }
 }

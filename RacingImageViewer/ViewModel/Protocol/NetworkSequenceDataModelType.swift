@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol NetworkSequenceDataModelType: SequenceDataModelType, NetworkStatusModelType {
-
-}
+protocol NetworkSequenceDataModelType: SequenceDataModelType, NetworkStatusModelType { }
