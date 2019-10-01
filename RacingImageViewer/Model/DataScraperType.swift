@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol DataScraperType {
-    func scrapData<VO:StringVOType>(url baseURL: URL, scrapingCommand command: ScrapCommand) ->Observable<[VO]>
+    func scrapData<VO:StringVOType>(fromURL url: URL, scrapingCommand command: ScrapCommand) ->Observable<[VO]>
 }

@@ -19,9 +19,9 @@ class GIGCollectionScrapingCommand: ScrapCommand {
         type = .GettyImageGallery
     }
 
-    override func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
+    override func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO] {
         do {
-            let doc = try HTML(html: text, encoding: .utf8)
+            let doc = try HTML(url: url, encoding: .utf8)
 
             var arr: [ImageVO] = []
 
@@ -36,7 +36,7 @@ class GIGCollectionScrapingCommand: ScrapCommand {
             }
             return arr as? [VO] ?? []
         } catch {
-            return []
+            throw error
         }
     }
 }

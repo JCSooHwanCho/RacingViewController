@@ -41,7 +41,7 @@ class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
             return
         }
 
-        let scrapObservable = scraper.scrapData(url: url, scrapingCommand: command) as Observable<[VO]>
+        let scrapObservable = scraper.scrapData(fromURL: url, scrapingCommand: command) as Observable<[VO]>
         
             scrapObservable.subscribe { event in
                 switch event {

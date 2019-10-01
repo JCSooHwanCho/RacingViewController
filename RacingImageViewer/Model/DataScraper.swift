@@ -12,13 +12,11 @@ import RxSwift
 class DataScraper: DataScraperType {
 
     // MARK: - Loading Observable
-    func scrapData<VO:StringVOType>(url requestURL: URL, scrapingCommand command: ScrapCommand) ->Observable<[VO]> {
+    func scrapData<VO:StringVOType>(fromURL url: URL, scrapingCommand command: ScrapCommand) ->Observable<[VO]> {
 
         let dataObservable = Observable<[VO]>.create { observable in
                 do {
-                    let htmlText = try String(contentsOf: requestURL, encoding: .utf8)
-
-                    let arr = command.executeScraping(htmlText: htmlText) as [VO]
+                    let arr = try command.executeScraping(fromURL: url) as [VO]
 
                     observable.onNext(arr)
                     observable.onCompleted()

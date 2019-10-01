@@ -18,7 +18,7 @@ protocol ScrapCommandType {
 
     var type: ScrapType { get }
     
-    func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO]
+    func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO]
 }
 
 extension ScrapCommandType {

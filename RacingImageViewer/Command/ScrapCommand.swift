@@ -20,7 +20,7 @@ class ScrapCommand: ScrapCommandType {
     }
 
 
-    func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
+    func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO] {
         return []
     }
 }
