@@ -33,7 +33,7 @@ class ScrapListModel<E>: NetworkSequenceViewModel<E> {
     override func loadData() {
         disposeBag = DisposeBag() // 기존 구독을 해지한다.
 
-        let scraper = DataScraper<E>()
+        let scraper = DataScraper()
 
         guard  let command = self.scrapingCommand,
             let url = scrapingCommand?.requestURL else {

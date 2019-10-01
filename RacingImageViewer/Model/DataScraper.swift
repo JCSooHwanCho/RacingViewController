@@ -9,13 +9,12 @@
 import Foundation
 import RxSwift
 
-class DataScraper<E>: DataScraperType {
-    typealias Element = E
+class DataScraper: DataScraperType {
 
     // MARK: - Loading Observable
-    func scrapData(url requestURL: URL, scrapingCommand command: ScrapCommand<E>) ->Observable<[E]> {
+    func scrapData<VO>(url requestURL: URL, scrapingCommand command: ScrapCommand<VO>) ->Observable<[VO]> {
 
-        let dataObservable = Observable<[E]>.create { observable in
+        let dataObservable = Observable<[VO]>.create { observable in
                 do {
                     let htmlText = try String(contentsOf: requestURL, encoding: .utf8)
 
