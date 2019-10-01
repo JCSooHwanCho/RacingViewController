@@ -18,8 +18,8 @@ class MainView: UIViewController {
 
     // MARK: - Property
     var disposeBag = DisposeBag()
-    var dataModel: NetworkSequenceViewModel<ImageVO>?
-    private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    var dataModel: NetworkSequenceViewModel<StringVO>?
+    private var items: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
 
     let tableViewDelegate = MainTableViewDelegate()
@@ -46,7 +46,7 @@ class MainView: UIViewController {
     private func createDataModel() {
         let command = GIGCollectionScrapingCommand(withAdditionalPath: "auto-racing")
 
-        self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
+        self.dataModel = ScrapListModel<StringVO>(scrapingCommand: command)
     }
 
     private func bindItem() {
@@ -93,7 +93,7 @@ class MainView: UIViewController {
         guard let model = self.dataModel else {
             return
         }
-
+        
         model.relay
             .bind(to: self.tableViewDelegate.itemRelay)
             .disposed(by: disposeBag)

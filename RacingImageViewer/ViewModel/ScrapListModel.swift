@@ -10,11 +10,11 @@ import Foundation
 import RxSwift
 import RxRelay
 
-class ScrapListModel<E>: NetworkSequenceViewModel<E> {
-    typealias Element = E
+class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
+    typealias Element = VO
 
     // MARK: - Property
-    var scrapingCommand: ScrapCommand<E>? {
+    var scrapingCommand: ScrapCommand? {
         didSet {
             self.loadData()
         }
@@ -23,7 +23,7 @@ class ScrapListModel<E>: NetworkSequenceViewModel<E> {
     var disposeBag = DisposeBag()
 
     // MARK: - Initializer
-    init(scrapingCommand command: ScrapCommand<E>) {
+    init(scrapingCommand command: ScrapCommand) {
         super.init()
 
         scrapingCommand = command
@@ -40,8 +40,9 @@ class ScrapListModel<E>: NetworkSequenceViewModel<E> {
             return
         }
 
-        scraper.scrapData(url: url, scrapingCommand: command)
-            .subscribe { event in
+        let scrapObservable = scraper.scrapData(url: url, scrapingCommand: command) as Observable<[VO]>
+        
+            scrapObservable.subscribe { event in
                 switch event {
                 case let .next(images):
                     self.relay.accept(images)

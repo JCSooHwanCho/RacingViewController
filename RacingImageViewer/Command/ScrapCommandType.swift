@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ScrapCommandType {
-    associatedtype Element
 
     var baseURL: URL? { get }
 
@@ -17,7 +16,7 @@ protocol ScrapCommandType {
 
     var requestURL: URL? { get }
     
-    func executeScraping(htmlText text: String) -> [Element]
+    func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO]
 }
 
 extension ScrapCommandType {

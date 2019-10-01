@@ -8,6 +8,13 @@
 
 import Foundation
 
-struct ImageVO {
-    let imageURL: String
+class ImageVO: StringVO {
+    var imageURL: String {
+        set {
+            values["imageURL"] = newValue
+        }
+        get {
+            return values["imageURL"] ?? ""
+        }
+    }
 }

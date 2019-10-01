@@ -11,7 +11,7 @@ import UIKit
 import RxRelay
 
 class MainTableViewDatasource: NSObject, UITableViewDataSource {
-     let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+     let itemRelay: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemRelay.value.count
@@ -25,7 +25,12 @@ class MainTableViewDatasource: NSObject, UITableViewDataSource {
         }
 
         let itemList = self.itemRelay.value
-        imageCell.configureCell(tableView, withImageLinkData: itemList[indexPath.row], cellForRowAt: indexPath)
+
+        guard let imageLink = itemList[indexPath.row] as? ImageVO else {
+            return cell
+        }
+
+        imageCell.configureCell(tableView, withImageLinkData: imageLink, cellForRowAt: indexPath)
 
         return imageCell
     }

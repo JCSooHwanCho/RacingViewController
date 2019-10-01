@@ -12,10 +12,13 @@ import RxSwift
 import RxRelay
 
 class MainTableViewDelegate: NSObject, UITableViewDelegate {
-    let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    let itemRelay: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        let imageLink = self.itemRelay.value[indexPath.row]
+        guard let imageLink = self.itemRelay.value[indexPath.row] as? ImageVO else {
+            return UITableView.automaticDimension
+        }
+
         guard let (_, size) = ImageCache.shared[imageLink.imageURL] else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.
         }

@@ -9,14 +9,17 @@
 import Foundation
 import Kanna
 
-class GIGCollectionScrapingCommand: ScrapCommand<ImageVO> {
+class GIGCollectionScrapingCommand: ScrapCommand {
+
+    let lock = NSLock()
 
     required init(withAdditionalPath path: String) {
         super.init(withAdditionalPath: path)
         self.baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
     }
 
-    override func executeScraping(htmlText text: String) -> [ImageVO] {
+    override func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
+
         do {
             let doc = try HTML(html: text, encoding: .utf8)
 
@@ -26,12 +29,12 @@ class GIGCollectionScrapingCommand: ScrapCommand<ImageVO> {
                 if let imageURL = node["data-src"] {
                     // http요청을 위해 https를 http로 바꾼다.
                     let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://")
-
-                    let image = ImageVO(imageURL: httpURL)
+                    let image = ImageVO()
+                    image.imageURL = httpURL
                     arr.append(image)
                 }
             }
-            return arr
+            return arr as? [VO] ?? []
         } catch {
             return []
         }

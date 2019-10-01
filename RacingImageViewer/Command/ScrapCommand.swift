@@ -8,8 +8,7 @@
 
 import Foundation
 
-class ScrapCommand<E>: ScrapCommandType {
-    typealias Element = E
+class ScrapCommand: ScrapCommandType {
 
     var baseURL: URL?
     var additionalPath: String
@@ -19,7 +18,7 @@ class ScrapCommand<E>: ScrapCommandType {
     }
 
 
-    func executeScraping(htmlText text: String) -> [E] {
+    func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
         return []
     }
 }
