@@ -11,8 +11,7 @@ import UIKit
 import RxSwift
 import RxRelay
 
-class MainTableViewDelegate: NSObject, UITableViewDelegate {
-    let itemRelay: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
+class GIGTableViewDelegate: BaseTableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         guard let imageLink = self.itemRelay.value[indexPath.row] as? ImageVO else {

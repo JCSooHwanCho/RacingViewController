@@ -15,6 +15,8 @@ protocol ScrapCommandType {
     var additionalPath: String { set get }
 
     var requestURL: URL? { get }
+
+    var type: CommandType { get }
     
     func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO]
 }

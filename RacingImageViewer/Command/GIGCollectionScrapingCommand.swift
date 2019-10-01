@@ -15,11 +15,11 @@ class GIGCollectionScrapingCommand: ScrapCommand {
 
     required init(withAdditionalPath path: String) {
         super.init(withAdditionalPath: path)
-        self.baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
+        baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
+        type = .GettyImageGallery
     }
 
     override func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
-
         do {
             let doc = try HTML(html: text, encoding: .utf8)
 

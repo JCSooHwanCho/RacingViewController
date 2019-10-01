@@ -12,9 +12,11 @@ class ScrapCommand: ScrapCommandType {
 
     var baseURL: URL?
     var additionalPath: String
+    var type: CommandType
 
     required init(withAdditionalPath path: String) {
         self.additionalPath = path
+        type = .Unknown
     }
 
 

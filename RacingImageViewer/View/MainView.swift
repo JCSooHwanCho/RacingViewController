@@ -22,20 +22,18 @@ class MainView: UIViewController {
     private var items: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
 
-    let tableViewDelegate = MainTableViewDelegate()
-    let tableViewDatasource = MainTableViewDatasource()
-    let tableViewPrefetchDatasource = MainTableViewPrefetcingDatasource()
+    var tableViewDelegate: BaseTableViewDelegate?
+    var tableViewDatasource: BaseTableViewDatasource?
+    var tableViewDataSourcePrefetching: BaseTableViewDatasourcePrefetching?
 
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createDataModel()
+        createDataModelAndDelegate()
         bindTableViewDelegate()
         bindItem()
         configureRefreshControl()
-
-        dataModel?.loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,10 +41,13 @@ class MainView: UIViewController {
     }
 
     // MARK: - Configure Method
-    private func createDataModel() {
+    private func createDataModelAndDelegate() {
         let command = GIGCollectionScrapingCommand(withAdditionalPath: "auto-racing")
 
         self.dataModel = ScrapListModel<StringVO>(scrapingCommand: command)
+        self.tableViewDelegate = command.tableViewDelegate
+        self.tableViewDatasource = command.tableViewDatasource
+        self.tableViewDataSourcePrefetching = command.tableViewDatasourcePrefetching
     }
 
     private func bindItem() {
@@ -90,23 +91,27 @@ class MainView: UIViewController {
     }
 
     private func bindTableViewDelegate() {
-        guard let model = self.dataModel else {
+        guard let model = self.dataModel,
+            let delegate = self.tableViewDelegate,
+            let datasource = self.tableViewDatasource,
+            let datasourcePrefetching = self.tableViewDataSourcePrefetching else {
             return
         }
         
         model.relay
-            .bind(to: self.tableViewDelegate.itemRelay)
+            .bind(to: delegate.itemRelay)
+            .disposed(by: disposeBag)
+
+        model.relay
+            .bind(to: datasource.itemRelay)
             .disposed(by: disposeBag)
         model.relay
-            .bind(to: self.tableViewDatasource.itemRelay)
-            .disposed(by: disposeBag)
-        model.relay
-            .bind(to: self.tableViewPrefetchDatasource.itemRelay)
+            .bind(to: datasourcePrefetching.itemRelay)
             .disposed(by: disposeBag)
 
         self.tableView.delegate = self.tableViewDelegate
         self.tableView.dataSource = self.tableViewDatasource
-        self.tableView.prefetchDataSource = self.tableViewPrefetchDatasource
+        self.tableView.prefetchDataSource = self.tableViewDataSourcePrefetching
     }
 
     private func configureRefreshControl() {

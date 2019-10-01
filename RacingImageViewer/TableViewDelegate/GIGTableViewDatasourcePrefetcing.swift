@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 import RxRelay
 
-class MainTableViewPrefetcingDatasource: NSObject, UITableViewDataSourcePrefetching {
+class GIGTableViewDatasourcePrefetching: BaseTableViewDatasourcePrefetching {
 
-    let itemRelay: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    override func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
 

@@ -27,6 +27,7 @@ class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
         super.init()
 
         scrapingCommand = command
+        self.loadData()
     }
 
     // MARK: - Loading Method
