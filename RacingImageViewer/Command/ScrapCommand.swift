@@ -12,7 +12,7 @@ class ScrapCommand: ScrapCommandType {
 
     var baseURL: URL?
     var additionalPath: String
-    var type: CommandType
+    var type: ScrapType
 
     required init(withAdditionalPath path: String) {
         self.additionalPath = path
@@ -22,5 +22,16 @@ class ScrapCommand: ScrapCommandType {
 
     func executeScraping<VO:StringVOType>(htmlText text: String) -> [VO] {
         return []
+    }
+}
+
+extension ScrapCommand {
+    static func getCommand(withCommandType type: ScrapType, additionalPath path: String) -> ScrapCommand {
+        switch type {
+        case .Unknown:
+            return ScrapCommand(withAdditionalPath: path)
+        case .GettyImageGallery:
+            return GIGCollectionScrapingCommand(withAdditionalPath: path)
+        }
     }
 }

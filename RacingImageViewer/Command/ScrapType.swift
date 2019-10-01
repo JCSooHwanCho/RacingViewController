@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CommandType {
+enum ScrapType {
     case GettyImageGallery
     case Unknown
 }

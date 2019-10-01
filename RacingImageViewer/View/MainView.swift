@@ -21,7 +21,10 @@ class MainView: UIViewController {
     var dataModel: NetworkSequenceViewModel<StringVO>?
     private var items: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
+    var scrapType: ScrapType? = .GettyImageGallery
+    var additionalPath: String? = "auto-racing"
 
+    // MARK: - Delegate
     var tableViewDelegate: BaseTableViewDelegate?
     var tableViewDatasource: BaseTableViewDatasource?
     var tableViewDataSourcePrefetching: BaseTableViewDatasourcePrefetching?
@@ -42,7 +45,12 @@ class MainView: UIViewController {
 
     // MARK: - Configure Method
     private func createDataModelAndDelegate() {
-        let command = GIGCollectionScrapingCommand(withAdditionalPath: "auto-racing")
+
+        guard let scrapType = self.scrapType,
+            let additionalPath = self.additionalPath else {
+                return
+        }
+        let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
 
         self.dataModel = ScrapListModel<StringVO>(scrapingCommand: command)
         self.tableViewDelegate = command.tableViewDelegate
