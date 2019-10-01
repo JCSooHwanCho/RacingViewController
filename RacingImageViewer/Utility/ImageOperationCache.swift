@@ -14,6 +14,8 @@ class ImageOperationCache {
 
     private let lock = NSLock()
     private var cache: [IndexPath: ImageLoadOperation] = [:]
+    private let queue = OperationQueue()
+    
     private init() {}
 
     subscript (index: IndexPath) -> ImageLoadOperation? {
@@ -27,8 +29,11 @@ class ImageOperationCache {
 
     func removeOperation(forKey key: IndexPath) {
         DispatchQueue.global().async {
-             self.lock.lock(); defer { self.lock.unlock() }
-             self.cache.removeValue(forKey: key)
+            self.lock.lock(); defer { self.lock.unlock() }
+            if let operation = self.cache[key] {
+                operation.cancel()
+                self.cache.removeValue(forKey: key)
+            }
          }
     }
 
@@ -37,13 +42,18 @@ class ImageOperationCache {
                 self.lock.lock(); defer { self.lock.unlock() }
                 if self.cache[key] == nil {
                     self.cache[key] = operation
+                    self.queue.addOperation(operation)
                 }
             }
     }
 
-    static func clearCache() {
-        shared.lock.lock(); defer { shared.lock.unlock() }
-        shared.cache.removeAll()
+    func cancelAllOperations() {
+        queue.cancelAllOperations()
+    }
+
+    func clearCache() {
+        self.lock.lock(); defer { self.lock.unlock() }
+        self.cache.removeAll()
 
     }
 }

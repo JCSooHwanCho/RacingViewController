@@ -33,7 +33,6 @@ class MainTableViewPrefetcingDatasource: NSObject, UITableViewDataSourcePrefetch
             }
 
             operationCache.addOperation(forKey: indexPath, operation: operation)
-            GlobalOperationQueue.global.addOperation(operation)
         }
     }
 }

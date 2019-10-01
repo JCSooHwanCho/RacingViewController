@@ -70,7 +70,6 @@ class ImageTableViewCell: UITableViewCell {
             networkIndicator.isHidden = false
 
             operationCache.addOperation(forKey: indexPath, operation: imageOperation)
-        GlobalOperationQueue.global.addOperation(imageOperation)
         }
 
     }
