@@ -22,8 +22,12 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
         type = .GettyImageGallery
     }
 
-    override func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element] {
+    override func executeScraping<Element:VO>() throws -> [Element] {
         do {
+            guard let url = self.requestURL else {
+                throw NSError()
+            }
+
             let doc = try HTML(url: url, encoding: .utf8)
 
             var arr: [ImageVO] = []

@@ -15,7 +15,7 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
     typealias Element = VO
 
     // MARK: - Property
-    var scrapingCommand: ScrapCommand? {
+    var command: ScrapCommand? {
         didSet {
             self.loadData()
         }
@@ -27,7 +27,7 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
     init(scrapingCommand command: ScrapCommand) {
         super.init()
 
-        scrapingCommand = command
+        self.command = command
         self.loadData()
     }
 
@@ -35,12 +35,11 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
     override func loadData() {
         let scraper = Scraper()
 
-        guard  let command = self.scrapingCommand,
-            let url = scrapingCommand?.requestURL else {
+        guard let command = command else {
             return
         }
-
-        let scrapObservable: Observable<[Element]> = scraper.scrapData(fromURL: url, scrapingCommand: command)
+        
+        let scrapObservable: Observable<[Element]> = scraper.scrapData( scrapingCommand: command)
         
             scrapObservable.subscribe { event in
                 switch event {

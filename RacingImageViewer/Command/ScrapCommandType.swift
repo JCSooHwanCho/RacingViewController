@@ -19,7 +19,7 @@ protocol ScrapCommandType {
 
     var type: ScrapType { get }
     
-    func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element]
+    func executeScraping<Element:VO>() throws -> [Element]
  }
 
 extension ScrapCommandType {
