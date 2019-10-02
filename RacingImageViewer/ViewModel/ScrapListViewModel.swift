@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 // Scrap한 데이터를 나타내는 뷰모델
-final class ScrapListModel<Element:VO>: NetworkSequenceViewModel<Element> {
+final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
     typealias Element = VO
 
     // MARK: - Property

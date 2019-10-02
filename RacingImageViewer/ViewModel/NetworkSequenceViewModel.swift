@@ -10,7 +10,7 @@ import Foundation
 import RxRelay
 
 // NetworkSequence 뷰모델의 추상 클래스
-class NetworkSequenceViewModel<E>: NetworkSequenceDataModelType {
+class NetworkSequenceViewModel<E>: NetworkSequenceDataViewModelType {
     typealias Element = E
 
     var relay: BehaviorRelay<[E]> = BehaviorRelay(value: [])
