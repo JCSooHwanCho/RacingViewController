@@ -43,10 +43,6 @@ class MainView: UIViewController {
         self.navigationItem.title = additionalPath // 네비게이션 타이틀
     }
 
-    override func didReceiveMemoryWarning() {
-        ImageCache.clearCache() // 메모리 부족시, 캐시를 삭제하여 메모리를 확보한다.
-    }
-
     // MARK: - Configure Method
     private func createDataModel() {
 

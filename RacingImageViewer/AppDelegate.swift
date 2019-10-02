@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let operationCache = ImageOperationCache.shared
 
         operationCache.cancelAllOperations()
-        operationCache.clearCache()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
