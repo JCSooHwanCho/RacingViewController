@@ -22,7 +22,7 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
         type = .GettyImageGallery
     }
 
-    override func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO] {
+    override func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element] {
         do {
             let doc = try HTML(url: url, encoding: .utf8)
 
@@ -33,12 +33,11 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
                     // http요청을 위해 https를 http로 바꾼다.
                     let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://")
 
-                    let image = ImageVO()
-                    image.imageURL = httpURL
+                    let image = ImageVO(imageURL: httpURL)
                     arr.append(image)
                 }
             }
-            return arr as? [VO] ?? []
+            return arr as? [Element] ?? []
         } catch {
             throw error
         }

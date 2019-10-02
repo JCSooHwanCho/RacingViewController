@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxRelay
 
-class MainView: UIViewController {
+class SingleImageTableView: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -18,7 +18,7 @@ class MainView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var dataModel: NetworkSequenceViewModel<StringVO>?
+    private var dataModel: NetworkSequenceViewModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
 
     // MARK: - Public Property
@@ -52,7 +52,7 @@ class MainView: UIViewController {
         }
         let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
 
-        self.dataModel = ScrapListModel<StringVO>(scrapingCommand: command)
+        self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
     }
 
     private func bindItem() {
@@ -67,7 +67,7 @@ class MainView: UIViewController {
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
 
-        let modelRelay = model.relay.compactMap { $0 as? [ImageVO] }
+        let modelRelay = model.relay
 
         modelRelay
             .bind(to: self.items)

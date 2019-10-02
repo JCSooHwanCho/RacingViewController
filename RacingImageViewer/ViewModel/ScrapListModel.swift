@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 // Scrap한 데이터를 나타내는 뷰모델
-final class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
+final class ScrapListModel<Element:VO>: NetworkSequenceViewModel<Element> {
     typealias Element = VO
 
     // MARK: - Property
@@ -40,7 +40,7 @@ final class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
             return
         }
 
-        let scrapObservable = scraper.scrapData(fromURL: url, scrapingCommand: command) as Observable<[VO]>
+        let scrapObservable: Observable<[Element]> = scraper.scrapData(fromURL: url, scrapingCommand: command)
         
             scrapObservable.subscribe { event in
                 switch event {

@@ -20,7 +20,7 @@ class ScrapCommand: ScrapCommandType {
     }
 
 
-    func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO] {
+    func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element] {
         fatalError()
     }
 }
