@@ -52,7 +52,7 @@ class SingleImageTableView: UIViewController {
         }
         let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
 
-        self.dataModel = ScrapListModel<ImageVO>(scrapingCommand: command)
+        self.dataModel = ScrapListViewModel<ImageVO>(scrapingCommand: command)
     }
 
     private func bindItem() {
