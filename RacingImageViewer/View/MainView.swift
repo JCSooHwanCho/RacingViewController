@@ -16,11 +16,13 @@ class MainView: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
-    // MARK: - Property
-    var disposeBag = DisposeBag()
-    var dataModel: NetworkSequenceViewModel<StringVO>?
+    // MARK: - Private Property
+    private var disposeBag = DisposeBag()
+    private var dataModel: NetworkSequenceViewModel<StringVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
-    let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
+
+    // MARK: - Public Property
+    // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
     var scrapType: ScrapType? = .GettyImageGallery
     var additionalPath: String? = "auto-racing"
 
@@ -37,6 +39,8 @@ class MainView: UIViewController {
         bindItem() //ViewModel을 View와 바인딩해준다.
         bindTableViewDelegate() // 위에서 만든 delegate들을 ViewModel과 바인딩해주고, tableView에 세팅한다.
         configureRefreshControl() // tableView의 refreshControl을 설정한다.
+
+        self.navigationItem.title = additionalPath // 네비게이션 타이틀
     }
 
     override func didReceiveMemoryWarning() {
