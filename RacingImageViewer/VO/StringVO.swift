@@ -8,6 +8,7 @@
 
 import Foundation
 
+// StringVOType의 Base Class
 class StringVO: StringVOType {
     func getValue(forKey key: String) -> String? {
         return values[key]
@@ -17,7 +18,7 @@ class StringVO: StringVOType {
         values[key] = value
     }
 
-    var values: [String:String] = [:]
+    private var values: [String:String] = [:]
 
     required init() {}
 }

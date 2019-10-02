@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ScrapCommand의 팩토리 메소드에서 사용하기 위한 열거형, delegate 
 enum ScrapType {
     case GettyImageGallery
     case Unknown

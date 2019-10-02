@@ -9,10 +9,10 @@
 import Foundation
 import CoreGraphics
 
+// Image를 다운로드 받는 Operation을 저장하는 캐시
 final class ImageOperationCache {
     static var shared = ImageOperationCache()
 
-    private let lock = NSLock()
     private var cache: NSCache<NSIndexPath,ImageLoadOperation> = NSCache()
     private let queue = OperationQueue()
     

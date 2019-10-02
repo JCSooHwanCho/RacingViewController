@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ScrapCommand의 인터페이스 프로토콜
 protocol ScrapCommandType {
 
     var baseURL: URL? { get }
@@ -19,10 +20,11 @@ protocol ScrapCommandType {
     var type: ScrapType { get }
     
     func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO]
-}
+ }
 
 extension ScrapCommandType {
     var requestURL: URL? {
         return baseURL?.appendingPathComponent(additionalPath)
     }
 }
+

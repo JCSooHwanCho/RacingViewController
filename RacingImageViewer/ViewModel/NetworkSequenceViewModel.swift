@@ -9,6 +9,7 @@
 import Foundation
 import RxRelay
 
+// NetworkSequence 뷰모델의 추상 클래스
 class NetworkSequenceViewModel<E>: NetworkSequenceDataModelType {
     typealias Element = E
 

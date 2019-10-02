@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 프로퍼티를 String으로 참조할 수 있는 Vaue Object
 protocol StringVOType {
     func getValue(forKey key: String) -> String?
     mutating func setValue(forKey key: String, value: String)

@@ -21,11 +21,12 @@ class ImageTableViewCell: UITableViewCell {
     func configureCell(_ tableView: UITableView,
                        withImageLinkData imageLink: ImageVO,
                        cellForRowAt indexPath: IndexPath) {
-        self.selectionStyle = .none
+        self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
 
         let operationCache = ImageOperationCache.shared
         let imageCache = ImageCache.shared
 
+        // 이미지 로딩이 완료되면 호출되는 Handler
         let loadingCompleteHandler: (Data?) -> Void = { data in
             guard let data = data, let photo = UIImage(data: data) else {
                 return
@@ -42,6 +43,7 @@ class ImageTableViewCell: UITableViewCell {
             operationCache.removeOperation(forKey: indexPath)
         }
 
+        // 이미지 로딩에 실패하거나 이미지 로딩이 중단 되었을 때 호출되는 Handler
         let errorHandler: () -> Void = {
             DispatchQueue.main.async {
                 if tableView.indexPath(for: self) == indexPath {

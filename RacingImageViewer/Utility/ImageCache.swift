@@ -10,6 +10,7 @@ import Foundation
 import CoreGraphics
 import UIKit.UIImage
 
+// Image를 Data 상태로 저장하는 Cache
 final class ImageCache {
     static var shared = ImageCache()
 

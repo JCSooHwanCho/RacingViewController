@@ -9,10 +9,12 @@
 import Foundation
 import CoreGraphics
 
+// 이미지를 요청해서 캐시에 저장하는 Operation
 final class ImageLoadOperation: Operation {
     var loadingCompletionHandler: ((Data?) -> Void)?
     var errorHandler: (() -> Void)?
     var session: URLSessionDataTask?
+    
     private var image: ImageVO
 
     init(_ image: ImageVO) {

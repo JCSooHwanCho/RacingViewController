@@ -19,24 +19,24 @@ class MainView: UIViewController {
     // MARK: - Property
     var disposeBag = DisposeBag()
     var dataModel: NetworkSequenceViewModel<StringVO>?
-    private var items: BehaviorRelay<[StringVO]> = BehaviorRelay(value: [])
+    private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     let requestURL = "http://www.gettyimagesgallery.com/collection/auto-racing/"
     var scrapType: ScrapType? = .GettyImageGallery
     var additionalPath: String? = "auto-racing"
 
     // MARK: - Delegate
-    var tableViewDelegate: BaseTableViewDelegate?
-    var tableViewDatasource: BaseTableViewDatasource?
-    var tableViewDataSourcePrefetching: BaseTableViewDatasourcePrefetching?
+    var tableViewDelegate = SingleImageTableViewDelegate()
+    var tableViewDatasource = SingleImageTableViewDatasource()
+    var tableViewDataSourcePrefetching = SingleImageTableViewDatasourcePrefetching()
 
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createDataModelAndDelegate()
-        bindTableViewDelegate()
-        bindItem()
-        configureRefreshControl()
+        createDataModel() // ViewModel과 delegate들을 설정한다.
+        bindItem() //ViewModel을 View와 바인딩해준다.
+        bindTableViewDelegate() // 위에서 만든 delegate들을 ViewModel과 바인딩해주고, tableView에 세팅한다.
+        configureRefreshControl() // tableView의 refreshControl을 설정한다.
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +44,7 @@ class MainView: UIViewController {
     }
 
     // MARK: - Configure Method
-    private func createDataModelAndDelegate() {
+    private func createDataModel() {
 
         guard let scrapType = self.scrapType,
             let additionalPath = self.additionalPath else {
@@ -53,9 +53,6 @@ class MainView: UIViewController {
         let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
 
         self.dataModel = ScrapListModel<StringVO>(scrapingCommand: command)
-        self.tableViewDelegate = command.tableViewDelegate
-        self.tableViewDatasource = command.tableViewDatasource
-        self.tableViewDataSourcePrefetching = command.tableViewDatasourcePrefetching
     }
 
     private func bindItem() {
@@ -63,13 +60,16 @@ class MainView: UIViewController {
             return
         }
 
+        // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
         self.items
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
 
-        model.relay
+        let modelRelay = model.relay.compactMap { $0 as? [ImageVO] }
+
+        modelRelay
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
@@ -99,22 +99,15 @@ class MainView: UIViewController {
     }
 
     private func bindTableViewDelegate() {
-        guard let model = self.dataModel,
-            let delegate = self.tableViewDelegate,
-            let datasource = self.tableViewDatasource,
-            let datasourcePrefetching = self.tableViewDataSourcePrefetching else {
-            return
-        }
-        
-        model.relay
-            .bind(to: delegate.itemRelay)
+        self.items
+            .bind(to: self.tableViewDelegate.itemRelay)
             .disposed(by: disposeBag)
 
-        model.relay
-            .bind(to: datasource.itemRelay)
+        self.items
+            .bind(to: self.tableViewDatasource.itemRelay)
             .disposed(by: disposeBag)
-        model.relay
-            .bind(to: datasourcePrefetching.itemRelay)
+        self.items
+            .bind(to: self.tableViewDataSourcePrefetching.itemRelay)
             .disposed(by: disposeBag)
 
         self.tableView.delegate = self.tableViewDelegate

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit.UIAlertController
 
+// Alert을 쉽게 띄우기 위한 Extension
 extension UIAlertController {
     static func getAlert(withTitle title: String,
                          message: String,

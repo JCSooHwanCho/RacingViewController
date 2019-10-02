@@ -9,19 +9,15 @@
 /* Begin PBXBuildFile section */
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
 		FF14309F233D7EC900226963 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* ImageCache.swift */; };
-		FF1430A4233DC42600226963 /* GIGTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* GIGTableViewDelegate.swift */; };
+		FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */; };
 		FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */; };
-		FF1430A8233DCA7E00226963 /* GIGTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* GIGTableViewDatasource.swift */; };
-		FF1430AA233DCBB400226963 /* GIGTableViewDatasourcePrefetcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* GIGTableViewDatasourcePrefetcing.swift */; };
+		FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */; };
+		FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */; };
 		FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* ScrapCommandType.swift */; };
 		FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* ScrapCommand.swift */; };
 		FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */; };
 		FF5992792343225900526339 /* StringVOType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5992782343225900526339 /* StringVOType.swift */; };
 		FF59927D2343292400526339 /* StringVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59927C2343292400526339 /* StringVO.swift */; };
-		FF59928023432D6200526339 /* BaseTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59927F23432D6200526339 /* BaseTableViewDelegate.swift */; };
-		FF59928223432DAE00526339 /* BaseTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59928123432DAE00526339 /* BaseTableViewDatasource.swift */; };
-		FF59928423432E5000526339 /* BaseTableViewDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59928323432E5000526339 /* BaseTableViewDataSourcePrefetching.swift */; };
-		FF599286234333BC00526339 /* ScrapCommand+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF599285234333BC00526339 /* ScrapCommand+Extension.swift */; };
 		FF599288234335A800526339 /* ScrapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF599287234335A800526339 /* ScrapType.swift */; };
 		FF59928A2343679300526339 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5992892343679300526339 /* ImageData.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
@@ -48,19 +44,15 @@
 		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		FF1430A3233DC42600226963 /* GIGTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTableViewDelegate.swift; sourceTree = "<group>"; };
+		FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDelegate.swift; sourceTree = "<group>"; };
 		FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSequenceViewModel.swift; sourceTree = "<group>"; };
-		FF1430A7233DCA7E00226963 /* GIGTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTableViewDatasource.swift; sourceTree = "<group>"; };
-		FF1430A9233DCBB400226963 /* GIGTableViewDatasourcePrefetcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTableViewDatasourcePrefetcing.swift; sourceTree = "<group>"; };
+		FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasource.swift; sourceTree = "<group>"; };
+		FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasourcePrefetcing.swift; sourceTree = "<group>"; };
 		FF1430AB233DEE7D00226963 /* ScrapCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommandType.swift; sourceTree = "<group>"; };
 		FF1430AF233DEFC700226963 /* ScrapCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommand.swift; sourceTree = "<group>"; };
 		FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGCollectionScrapingCommand.swift; sourceTree = "<group>"; };
 		FF5992782343225900526339 /* StringVOType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringVOType.swift; sourceTree = "<group>"; };
 		FF59927C2343292400526339 /* StringVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringVO.swift; sourceTree = "<group>"; };
-		FF59927F23432D6200526339 /* BaseTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDelegate.swift; sourceTree = "<group>"; };
-		FF59928123432DAE00526339 /* BaseTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDatasource.swift; sourceTree = "<group>"; };
-		FF59928323432E5000526339 /* BaseTableViewDataSourcePrefetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDataSourcePrefetching.swift; sourceTree = "<group>"; };
-		FF599285234333BC00526339 /* ScrapCommand+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrapCommand+Extension.swift"; sourceTree = "<group>"; };
 		FF599287234335A800526339 /* ScrapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapType.swift; sourceTree = "<group>"; };
 		FF5992892343679300526339 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,11 +108,9 @@
 		FF1430A2233DC3FF00226963 /* TableViewDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				FF59927E23432D4A00526339 /* BaseDelegate */,
-				FF1430A3233DC42600226963 /* GIGTableViewDelegate.swift */,
-				FF1430A7233DCA7E00226963 /* GIGTableViewDatasource.swift */,
-				FF1430A9233DCBB400226963 /* GIGTableViewDatasourcePrefetcing.swift */,
-				FF599285234333BC00526339 /* ScrapCommand+Extension.swift */,
+				FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */,
+				FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */,
+				FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */,
 			);
 			path = TableViewDelegate;
 			sourceTree = "<group>";
@@ -133,16 +123,6 @@
 				FFAD925D234198C6006E7C61 /* NetworkSequenceDataModelType.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		FF59927E23432D4A00526339 /* BaseDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				FF59927F23432D6200526339 /* BaseTableViewDelegate.swift */,
-				FF59928123432DAE00526339 /* BaseTableViewDatasource.swift */,
-				FF59928323432E5000526339 /* BaseTableViewDataSourcePrefetching.swift */,
-			);
-			path = BaseDelegate;
 			sourceTree = "<group>";
 		};
 		FF94DE49233AF7200045E010 = {
@@ -377,10 +357,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */,
-				FF1430A8233DCA7E00226963 /* GIGTableViewDatasource.swift in Sources */,
+				FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */,
 				FF59928A2343679300526339 /* ImageData.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* MainView.swift in Sources */,
-				FF599286234333BC00526339 /* ScrapCommand+Extension.swift in Sources */,
 				FFAD925E234198C6006E7C61 /* NetworkSequenceDataModelType.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */,
 				FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */,
@@ -391,18 +370,15 @@
 				FF14309F233D7EC900226963 /* ImageCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
-				FF59928223432DAE00526339 /* BaseTableViewDatasource.swift in Sources */,
 				FF59927D2343292400526339 /* StringVO.swift in Sources */,
-				FF59928423432E5000526339 /* BaseTableViewDataSourcePrefetching.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* DataScraperType.swift in Sources */,
 				FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
-				FF59928023432D6200526339 /* BaseTableViewDelegate.swift in Sources */,
 				FFAC5F9C233C415E001D4B62 /* DataScraper.swift in Sources */,
-				FF1430AA233DCBB400226963 /* GIGTableViewDatasourcePrefetcing.swift in Sources */,
+				FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */,
 				FF5992792343225900526339 /* StringVOType.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
-				FF1430A4233DC42600226963 /* GIGTableViewDelegate.swift in Sources */,
+				FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */,
 				FF599288234335A800526339 /* ScrapType.swift in Sources */,
 				FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */,
 			);

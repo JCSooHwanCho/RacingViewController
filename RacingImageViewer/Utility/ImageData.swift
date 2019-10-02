@@ -9,6 +9,7 @@
 import Foundation
 import CoreGraphics
 
+// ImageData를 캐시에 저장하기 위한 Class Wrapper
 class ImageData {
     let data: Data
     let size: CGSize

@@ -8,4 +8,5 @@
 
 import Foundation
 
+// Sequence 데이터를 네트워크를 통해 로딩하는 모델을 나타내는 프로토콜
 protocol NetworkSequenceDataModelType: SequenceDataModelType, NetworkStatusModelType { }

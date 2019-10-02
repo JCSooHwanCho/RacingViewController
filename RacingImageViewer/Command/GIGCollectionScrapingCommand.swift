@@ -9,9 +9,8 @@
 import Foundation
 import Kanna
 
+// gettyImagesGallery를 스크랩하기 위한 Command 객체
 final class GIGCollectionScrapingCommand: ScrapCommand {
-
-    let lock = NSLock()
 
     required init(withAdditionalPath path: String) {
         super.init(withAdditionalPath: path)

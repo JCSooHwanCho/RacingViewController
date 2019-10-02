@@ -9,6 +9,7 @@
 import Foundation
 import RxRelay
 
+// Sequence 데이터를 로딩하고 전파하는 모델을 나타내는 프로토콜
 protocol SequenceDataModelType {
     associatedtype Element
 

@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 import RxRelay
 
-final class GIGTableViewDatasource: BaseTableViewDatasource {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+final class SingleImageTableViewDatasource: NSObject,UITableViewDataSource {
+    let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemRelay.value.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.identifier, for: indexPath)
 
         guard let imageCell = cell as? ImageTableViewCell else {
@@ -23,10 +25,7 @@ final class GIGTableViewDatasource: BaseTableViewDatasource {
         }
 
         let itemList = self.itemRelay.value
-
-        guard let imageLink = itemList[indexPath.row] as? ImageVO else {
-            return cell
-        }
+        let imageLink = itemList[indexPath.row]
 
         imageCell.configureCell(tableView, withImageLinkData: imageLink, cellForRowAt: indexPath)
 

@@ -8,8 +8,8 @@
 
 import Foundation
 
+// ScrapCommand의 최상위 추상 객체
 class ScrapCommand: ScrapCommandType {
-
     var baseURL: URL?
     var additionalPath: String
     var type: ScrapType
@@ -21,10 +21,11 @@ class ScrapCommand: ScrapCommandType {
 
 
     func executeScraping<VO:StringVOType>(fromURL url: URL) throws -> [VO] {
-        return []
+        fatalError()
     }
 }
 
+// ScrapCommand의 팩토리 메소드
 extension ScrapCommand {
     static func getCommand(withCommandType type: ScrapType, additionalPath path: String) -> ScrapCommand {
         switch type {

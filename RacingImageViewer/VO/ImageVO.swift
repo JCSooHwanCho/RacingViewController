@@ -8,13 +8,14 @@
 
 import Foundation
 
+// 스크랩한 이미지를 저장하는 Value Object
 final class ImageVO: StringVO {
     var imageURL: String {
         set {
-            values["imageURL"] = newValue
+            self.setValue(forKey: "imageURL", value: newValue)
         }
         get {
-            return values["imageURL"] ?? ""
+            return self.getValue(forKey: "imageURL") ?? ""
         }
     }
 }

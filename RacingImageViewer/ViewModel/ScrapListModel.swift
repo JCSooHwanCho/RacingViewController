@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
+// Scrap한 데이터를 나타내는 뷰모델
 final class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
     typealias Element = VO
 
@@ -32,8 +33,6 @@ final class ScrapListModel<VO:StringVOType>: NetworkSequenceViewModel<VO> {
 
     // MARK: - Loading Method
     override func loadData() {
-        disposeBag = DisposeBag() // 기존 구독을 해지한다.
-
         let scraper = DataScraper()
 
         guard  let command = self.scrapingCommand,
