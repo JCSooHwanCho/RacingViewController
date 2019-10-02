@@ -17,6 +17,19 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
+    // MARK: - Private Property
+    var isLoading: Bool  = false {
+        didSet {
+            if isLoading {
+                networkIndicator.startAnimating()
+                networkIndicator.isHidden = false
+            } else {
+                self.networkIndicator.stopAnimating()
+                self.networkIndicator.isHidden = true
+            }
+        }
+    }
+
     // MARK: - Configure Method
     func configureCell(_ tableView: UITableView,
                        withImageLinkData imageLink: ImageVO,
@@ -34,10 +47,9 @@ class ImageTableViewCell: UITableViewCell {
 
             DispatchQueue.main.async {
                 if tableView.indexPath(for: self) == indexPath {
-                       self.networkIndicator.stopAnimating()
-                       self.networkIndicator.isHidden = true
-                       self.photoView.image = photo
-                       tableView.reloadRows(at: [indexPath], with: .automatic)
+                    self.isLoading = false
+                    self.photoView.image = photo
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
             operationCache.removeOperation(forKey: indexPath)
@@ -47,8 +59,7 @@ class ImageTableViewCell: UITableViewCell {
         let errorHandler: () -> Void = {
             DispatchQueue.main.async {
                 if tableView.indexPath(for: self) == indexPath {
-                   self.networkIndicator.stopAnimating()
-                   self.networkIndicator.isHidden = true
+                    self.isLoading = false
                 }
             }
         }
@@ -59,8 +70,8 @@ class ImageTableViewCell: UITableViewCell {
                 }
                 self.photoView.image = photo
         } else if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
-            networkIndicator.startAnimating()
-            networkIndicator.isHidden = false
+            self.isLoading = true
+
             operation.loadingCompletionHandler = loadingCompleteHandler
             operation.errorHandler = errorHandler
         } else { // 요청조자 들어가지 않은 상태
@@ -68,18 +79,15 @@ class ImageTableViewCell: UITableViewCell {
             imageOperation.loadingCompletionHandler = loadingCompleteHandler
             imageOperation.errorHandler = errorHandler
 
-            networkIndicator.startAnimating()
-            networkIndicator.isHidden = false
+            self.isLoading = true
 
             operationCache.addOperation(forKey: indexPath, operation: imageOperation)
         }
-
     }
 
     // MARK: - PrepareForReuse
     override func prepareForReuse() {
-        self.networkIndicator.stopAnimating()
-        self.networkIndicator.isHidden = true
+        self.isLoading = false
         self.photoView.image = UIImage(named: "placeholder")
     }
 

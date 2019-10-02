@@ -43,6 +43,5 @@ final class ImageCache {
 
     static func clearCache() {
         shared.cache.removeAllObjects()
-
     }
 }
