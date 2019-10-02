@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class DataScraper: DataScraperType {
+class Scraper: ScraperType {
 
     // MARK: - Loading Observable
     func scrapData<Element:VO>(fromURL url: URL, scrapingCommand command: ScrapCommand) ->Observable<[Element]> {

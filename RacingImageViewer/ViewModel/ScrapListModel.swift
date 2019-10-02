@@ -33,7 +33,7 @@ final class ScrapListModel<Element:VO>: NetworkSequenceViewModel<Element> {
 
     // MARK: - Loading Method
     override func loadData() {
-        let scraper = DataScraper()
+        let scraper = Scraper()
 
         guard  let command = self.scrapingCommand,
             let url = scrapingCommand?.requestURL else {

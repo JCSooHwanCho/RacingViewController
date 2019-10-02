@@ -8,5 +8,5 @@
 
 import Foundation
 
-// 프로퍼티를 String으로 참조할 수 있는 Vaue Object
+// Value Object를 나타내는 빈 프로토콜
 protocol VO { }

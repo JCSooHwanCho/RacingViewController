@@ -25,10 +25,10 @@
 		FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5E233AF7240045E010 /* Assets.xcassets */; };
 		FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */; };
 		FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */; };
-		FFAC5F9C233C415E001D4B62 /* DataScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* DataScraper.swift */; };
+		FFAC5F9C233C415E001D4B62 /* Scraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* Scraper.swift */; };
 		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
 		FFAC5FA2233C618D001D4B62 /* ScrapListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */; };
-		FFAC5FA4233C9059001D4B62 /* DataScraperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* DataScraperType.swift */; };
+		FFAC5FA4233C9059001D4B62 /* ScraperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* ScraperType.swift */; };
 		FFAC5FA6233CA997001D4B62 /* SequenceDataModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataModelType.swift */; };
 		FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */; };
 		FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */; };
@@ -61,10 +61,10 @@
 		FF94DE61233AF7240045E010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF94DE63233AF7240045E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFAC5F98233C3FC3001D4B62 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		FFAC5F9B233C415E001D4B62 /* DataScraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraper.swift; sourceTree = "<group>"; };
+		FFAC5F9B233C415E001D4B62 /* Scraper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scraper.swift; sourceTree = "<group>"; };
 		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
 		FFAC5FA1233C618D001D4B62 /* ScrapListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListModel.swift; sourceTree = "<group>"; };
-		FFAC5FA3233C9059001D4B62 /* DataScraperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScraperType.swift; sourceTree = "<group>"; };
+		FFAC5FA3233C9059001D4B62 /* ScraperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScraperType.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* SequenceDataModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataModelType.swift; sourceTree = "<group>"; };
 		FFAC5FB7233D03D3001D4B62 /* ImageOperationCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperationCache.swift; sourceTree = "<group>"; };
 		FFAC5FB9233D0907001D4B62 /* ImageLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadOperation.swift; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 		FFAC5F9A233C4116001D4B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC5FA3233C9059001D4B62 /* DataScraperType.swift */,
-				FFAC5F9B233C415E001D4B62 /* DataScraper.swift */,
+				FFAC5FA3233C9059001D4B62 /* ScraperType.swift */,
+				FFAC5F9B233C415E001D4B62 /* Scraper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,10 +367,10 @@
 				FF14309F233D7EC900226963 /* ImageCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
-				FFAC5FA4233C9059001D4B62 /* DataScraperType.swift in Sources */,
+				FFAC5FA4233C9059001D4B62 /* ScraperType.swift in Sources */,
 				FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
-				FFAC5F9C233C415E001D4B62 /* DataScraper.swift in Sources */,
+				FFAC5F9C233C415E001D4B62 /* Scraper.swift in Sources */,
 				FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */,
 				FF5992792343225900526339 /* VO.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
