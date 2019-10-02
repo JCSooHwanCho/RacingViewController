@@ -13,6 +13,10 @@ import Kanna
 final class GIGCollectionScrapingCommand: ScrapCommand {
 
     required init(withAdditionalPath path: String) {
+        let path = path.lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: "[\\s\n]+", with: "-",options: .regularExpression)
+
         super.init(withAdditionalPath: path)
         baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
         type = .GettyImageGallery
