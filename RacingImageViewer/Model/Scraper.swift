@@ -28,7 +28,7 @@ class Scraper: ScraperType {
             return Disposables.create()
         }
 
-        return dataObservable.subscribeOn(SerialDispatchQueueScheduler.init(qos: .background))
+        return dataObservable.subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
     }
 
 }
