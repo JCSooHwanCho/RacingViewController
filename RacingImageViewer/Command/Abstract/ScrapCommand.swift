@@ -20,7 +20,7 @@ class ScrapCommand: ScrapCommandType {
     }
 
 
-    func executeScraping<Element:VO>() throws -> [Element] {
+    func execute<Element:VO>() throws -> [Element]? {
         fatalError()
     }
 }

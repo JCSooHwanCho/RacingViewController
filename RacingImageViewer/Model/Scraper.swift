@@ -16,7 +16,9 @@ class Scraper: ScraperType {
 
         let dataObservable = Observable<[Element]>.create { observable in
                 do {
-                    let arr = try command.executeScraping() as [Element]
+                    guard let arr: [Element] = try command.execute() else {
+                        throw RxError.noElements
+                    }
 
                     observable.onNext(arr)
                     observable.onCompleted()

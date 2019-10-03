@@ -22,7 +22,7 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
         type = .GettyImageGallery
     }
 
-    override func executeScraping<Element:VO>() throws -> [Element] {
+    override func execute<Element:VO>() throws -> [Element]? {
         do {
             guard let url = self.requestURL else {
                 throw NSError()
@@ -30,7 +30,7 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
 
             let doc = try HTML(url: url, encoding: .utf8)
 
-            var arr: [ImageVO] = []
+            var result: [ImageVO] = []
 
             for node in doc.css("div img[class=jq-lazy]") { // css selector로 해당하는 노드들을 찾아서 순회한다.
                 if let imageURL = node["data-src"] { // 노드에서 원하는 attribute의 값을 string으로 추출한다.
@@ -38,10 +38,10 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
                     let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://")
 
                     let image = ImageVO(imageURL: httpURL)
-                    arr.append(image)
+                    result.append(image)
                 }
             }
-            return arr as? [Element] ?? []
+            return result as? [Element]
         } catch {
             throw error
         }
