@@ -12,7 +12,7 @@ import RxRelay
 class NetworkSingleDataViewModel<Element>: NetworkSingleDataViewModelType {
     typealias Element = Element
 
-    var relay: BehaviorRelay<Element?> = BehaviorRelay(value: nil)
+    var itemRelay: BehaviorRelay<Element?> = BehaviorRelay(value: nil)
     var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
 
     func loadData() {

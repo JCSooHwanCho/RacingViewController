@@ -13,7 +13,7 @@ import RxRelay
 class NetworkSequenceViewModel<Element>: NetworkSequenceDataViewModelType {
     typealias Element = Element
 
-    var relay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
+    var itemsRelay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
     var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
 
     func loadData() {

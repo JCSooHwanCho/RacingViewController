@@ -13,7 +13,7 @@ import RxRelay
 protocol SequenceDataViewModelType {
     associatedtype Element
 
-    var relay: BehaviorRelay<[Element]> {get}
+    var itemsRelay: BehaviorRelay<[Element]> {get}
 
     func loadData()
 }

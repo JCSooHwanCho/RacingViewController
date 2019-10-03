@@ -12,7 +12,7 @@ import RxRelay
 protocol SingleDataViewModelType{
     associatedtype Element
 
-    var relay: BehaviorRelay<Element?> {get}
+    var itemRelay: BehaviorRelay<Element?> {get}
 
     func loadData()
 }

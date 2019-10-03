@@ -67,7 +67,7 @@ class SingleImageTableView: UIViewController {
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
 
-        let modelRelay = model.relay
+        let modelRelay = model.itemsRelay
 
         modelRelay
             .bind(to: self.items)
