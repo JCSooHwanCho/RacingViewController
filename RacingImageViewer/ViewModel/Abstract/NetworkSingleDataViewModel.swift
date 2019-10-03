@@ -9,7 +9,8 @@
 import Foundation
 import RxRelay
 
-class NetworkSingleDataViewModel<Element>: NetworkSingleDataViewModelType {
+class NetworkSingleDataViewModel<Element>: NetworkStatusViewModelType,
+SingleDataViewModelType {
     typealias Element = Element
 
     var itemRelay: BehaviorRelay<Element?> = BehaviorRelay(value: nil)
