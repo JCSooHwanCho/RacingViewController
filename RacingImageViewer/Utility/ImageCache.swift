@@ -14,7 +14,7 @@ import UIKit.UIImage
 final class ImageCache {
     static var shared = ImageCache()
 
-    private var cache: NSCache<NSString,ImageData> = NSCache()
+    private let cache: NSCache<NSString,ImageData> = NSCache()
     private let lock = NSLock()
 
     private init() {}

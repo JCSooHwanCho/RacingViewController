@@ -13,7 +13,7 @@ import CoreGraphics
 final class ImageOperationCache {
     static var shared = ImageOperationCache()
 
-    private var cache: NSCache<NSIndexPath,ImageLoadOperation> = NSCache()
+    private let cache: NSCache<NSIndexPath,ImageLoadOperation> = NSCache()
     private let queue = OperationQueue()
     
     private init() {}
