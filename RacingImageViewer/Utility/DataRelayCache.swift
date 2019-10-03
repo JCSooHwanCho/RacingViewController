@@ -28,7 +28,6 @@ final class DataRelayCache {
             return nil
     }
 
-
     func addData(forKey key: String, withData data: BehaviorRelay<VO>) {
         let key = key as NSString
 

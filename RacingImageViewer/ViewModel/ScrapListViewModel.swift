@@ -12,8 +12,7 @@ import RxRelay
 
 // Scrap한 데이터를 나타내는 뷰모델
 final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
-    typealias Element = VO
-
+    
     // MARK: - Property
     var command: ScrapCommand? {
         didSet {
