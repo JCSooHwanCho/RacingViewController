@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import RxRelay
 
 // 이미지를 요청해서 캐시에 저장하는 Operation
 final class ImageLoadOperation: Operation {
@@ -39,8 +40,10 @@ final class ImageLoadOperation: Operation {
                     self.errorHandler?()
                     return
                 }
-            let imageCache = ImageCache.shared
-            imageCache.addData(forKey: self.image.imageURL, withData: data)
+            let imageCache = DataRelayCache.shared
+            let dataRelay = BehaviorRelay<VO>(value: DataVO(data: data))
+
+            imageCache.addData(forKey: self.image.imageURL, withData: dataRelay)
             self.loadingCompletionHandler?(data)
         }
 

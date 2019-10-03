@@ -14,7 +14,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
     let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let operationCache = ImageOperationCache.shared
-        let imageCache = ImageCache.shared
+        let imageCache = DataRelayCache.shared
 
         for indexPath in indexPaths {
             let imageLink = self.itemRelay.value[indexPath.row]

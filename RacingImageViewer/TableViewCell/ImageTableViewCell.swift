@@ -37,7 +37,7 @@ class ImageTableViewCell: UITableViewCell {
         self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
 
         let operationCache = ImageOperationCache.shared
-        let imageCache = ImageCache.shared
+        let imageCache = DataRelayCache.shared
 
         // 이미지 로딩이 완료되면 호출되는 Handler
         let loadingCompleteHandler: (Data?) -> Void = { data in
@@ -65,7 +65,8 @@ class ImageTableViewCell: UITableViewCell {
         }
 
         if let imageData = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
-            guard let photo = UIImage(data: imageData.data) else {
+            guard let imageData = imageData as? DataVO,
+                let photo = UIImage(data: imageData.data) else {
                     return
                 }
                 self.photoView.image = photo
