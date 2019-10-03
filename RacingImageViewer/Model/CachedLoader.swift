@@ -15,15 +15,18 @@ class CachedLoader: Loader {
 
         let url = command.requestURL
 
-        if let request = cache[url] {
-            return request.compactMap { $0 as? Element }
-        } else {
-            let observable: Observable<Element> = super.loadData(loadCommand: command)
+        return Observable<Element>.deferred {
+            if let request = cache[url] {
+                return request.compactMap { $0 as? Element }
+            } else {
+                let request:Observable<Element> = super.loadData(loadCommand: command)
 
-            cache.addRequest(forKey: command.requestURL,
-                             withRequest: observable.map{ $0 as VO })
+                cache.addRequest(forKey: command.requestURL,
+                withRequest: request.map{ $0 as VO })
 
-            return observable
-        }
+                return request
+            }
+        }.do(afterError: { _ in cache.deleteRequest(forKey: url) }
+            ,afterCompleted: { cache.deleteRequest(forKey: url) } )
     }
 }

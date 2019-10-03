@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+
 extension CachedLoader {
     final class LoaderCache {
         static var shared = LoaderCache()
@@ -32,8 +33,10 @@ extension CachedLoader {
             cache.setObject(request, forKey: key)
         }
 
-        func clearCache() {
-            self.cache.removeAllObjects()
+        func deleteRequest(forKey key: URL) {
+            let key = key as NSURL
+
+            cache.removeObject(forKey: key)
         }
     }
 }

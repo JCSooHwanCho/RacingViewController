@@ -88,6 +88,8 @@ class ImageTableViewCell: UITableViewCell {
 
     // MARK: - PrepareForReuse
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         self.isLoading = false
         self.photoView.image = UIImage(named: "placeholder")
     }
