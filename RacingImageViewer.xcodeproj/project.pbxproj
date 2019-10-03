@@ -43,6 +43,9 @@
 		FFC7598A2345765200A4495F /* ImageDataLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759892345765200A4495F /* ImageDataLoadCommand.swift */; };
 		FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* CachedLoader.swift */; };
 		FFC7598E234579DB00A4495F /* LoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598D234579DB00A4495F /* LoaderCache.swift */; };
+		FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759912345800A00A4495F /* SingleDataViewModelType.swift */; };
+		FFC75994234580BF00A4495F /* NetworkSingleDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC75993234580BF00A4495F /* NetworkSingleDataViewModelType.swift */; };
+		FFC759962345811800A4495F /* NetworkSingleDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */; };
 		FFD5086F234209B50048C804 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FFD5086E234209B50048C804 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,9 @@
 		FFC759892345765200A4495F /* ImageDataLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoadCommand.swift; sourceTree = "<group>"; };
 		FFC7598B234579A300A4495F /* CachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedLoader.swift; sourceTree = "<group>"; };
 		FFC7598D234579DB00A4495F /* LoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCache.swift; sourceTree = "<group>"; };
+		FFC759912345800A00A4495F /* SingleDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataViewModelType.swift; sourceTree = "<group>"; };
+		FFC75993234580BF00A4495F /* NetworkSingleDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSingleDataViewModelType.swift; sourceTree = "<group>"; };
+		FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSingleDataViewModel.swift; sourceTree = "<group>"; };
 		FFD5086E234209B50048C804 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +141,8 @@
 				FFAD925B234196AE006E7C61 /* NetworkStatusViewModelType.swift */,
 				FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */,
 				FFAD925D234198C6006E7C61 /* NetworkSequenceDataViewModelType.swift */,
+				FFC759912345800A00A4495F /* SingleDataViewModelType.swift */,
+				FFC75993234580BF00A4495F /* NetworkSingleDataViewModelType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -247,12 +255,21 @@
 			path = Abstract;
 			sourceTree = "<group>";
 		};
+		FFC7599023457EFA00A4495F /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */,
+				FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */,
+			);
+			path = Abstract;
+			sourceTree = "<group>";
+		};
 		FFD5086B234202890048C804 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FFC7599023457EFA00A4495F /* Abstract */,
 				FF1430AD233DEEE100226963 /* Protocol */,
 				FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */,
-				FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -404,10 +421,12 @@
 				FFC75986234574B600A4495F /* Loader.swift in Sources */,
 				FFAC5FBA233D0907001D4B62 /* ImageLoadOperation.swift in Sources */,
 				FFAD925C234196AE006E7C61 /* NetworkStatusViewModelType.swift in Sources */,
+				FFC759962345811800A4495F /* NetworkSingleDataViewModel.swift in Sources */,
 				FFC759802345711500A4495F /* LoadCommandType.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */,
+				FFC75994234580BF00A4495F /* NetworkSingleDataViewModelType.swift in Sources */,
 				FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */,
 				FF14309F233D7EC900226963 /* ImageCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */,
@@ -416,6 +435,7 @@
 				FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */,
 				FFC75984234573A000A4495F /* LoadCommand.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
+				FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */,
 				FFC7598E234579DB00A4495F /* LoaderCache.swift in Sources */,
 				FFAC5F9C233C415E001D4B62 /* Scraper.swift in Sources */,
 				FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */,

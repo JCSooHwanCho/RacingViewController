@@ -8,31 +8,32 @@
 
 import Foundation
 import RxSwift
+extension CachedLoader {
+    final class LoaderCache {
+        static var shared = LoaderCache()
 
-final class LoaderCache {
-    static var shared = LoaderCache()
+        private let cache: NSCache<NSURL, Observable<VO>> = NSCache()
 
-    private let cache: NSCache<NSURL, Observable<VO>> = NSCache()
+        private init() { }
 
-    private init() { }
+        subscript(index: URL) -> Observable<VO>? {
+            let index = index as NSURL
 
-    subscript(index: URL) -> Observable<VO>? {
-        let index = index as NSURL
-
-        if let value = cache.object(forKey: index) {
-            return value
+            if let value = cache.object(forKey: index) {
+                return value
+            }
+            return nil
         }
-        return nil
-    }
 
-    func addRequest(forKey key: URL, withRequest request: Observable<VO>) {
-        let key = key as NSURL
-        let request = request.share(replay: 1) 
+        func addRequest(forKey key: URL, withRequest request: Observable<VO>) {
+            let key = key as NSURL
+            let request = request.share(replay: 1)
 
-        cache.setObject(request, forKey: key)
-    }
+            cache.setObject(request, forKey: key)
+        }
 
-    func clearCache() {
-        self.cache.removeAllObjects()
+        func clearCache() {
+            self.cache.removeAllObjects()
+        }
     }
 }
