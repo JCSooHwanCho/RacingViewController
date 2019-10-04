@@ -9,5 +9,4 @@ target 'RacingImageViewer' do
   pod 'Kanna', '~>5.0.0'
   pod 'RxSwift','~>5'
   pod 'RxRelay', '~>5'
-  pod 'SwiftLint'
 end

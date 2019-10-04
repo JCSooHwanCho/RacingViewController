@@ -291,7 +291,6 @@
 				FF94DE4F233AF7200045E010 /* Frameworks */,
 				FF94DE50233AF7200045E010 /* Resources */,
 				D2593A5D117C775014E86F47 /* [CP] Embed Pods Frameworks */,
-				FF8B2CBC2347580D00B2DD2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -388,23 +387,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		FF8B2CBC2347580D00B2DD2D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

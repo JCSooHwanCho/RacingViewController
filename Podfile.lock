@@ -3,27 +3,23 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
-  - SwiftLint (0.34.0)
 
 DEPENDENCIES:
   - Kanna (~> 5.0.0)
   - RxRelay (~> 5)
   - RxSwift (~> 5)
-  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Kanna
     - RxRelay
     - RxSwift
-    - SwiftLint
 
 SPEC CHECKSUMS:
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
-  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: aa516dd4f751ac7cfcdd839d7c5bfe9b8261e2ee
+PODFILE CHECKSUM: 46c580f2ef2ebd3a36c9e690eca1cfe6986d5773
 
 COCOAPODS: 1.7.5
