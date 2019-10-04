@@ -25,8 +25,8 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
         
             scrapObservable.subscribe { event in
                 switch event {
-                case let .next(images):
-                    self.itemsRelay.accept(images)
+                case let .next(value):
+                    self.itemsRelay.accept(value)
                     self.networkRelay.accept((true, nil))
                 case let .error(error):
                     self.networkRelay.accept((false, error))

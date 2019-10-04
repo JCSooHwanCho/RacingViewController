@@ -28,7 +28,6 @@ class CachedLoader: Loader {
 
                 return request
             }
-        }.do(afterError: { _ in cache.deleteRequest(forKey: url) }
-            ,afterCompleted: { cache.deleteRequest(forKey: url) } )
+        }
     }
 }

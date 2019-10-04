@@ -15,7 +15,7 @@ import RxRelay
 final class DataRelayCache {
     static var shared = DataRelayCache()
 
-    private let cache: NSCache<NSString,BehaviorRelay<VO>> = NSCache()
+    private let cache: NSCache<NSString,DataWrapper<VO>> = NSCache()
 
     private init() {}
 
@@ -28,7 +28,7 @@ final class DataRelayCache {
             return nil
     }
 
-    func addData(forKey key: String, withData data: BehaviorRelay<VO>) {
+    func addData(forKey key: String, withData data: DataWrapper<VO>) {
         let key = key as NSString
 
         cache.setObject(data, forKey: key)
