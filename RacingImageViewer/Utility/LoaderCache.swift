@@ -29,6 +29,9 @@ extension CachedLoader {
         func addRequest(forKey key: URL, withRequest request: Observable<VO>) {
             let key = key as NSURL
             let request = request.share(replay: 1)
+                .do(onDispose: {
+                self.cache.removeObject(forKey: key)
+                })
 
             cache.setObject(request, forKey: key)
         }

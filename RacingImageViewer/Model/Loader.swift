@@ -25,6 +25,7 @@ class Loader: LoaderType {
 
             return Disposables.create()
         }
-        return observable.subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+        return observable
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
     }
 }
