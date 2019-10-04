@@ -10,7 +10,7 @@ import Foundation
 import Kanna
 
 // gettyImagesGallery를 스크랩하기 위한 Command 객체
-final class GIGCollectionScrapingCommand: SequenceDataCommand {
+final class GIGCollectionScrapCommand: SequenceDataCommand {
 
     required init(withURL url: URL? = nil, additionalPath path: String) {
         if url != nil {

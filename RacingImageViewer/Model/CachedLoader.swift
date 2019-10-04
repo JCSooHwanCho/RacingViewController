@@ -1,5 +1,5 @@
 //
-//  CachedLoader.swift
+//  SingleDataCachedLoader.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -11,7 +11,7 @@ import RxSwift
 
 class SingleDataCachedLoader: SingleDataLoader {
     override func loadData<Element>(loadCommand command: SingleDataCommand) -> Observable<Element> {
-        let cache = LoaderCache.shared
+        let cache = SingleDataLoaderCache.shared
 
         guard let url = command.requestURL else {
             return Observable.error(RxError.noElements)

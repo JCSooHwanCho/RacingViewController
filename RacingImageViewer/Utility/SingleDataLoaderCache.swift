@@ -1,5 +1,5 @@
 //
-//  LoaderCache.swift
+//  SingleDataLoaderCache.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -10,8 +10,8 @@ import Foundation
 import RxSwift
 
 extension SingleDataCachedLoader {
-    final class LoaderCache {
-        static var shared = LoaderCache()
+    final class SingleDataLoaderCache {
+        static var shared = SingleDataLoaderCache()
 
         private let cache: NSCache<NSURL, Observable<Any>> = NSCache()
 

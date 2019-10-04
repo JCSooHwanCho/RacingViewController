@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 import RxRelay
 
-class ImageTableViewCell: UITableViewCell {
+class SingleImageTableViewCell: UITableViewCell {
 
     // MARK: - Identifier
-    static let identifier = "ImageTableViewCell"
+    static let identifier = "SingleImageTableViewCell"
 
     // MARK: - Outlet
     @IBOutlet var photoView: UIImageView!

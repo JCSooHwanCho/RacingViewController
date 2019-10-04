@@ -1,5 +1,5 @@
 //
-//  MainTableViewDatasource.swift
+//  SingleImageTableViewDatasource.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/27.
@@ -18,9 +18,9 @@ final class SingleImageTableViewDatasource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SingleImageTableViewCell.identifier, for: indexPath)
 
-        guard let imageCell = cell as? ImageTableViewCell else {
+        guard let imageCell = cell as? SingleImageTableViewCell else {
             return cell
         }
 

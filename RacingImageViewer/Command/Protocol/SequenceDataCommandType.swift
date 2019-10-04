@@ -1,5 +1,5 @@
 //
-//  ScrapCommandProtocol.swift
+//  SequenceDataCommandType.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/27.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-// ScrapCommand의 인터페이스 프로토콜
 protocol SequenceDataCommandType {
 
     var baseURL: URL? { get }

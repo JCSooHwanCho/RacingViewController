@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SingleImageTableView.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/25.
@@ -115,7 +115,7 @@ class SingleImageTableView: UIViewController {
         guard let additionalPath = self.additionalPath else {
                 return
         }
-        let command = GIGCollectionScrapingCommand(additionalPath: additionalPath)
+        let command = GIGCollectionScrapCommand(additionalPath: additionalPath)
 
         self.viewModel?.command = command
     }

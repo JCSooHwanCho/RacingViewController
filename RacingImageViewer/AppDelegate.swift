@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  BoostCourseViewTransition
+//  RacingImageViewer
 //
-//  Created by 조수환 on 23/04/2019.
+//  Created by 조수환 on 2019/09/25.
 //  Copyright © 2019 조수환. All rights reserved.
 //
 
