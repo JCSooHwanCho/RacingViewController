@@ -14,21 +14,7 @@ import RxRelay
 final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
     
     // MARK: - Property
-    var command: ScrapCommand? {
-        didSet {
-            self.loadData()
-        }
-    }
-
     var disposeBag = DisposeBag()
-
-    // MARK: - Initializer
-    init(scrapingCommand command: ScrapCommand) {
-        super.init()
-
-        self.command = command
-        self.loadData()
-    }
 
     // MARK: - Loading Method
     override func loadData() {

@@ -13,7 +13,12 @@ class NetworkSingleDataViewModel<Element>: NetworkStatusViewModelType,
 SingleDataViewModelType {
     typealias Element = Element
 
-    var itemRelay: BehaviorRelay<Element?> = BehaviorRelay(value: nil)
+    var command: LoadCommand? {
+        didSet {
+            self.loadData()
+        }
+    }
+    var itemRelay: PublishRelay<Element> = PublishRelay()
     var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
 
     func loadData() {

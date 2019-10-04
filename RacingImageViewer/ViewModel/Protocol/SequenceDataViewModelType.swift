@@ -13,7 +13,9 @@ import RxRelay
 protocol SequenceDataViewModelType {
     associatedtype Element
 
-    var itemsRelay: BehaviorRelay<[Element]> {get}
+    var command: ScrapCommand? { get set }
+
+    var itemsRelay: PublishRelay<[Element]> {get}
 
     func loadData()
 }

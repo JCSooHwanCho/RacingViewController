@@ -14,8 +14,14 @@ class NetworkSequenceViewModel<Element> :NetworkStatusViewModelType,
 SequenceDataViewModelType {
     typealias Element = Element
 
-    var itemsRelay: BehaviorRelay<[Element]> = BehaviorRelay(value: [])
+    var itemsRelay: PublishRelay<[Element]> = PublishRelay()
     var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+
+    var command: ScrapCommand? {
+        didSet {
+            self.loadData()
+        }
+    }
 
     func loadData() {
         fatalError()

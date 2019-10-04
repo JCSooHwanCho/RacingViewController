@@ -11,20 +11,7 @@ import RxSwift
 
 class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
 
-    var command: LoadCommand? {
-        didSet {
-            self.loadData()
-        }
-    }
     var disposeBag = DisposeBag()
-
-      // MARK: - Initializer
-  init(loadCommand command: LoadCommand) {
-      super.init()
-
-      self.command = command
-      self.loadData()
-  }
 
       // MARK: - Loading Method
       override func loadData() {

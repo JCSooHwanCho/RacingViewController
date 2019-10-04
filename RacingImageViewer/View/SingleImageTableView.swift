@@ -18,7 +18,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var dataModel: NetworkSequenceViewModel<ImageVO>?
+    private var viewModel: NetworkSequenceViewModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
 
     // MARK: - Public Property
@@ -39,24 +39,18 @@ class SingleImageTableView: UIViewController {
         bindItem() //ViewModel을 View와 바인딩해준다.
         bindTableViewDelegate() // 위에서 만든 delegate들을 ViewModel과 바인딩해주고, tableView에 세팅한다.
         configureRefreshControl() // tableView의 refreshControl을 설정한다.
-
+        commandToViewModel()
+        
         self.navigationItem.title = additionalPath // 네비게이션 타이틀 설정. 네비바가 없으면 뷰에는 나타나지 않는다.
     }
 
     // MARK: - Configure Method
     private func createDataModel() {
-
-        guard let scrapType = self.scrapType,
-            let additionalPath = self.additionalPath else {
-                return
-        }
-        let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
-
-        self.dataModel = ScrapListViewModel<ImageVO>(scrapingCommand: command)
+        self.viewModel = ScrapListViewModel<ImageVO>()
     }
 
     private func bindItem() {
-        guard let model = self.dataModel else {
+        guard let model = self.viewModel else {
             return
         }
 
@@ -121,6 +115,15 @@ class SingleImageTableView: UIViewController {
 
     }
 
+    private func commandToViewModel() {
+        guard let scrapType = self.scrapType,
+            let additionalPath = self.additionalPath else {
+                return
+        }
+        let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
+
+        self.viewModel?.command = command
+    }
     // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
         defer {
@@ -128,7 +131,7 @@ class SingleImageTableView: UIViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
-        dataModel?.loadData()
+        viewModel?.loadData()
     }
 
     // MARK: - Deinit
