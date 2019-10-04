@@ -8,11 +8,14 @@
 
 import Foundation
 
-class LoadCommand: LoadCommandType {
-    var requestURL: URL
+class SingleDataCommand: SingleDataCommandType {
+    var baseURL: URL?
 
-    init(withURL url: URL) {
-        requestURL = url
+    var additionalPath: String
+
+    required init(withURL url:URL? = nil, additionalPath path: String) {
+        baseURL = url
+        self.additionalPath = path
     }
     
     func execute<Element:VO>() throws -> Element? {

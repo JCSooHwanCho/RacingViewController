@@ -11,15 +11,19 @@ import RxSwift
 
 class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
 
-    var disposeBag = DisposeBag()
-
       // MARK: - Loading Method
       override func loadData() {
+        let loader = CachedLoader()
 
+        guard let command = self.command else {
+            return
+        }
 
-      }
+        let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
 
-      deinit {
-           disposeBag = DisposeBag()
+        loadObservable.subscribe { event in
+            
+        }.disposed(by: disposeBag)
+        
       }
 }

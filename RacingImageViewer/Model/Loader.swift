@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class Loader: LoaderType {
-    func loadData<Element:VO>(loadCommand command: LoadCommand) -> Observable<Element> {
+    func loadData<Element:VO>(loadCommand command: SingleDataCommand) -> Observable<Element> {
         let observable = Observable<Element>.create { observable in
             do {
                 guard let data: Element = try command.execute() else {

@@ -10,10 +10,12 @@ import Foundation
 import RxSwift
 
 class CachedLoader: Loader {
-    override func loadData<Element:VO>(loadCommand command: LoadCommand) -> Observable<Element>{
+    override func loadData<Element:VO>(loadCommand command: SingleDataCommand) -> Observable<Element>{
         let cache = LoaderCache.shared
 
-        let url = command.requestURL
+        guard let url = command.requestURL else {
+            return Observable.error(RxError.noElements)
+        }
 
         return Observable<Element>.deferred {
             if let request = cache[url] {
@@ -21,7 +23,7 @@ class CachedLoader: Loader {
             } else {
                 let request:Observable<Element> = super.loadData(loadCommand: command)
 
-                cache.addRequest(forKey: command.requestURL,
+                cache.addRequest(forKey: url,
                 withRequest: request.map{ $0 as VO })
 
                 return request

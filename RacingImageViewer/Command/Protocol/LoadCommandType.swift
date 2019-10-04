@@ -8,8 +8,19 @@
 
 import Foundation
 
-protocol LoadCommandType {
-    var requestURL: URL { get set }
+protocol SingleDataCommandType {
+
+    var baseURL: URL? { get }
+
+    var additionalPath: String { set get }
+
+    var requestURL: URL? { get }
 
     func execute<Element:VO>() throws -> Element?
+}
+
+extension SingleDataCommandType {
+    var requestURL: URL? {
+        return baseURL?.appendingPathComponent(additionalPath)
+    }
 }

@@ -13,7 +13,7 @@ import RxRelay
 protocol SequenceDataViewModelType {
     associatedtype Element
 
-    var command: ScrapCommand? { get set }
+    var command: SequenceDataCommand? { get set }
 
     var itemsRelay: PublishRelay<[Element]> {get}
 

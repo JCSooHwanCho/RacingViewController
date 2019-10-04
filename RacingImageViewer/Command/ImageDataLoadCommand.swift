@@ -8,14 +8,19 @@
 
 import Foundation
 
-class ImageDataLoadCommand: LoadCommand {
+class ImageDataLoadCommand: SingleDataCommand {
     override func execute<Element:VO>() throws -> Element? {
         do {
-            let data = try Data(contentsOf: self.requestURL)
+            guard let url = self.requestURL else {
+                return nil
+            }
+
+            let data = try Data(contentsOf: url)
 
             let result = DataVO(data: data)
 
             return result as? Element
+            
         } catch {
             throw error
         }

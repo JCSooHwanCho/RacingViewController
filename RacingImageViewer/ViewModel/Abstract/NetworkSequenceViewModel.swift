@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 import RxRelay
 
 // NetworkSequence 뷰모델의 추상 클래스
@@ -16,14 +17,20 @@ SequenceDataViewModelType {
 
     var itemsRelay: PublishRelay<[Element]> = PublishRelay()
     var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+    var disposeBag = DisposeBag()
 
-    var command: ScrapCommand? {
+    var command: SequenceDataCommand? {
         didSet {
+            disposeBag = DisposeBag()
             self.loadData()
         }
     }
 
     func loadData() {
         fatalError()
+    }
+
+    deinit {
+         disposeBag = DisposeBag()
     }
 }

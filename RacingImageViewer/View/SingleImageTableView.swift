@@ -23,7 +23,6 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
-    var scrapType: ScrapType? = .GettyImageGallery
     var additionalPath: String? = "auto-racing"
 
     // MARK: - Delegate
@@ -116,11 +115,10 @@ class SingleImageTableView: UIViewController {
     }
 
     private func commandToViewModel() {
-        guard let scrapType = self.scrapType,
-            let additionalPath = self.additionalPath else {
+        guard let additionalPath = self.additionalPath else {
                 return
         }
-        let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
+        let command = GIGCollectionScrapingCommand(additionalPath: additionalPath)
 
         self.viewModel?.command = command
     }

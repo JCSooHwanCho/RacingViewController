@@ -10,16 +10,20 @@ import Foundation
 import Kanna
 
 // gettyImagesGallery를 스크랩하기 위한 Command 객체
-final class GIGCollectionScrapingCommand: ScrapCommand {
+final class GIGCollectionScrapingCommand: SequenceDataCommand {
 
-    required init(withAdditionalPath path: String) {
+    required init(withURL url: URL? = nil, additionalPath path: String) {
+        if url != nil {
+            print("This Command Object has a designated URL, So 'withURL' parameter will be ignored")
+        }
+
         let path = path.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "[\\s\n]+", with: "-",options: .regularExpression)
 
-        super.init(withAdditionalPath: path)
+        super.init(additionalPath: path)
+
         baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
-        type = .GettyImageGallery
     }
 
     override func execute<Element:VO>() throws -> [Element]? {

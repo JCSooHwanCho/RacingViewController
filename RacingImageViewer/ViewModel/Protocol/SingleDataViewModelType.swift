@@ -12,7 +12,7 @@ import RxRelay
 protocol SingleDataViewModelType{
     associatedtype Element
 
-    var command: LoadCommand? { get set }
+    var command: SingleDataCommand? { get set }
 
     var itemRelay: PublishRelay<Element> { get }
 

@@ -14,10 +14,9 @@
 		FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */; };
 		FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */; };
 		FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* ScrapCommandType.swift */; };
-		FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* ScrapCommand.swift */; };
+		FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */; };
 		FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */; };
 		FF5992792343225900526339 /* VO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5992782343225900526339 /* VO.swift */; };
-		FF599288234335A800526339 /* ScrapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF599287234335A800526339 /* ScrapType.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* SingleImageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* SingleImageTableView.swift */; };
 		FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5B233AF7200045E010 /* Main.storyboard */; };
@@ -36,7 +35,7 @@
 		FFC7597C23456D6B00A4495F /* LoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597B23456D6B00A4495F /* LoaderType.swift */; };
 		FFC759802345711500A4495F /* LoadCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597F2345711500A4495F /* LoadCommandType.swift */; };
 		FFC759822345734200A4495F /* DataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759812345734200A4495F /* DataVO.swift */; };
-		FFC75984234573A000A4495F /* LoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759832345739F00A4495F /* LoadCommand.swift */; };
+		FFC75984234573A000A4495F /* SingleDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759832345739F00A4495F /* SingleDataCommand.swift */; };
 		FFC75986234574B600A4495F /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC75985234574B600A4495F /* Loader.swift */; };
 		FFC7598A2345765200A4495F /* ImageDataLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759892345765200A4495F /* ImageDataLoadCommand.swift */; };
 		FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* CachedLoader.swift */; };
@@ -57,10 +56,9 @@
 		FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasource.swift; sourceTree = "<group>"; };
 		FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasourcePrefetcing.swift; sourceTree = "<group>"; };
 		FF1430AB233DEE7D00226963 /* ScrapCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommandType.swift; sourceTree = "<group>"; };
-		FF1430AF233DEFC700226963 /* ScrapCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCommand.swift; sourceTree = "<group>"; };
+		FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCommand.swift; sourceTree = "<group>"; };
 		FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGCollectionScrapingCommand.swift; sourceTree = "<group>"; };
 		FF5992782343225900526339 /* VO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VO.swift; sourceTree = "<group>"; };
-		FF599287234335A800526339 /* ScrapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapType.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF94DE59233AF7200045E010 /* SingleImageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableView.swift; sourceTree = "<group>"; };
@@ -81,7 +79,7 @@
 		FFC7597B23456D6B00A4495F /* LoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderType.swift; sourceTree = "<group>"; };
 		FFC7597F2345711500A4495F /* LoadCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCommandType.swift; sourceTree = "<group>"; };
 		FFC759812345734200A4495F /* DataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVO.swift; sourceTree = "<group>"; };
-		FFC759832345739F00A4495F /* LoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCommand.swift; sourceTree = "<group>"; };
+		FFC759832345739F00A4495F /* SingleDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataCommand.swift; sourceTree = "<group>"; };
 		FFC75985234574B600A4495F /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		FFC759892345765200A4495F /* ImageDataLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoadCommand.swift; sourceTree = "<group>"; };
 		FFC7598B234579A300A4495F /* CachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedLoader.swift; sourceTree = "<group>"; };
@@ -242,8 +240,8 @@
 		FFC759882345763700A4495F /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				FFC759832345739F00A4495F /* LoadCommand.swift */,
-				FF1430AF233DEFC700226963 /* ScrapCommand.swift */,
+				FFC759832345739F00A4495F /* SingleDataCommand.swift */,
+				FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -275,7 +273,6 @@
 				FFC7597E234570E800A4495F /* Protocol */,
 				FF1430B2233DF25D00226963 /* GIGCollectionScrapingCommand.swift */,
 				FFC759892345765200A4495F /* ImageDataLoadCommand.swift */,
-				FF599287234335A800526339 /* ScrapType.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -420,12 +417,12 @@
 				FFAC5FB8233D03D3001D4B62 /* ImageOperationCache.swift in Sources */,
 				FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */,
 				FF14309F233D7EC900226963 /* DataRelayCache.swift in Sources */,
-				FF1430B0233DEFC700226963 /* ScrapCommand.swift in Sources */,
+				FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* ScraperType.swift in Sources */,
 				FF1430AC233DEE7D00226963 /* ScrapCommandType.swift in Sources */,
 				FFEF8F43234641CC00A0B79F /* LoadDataViewModel.swift in Sources */,
-				FFC75984234573A000A4495F /* LoadCommand.swift in Sources */,
+				FFC75984234573A000A4495F /* SingleDataCommand.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
 				FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */,
 				FFC7598E234579DB00A4495F /* LoaderCache.swift in Sources */,
@@ -434,7 +431,6 @@
 				FF5992792343225900526339 /* VO.swift in Sources */,
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
 				FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */,
-				FF599288234335A800526339 /* ScrapType.swift in Sources */,
 				FF1430B3233DF25D00226963 /* GIGCollectionScrapingCommand.swift in Sources */,
 				FFC7598A2345765200A4495F /* ImageDataLoadCommand.swift in Sources */,
 			);

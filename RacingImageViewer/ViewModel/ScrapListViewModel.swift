@@ -12,9 +12,6 @@ import RxRelay
 
 // Scrap한 데이터를 나타내는 뷰모델
 final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
-    
-    // MARK: - Property
-    var disposeBag = DisposeBag()
 
     // MARK: - Loading Method
     override func loadData() {
@@ -37,9 +34,5 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
                     break
                 }
         }.disposed(by: disposeBag)
-    }
-
-    deinit {
-         disposeBag = DisposeBag()
     }
 }

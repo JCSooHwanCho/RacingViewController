@@ -8,20 +8,28 @@
 
 import Foundation
 import RxRelay
+import RxSwift
 
 class NetworkSingleDataViewModel<Element>: NetworkStatusViewModelType,
 SingleDataViewModelType {
     typealias Element = Element
 
-    var command: LoadCommand? {
+    var itemRelay: PublishRelay<Element> = PublishRelay()
+    var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+    var disposeBag = DisposeBag()
+
+    var command: SingleDataCommand? {
         didSet {
+            self.disposeBag = DisposeBag()
             self.loadData()
         }
     }
-    var itemRelay: PublishRelay<Element> = PublishRelay()
-    var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
 
     func loadData() {
         fatalError()
+    }
+
+    deinit {
+         disposeBag = DisposeBag()
     }
 }
