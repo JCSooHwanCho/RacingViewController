@@ -56,7 +56,6 @@ class ImageTableViewCell: UITableViewCell {
                        withImageLinkData imageLink: ImageVO,
                        cellForRowAt indexPath: IndexPath) {
         self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
-        self.isLoading = true
 
         let cache = DataCache.shared
 
@@ -73,6 +72,7 @@ class ImageTableViewCell: UITableViewCell {
                }
                self.photoView.image = image
         } else {
+            self.isLoading = true
             let command = ImageDataLoadCommand(withURL: url)
             self.viewModel.command = command
         }
