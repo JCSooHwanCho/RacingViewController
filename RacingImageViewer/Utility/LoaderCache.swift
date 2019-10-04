@@ -28,7 +28,7 @@ extension CachedLoader {
 
         func addRequest(forKey key: URL, withRequest request: Observable<VO>) {
             let key = key as NSURL
-            let request = request.share(replay: 1, scope: .forever)
+            let request = request.share(replay: 1)
 
             cache.setObject(request, forKey: key)
         }

@@ -45,8 +45,9 @@ class ImageTableViewCell: UITableViewCell {
     }
     
     let viewModel = LoadDataViewModel<DataVO>()
-    let requestRelay = BehaviorRelay<URL>(value: URL(fileURLWithPath: ""))
     let dataRelay = PublishRelay<DataVO>()
+    var requestURL = URL(fileURLWithPath: "")
+    var requestIndex = IndexPath()
 
     var disposeBag = DisposeBag()
 
@@ -57,15 +58,24 @@ class ImageTableViewCell: UITableViewCell {
         self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
         self.isLoading = true
 
+        let cache = DataRelayCache.shared
+
         guard let url = URL(string: imageLink.imageURL) else {
             return
         }
 
-        requestRelay.accept(url)
+        self.requestURL = url
+        self.requestIndex = indexPath
 
-        let command = ImageDataLoadCommand.init(withURL: url)
-
-        self.viewModel.command = command
+        if let imageData = cache[url] as? DataVO {
+            guard let image = UIImage(data: imageData.data) else {
+                   return
+               }
+               self.photoView.image = image
+        } else {
+            let command = ImageDataLoadCommand(withURL: url)
+            self.viewModel.command = command
+        }
     }
 
     func bindViewModel() {
@@ -80,15 +90,21 @@ class ImageTableViewCell: UITableViewCell {
 
         self.dataRelay
             .subscribe(onNext: { value in
-                guard self.requestRelay.value == value.url else { return }
                 DispatchQueue.main.async {
+                    guard self.requestURL == value.url,
+                     let tv = self.superview as? UITableView,
+                        tv.indexPath(for:self) == self.requestIndex else { return }
+
                     guard let image = UIImage(data: value.data) else {
                         return
                     }
                     self.photoView.image = image
+
+                    tv.reloadRows(at: [self.requestIndex], with: .automatic)
                 }
             }).disposed(by:disposeBag)
     }
+
     // MARK: - PrepareForReuse
     override func prepareForReuse() {
         super.prepareForReuse()
