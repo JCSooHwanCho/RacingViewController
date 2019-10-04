@@ -12,7 +12,7 @@ import Foundation
 final class DataCache {
     static var shared = DataCache()
 
-    private let cache: NSCache<NSURL,DataWrapper<VO>> = NSCache()
+    private let cache: NSCache<NSURL, DataWrapper<VO>> = NSCache()
 
     private init() {}
 

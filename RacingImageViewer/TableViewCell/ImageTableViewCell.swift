@@ -19,16 +19,6 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        bindViewModel()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        bindViewModel()
-    }
-
     // MARK: - Private Property
     var isLoading: Bool  = false {
         didSet {
@@ -43,13 +33,25 @@ class ImageTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    let viewModel = LoadDataViewModel<DataVO>()
-    let dataRelay = PublishRelay<DataVO>()
-    var requestURL = URL(fileURLWithPath: "")
-    var requestIndex = IndexPath()
+
+    private let viewModel = LoadDataViewModel<DataVO>()
+    private let dataRelay = PublishRelay<DataVO>()
+    private var requestURL = URL(fileURLWithPath: "")
+    private var requestIndex = IndexPath()
 
     var disposeBag = DisposeBag()
+
+    // MARK: - Initializer
+    // 코드 생성시 생성자
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        bindViewModel()
+    }
+    //
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        bindViewModel()
+    }
 
     // MARK: - Configure Method
     func configureCell(_ tableView: UITableView,
@@ -80,7 +82,7 @@ class ImageTableViewCell: UITableViewCell {
 
     func bindViewModel() {
         self.viewModel.itemRelay
-        .bind(to:self.dataRelay)
+        .bind(to: self.dataRelay)
         .disposed(by: disposeBag)
 
         self.viewModel.requestRelay
@@ -92,18 +94,17 @@ class ImageTableViewCell: UITableViewCell {
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { value in
                     guard self.requestURL == value.url,
-                     let tv = self.superview as? UITableView,
-                        tv.indexPath(for:self) == self.requestIndex else { return }
+                     let tableView = self.superview as? UITableView,
+                        tableView.indexPath(for: self) == self.requestIndex else { return }
 
                     guard let image = UIImage(data: value.data) else {
                         return
                     }
                     self.photoView.image = image
 
-                    tv.reloadRows(at: [self.requestIndex], with: .automatic)
-            }).disposed(by:disposeBag)
+                    tableView.reloadRows(at: [self.requestIndex], with: .automatic)
+            }).disposed(by: disposeBag)
 
-        
     }
 
     // MARK: - PrepareForReuse

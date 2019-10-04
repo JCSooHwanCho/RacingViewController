@@ -12,7 +12,7 @@ import RxSwift
 class Scraper: ScraperType {
 
     // MARK: - Loading Observable
-    func scrapData<Element:VO>(scrapingCommand command: SequenceDataCommand) ->Observable<[Element]> {
+    func scrapData<Element: VO>(scrapingCommand command: SequenceDataCommand) ->Observable<[Element]> {
 
         let dataObservable = Observable<[Element]>.create { observable in
                 do {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RxRelay
 
-final class SingleImageTableViewDatasource: NSObject,UITableViewDataSource {
+final class SingleImageTableViewDatasource: NSObject, UITableViewDataSource {
     let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

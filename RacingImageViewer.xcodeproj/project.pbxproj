@@ -10,7 +10,7 @@
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
 		FF14309F233D7EC900226963 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* DataCache.swift */; };
 		FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */; };
-		FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */; };
+		FF1430A6233DC6CC00226963 /* RequestSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */; };
 		FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */; };
 		FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */; };
 		FF1430AC233DEE7D00226963 /* SequenceDataCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* SequenceDataCommandType.swift */; };
@@ -39,7 +39,7 @@
 		FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* CachedLoader.swift */; };
 		FFC7598E234579DB00A4495F /* LoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598D234579DB00A4495F /* LoaderCache.swift */; };
 		FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759912345800A00A4495F /* SingleDataViewModelType.swift */; };
-		FFC759962345811800A4495F /* NetworkSingleDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */; };
+		FFC759962345811800A4495F /* RequestSingleDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759952345811800A4495F /* RequestSingleDataViewModel.swift */; };
 		FFD5086F234209B50048C804 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FFD5086E234209B50048C804 /* README.md */; };
 		FFEF8F43234641CC00A0B79F /* LoadDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF8F42234641CC00A0B79F /* LoadDataViewModel.swift */; };
 		FFEF8F452346DCB800A0B79F /* DataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF8F442346DCB800A0B79F /* DataWrapper.swift */; };
@@ -51,7 +51,7 @@
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDelegate.swift; sourceTree = "<group>"; };
-		FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSequenceViewModel.swift; sourceTree = "<group>"; };
+		FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010RequestSequenceViewModel.swift"; sourceTree = "<group>"; };
 		FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasource.swift; sourceTree = "<group>"; };
 		FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasourcePrefetcing.swift; sourceTree = "<group>"; };
 		FF1430AB233DEE7D00226963 /* SequenceDataCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCommandType.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		FFC7598B234579A300A4495F /* CachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedLoader.swift; sourceTree = "<group>"; };
 		FFC7598D234579DB00A4495F /* LoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCache.swift; sourceTree = "<group>"; };
 		FFC759912345800A00A4495F /* SingleDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataViewModelType.swift; sourceTree = "<group>"; };
-		FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSingleDataViewModel.swift; sourceTree = "<group>"; };
+		FFC759952345811800A4495F /* RequestSingleDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSingleDataViewModel.swift; sourceTree = "<group>"; };
 		FFD5086E234209B50048C804 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFEF8F42234641CC00A0B79F /* LoadDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataViewModel.swift; sourceTree = "<group>"; };
 		FFEF8F442346DCB800A0B79F /* DataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapper.swift; sourceTree = "<group>"; };
@@ -246,8 +246,8 @@
 		FFC7599023457EFA00A4495F /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */,
-				FFC759952345811800A4495F /* NetworkSingleDataViewModel.swift */,
+				FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */,
+				FFC759952345811800A4495F /* RequestSingleDataViewModel.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -294,6 +294,7 @@
 				FF94DE4F233AF7200045E010 /* Frameworks */,
 				FF94DE50233AF7200045E010 /* Resources */,
 				D2593A5D117C775014E86F47 /* [CP] Embed Pods Frameworks */,
+				FF8B2CBC2347580D00B2DD2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -391,6 +392,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FF8B2CBC2347580D00B2DD2D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -398,7 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */,
+				FF1430A6233DC6CC00226963 /* RequestSequenceViewModel.swift in Sources */,
 				FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */,
 				FF94DE5A233AF7200045E010 /* SingleImageTableView.swift in Sources */,
 				FFC759822345734200A4495F /* DataVO.swift in Sources */,
@@ -406,7 +424,7 @@
 				FFAC5FA2233C618D001D4B62 /* ScrapListViewModel.swift in Sources */,
 				FFC75986234574B600A4495F /* Loader.swift in Sources */,
 				FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */,
-				FFC759962345811800A4495F /* NetworkSingleDataViewModel.swift in Sources */,
+				FFC759962345811800A4495F /* RequestSingleDataViewModel.swift in Sources */,
 				FFC759802345711500A4495F /* SingleCommandType.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,

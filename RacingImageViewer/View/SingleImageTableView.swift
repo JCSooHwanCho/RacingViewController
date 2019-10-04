@@ -18,7 +18,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var viewModel: NetworkSequenceViewModel<ImageVO>?
+    private var viewModel: RequestSequenceViewModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
 
     // MARK: - Public Property
@@ -39,7 +39,7 @@ class SingleImageTableView: UIViewController {
         bindTableViewDelegate() // 위에서 만든 delegate들을 ViewModel과 바인딩해주고, tableView에 세팅한다.
         configureRefreshControl() // tableView의 refreshControl을 설정한다.
         commandToViewModel()
-        
+
         self.navigationItem.title = additionalPath // 네비게이션 타이틀 설정. 네비바가 없으면 뷰에는 나타나지 않는다.
     }
 
@@ -78,7 +78,7 @@ class SingleImageTableView: UIViewController {
                 } else {
                     let alert = UIAlertController
                         .getAlert(withTitle: "네트워크 오류",
-                                  message: "인터넷 연결 상태를 다시 확인해주세요"){ _ in
+                                  message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
                                     self.commandToViewModel() }
 
                     self.present(alert, animated: true)

@@ -9,7 +9,7 @@
 import Foundation
 import RxRelay
 
-protocol SingleDataViewModelType{
+protocol SingleDataViewModelType {
     associatedtype Element
 
     var command: SingleDataCommand? { get set }

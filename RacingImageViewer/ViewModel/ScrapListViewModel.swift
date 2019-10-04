@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 // Scrap한 데이터를 나타내는 뷰모델
-final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
+final class ScrapListViewModel<Element: VO>: RequestSequenceViewModel<Element> {
 
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
@@ -20,9 +20,8 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
         guard let command = command else {
             return
         }
-        
+
         let scrapObservable: Observable<[Element]> = scraper.scrapData( scrapingCommand: command)
-        
             scrapObservable.subscribe { event in
                 switch event {
                 case let .next(value):

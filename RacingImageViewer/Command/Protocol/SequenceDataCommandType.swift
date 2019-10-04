@@ -13,11 +13,11 @@ protocol SequenceDataCommandType {
 
     var baseURL: URL? { get }
 
-    var additionalPath: String { set get }
+    var additionalPath: String { get set}
 
     var requestURL: URL? { get }
-    
-    func execute<Element:VO>() throws -> [Element]?
+
+    func execute<Element: VO>() throws -> [Element]?
  }
 
 extension SequenceDataCommandType {

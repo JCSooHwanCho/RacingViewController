@@ -19,14 +19,14 @@ final class GIGCollectionScrapingCommand: SequenceDataCommand {
 
         let path = path.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "[\\s\n]+", with: "-",options: .regularExpression)
+            .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression)
 
         super.init(additionalPath: path)
 
         baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
     }
 
-    override func execute<Element:VO>() throws -> [Element]? {
+    override func execute<Element: VO>() throws -> [Element]? {
         do {
             guard let url = self.requestURL else {
                 throw NSError()

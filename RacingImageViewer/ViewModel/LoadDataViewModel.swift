@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
+class LoadDataViewModel<Element: VO>: RequestSingleDataViewModel<Element> {
 
         let lock = NSRecursiveLock()
       // MARK: - Loading Method
@@ -23,10 +23,9 @@ class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
         }
 
         if let value = cache[url] as? Element {
-            lock.lock()
+            self.lock.lock(); defer { self.lock.unlock() }
             self.itemRelay.accept(value)
-            self.requestRelay.accept((true,nil))
-            lock.unlock()
+            self.requestRelay.accept((true, nil))
         } else {
             let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
 

@@ -12,7 +12,7 @@ protocol SingleDataCommandType {
 
     var baseURL: URL? { get }
 
-    var additionalPath: String { set get }
+    var additionalPath: String { get set }
 
     var requestURL: URL? { get }
 

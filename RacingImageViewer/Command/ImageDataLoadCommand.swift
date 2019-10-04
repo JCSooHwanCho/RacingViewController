@@ -14,13 +14,11 @@ class ImageDataLoadCommand: SingleDataCommand {
             guard let url = self.requestURL else {
                 return nil
             }
-            
             let data = try Data(contentsOf: url)
 
             let result = DataVO(data: data, url: url)
 
             return result as? Element
-            
         } catch {
             throw error
         }
