@@ -12,50 +12,30 @@ import RxRelay
 
 // Scrap한 데이터를 나타내는 뷰모델
 final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
-    typealias Element = VO
 
-    // MARK: - Property
-    var scrapingCommand: ScrapCommand? {
-        didSet {
-            self.loadData()
-        }
-    }
-
-    var disposeBag = DisposeBag()
-
-    // MARK: - Initializer
-    init(scrapingCommand command: ScrapCommand) {
-        super.init()
-
-        scrapingCommand = command
-        self.loadData()
-    }
-
+    let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
         let scraper = Scraper()
 
-        guard  let command = self.scrapingCommand,
-            let url = scrapingCommand?.requestURL else {
+        guard let command = command else {
             return
         }
-
-        let scrapObservable: Observable<[Element]> = scraper.scrapData(fromURL: url, scrapingCommand: command)
+        
+        let scrapObservable: Observable<[Element]> = scraper.scrapData( scrapingCommand: command)
         
             scrapObservable.subscribe { event in
                 switch event {
-                case let .next(images):
-                    self.relay.accept(images)
+                case let .next(value):
+                    self.lock.lock(); defer { self.lock.unlock() }
+                    self.itemsRelay.accept(value)
                     self.networkRelay.accept((true, nil))
                 case let .error(error):
+                    self.lock.lock(); defer { self.lock.unlock() }
                     self.networkRelay.accept((false, error))
                 case .completed:
                     break
                 }
         }.disposed(by: disposeBag)
-    }
-
-    deinit {
-         disposeBag = DisposeBag()
     }
 }

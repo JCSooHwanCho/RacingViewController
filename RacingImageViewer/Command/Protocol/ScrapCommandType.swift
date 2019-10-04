@@ -9,22 +9,23 @@
 import Foundation
 
 // ScrapCommand의 인터페이스 프로토콜
-protocol ScrapCommandType {
+protocol SequenceDataCommandType {
 
     var baseURL: URL? { get }
 
     var additionalPath: String { set get }
 
     var requestURL: URL? { get }
-
-    var type: ScrapType { get }
     
-    func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element]
+    func execute<Element:VO>() throws -> [Element]?
  }
 
-extension ScrapCommandType {
+extension SequenceDataCommandType {
     var requestURL: URL? {
-        return baseURL?.appendingPathComponent(additionalPath)
+        if additionalPath != "" {
+            return baseURL?.appendingPathComponent(additionalPath)
+        } else {
+            return baseURL
+        }
     }
 }
-

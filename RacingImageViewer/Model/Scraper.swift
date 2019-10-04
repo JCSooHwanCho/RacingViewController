@@ -12,11 +12,13 @@ import RxSwift
 class Scraper: ScraperType {
 
     // MARK: - Loading Observable
-    func scrapData<Element:VO>(fromURL url: URL, scrapingCommand command: ScrapCommand) ->Observable<[Element]> {
+    func scrapData<Element:VO>(scrapingCommand command: SequenceDataCommand) ->Observable<[Element]> {
 
         let dataObservable = Observable<[Element]>.create { observable in
                 do {
-                    let arr = try command.executeScraping(fromURL: url) as [Element]
+                    guard let arr: [Element] = try command.execute() else {
+                        throw RxError.noElements
+                    }
 
                     observable.onNext(arr)
                     observable.onCompleted()
@@ -26,7 +28,8 @@ class Scraper: ScraperType {
             return Disposables.create()
         }
 
-        return dataObservable.subscribeOn(SerialDispatchQueueScheduler.init(qos: .background))
+        return dataObservable
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
     }
 
 }

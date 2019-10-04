@@ -10,5 +10,5 @@ import Foundation
 
 // 스크랩한 이미지를 저장하는 Value Object
 struct ImageVO: VO {
-    var imageURL: String = ""
+    let imageURL: String
 }

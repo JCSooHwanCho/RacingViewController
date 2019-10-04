@@ -10,23 +10,31 @@ import Foundation
 import Kanna
 
 // gettyImagesGallery를 스크랩하기 위한 Command 객체
-final class GIGCollectionScrapingCommand: ScrapCommand {
+final class GIGCollectionScrapingCommand: SequenceDataCommand {
 
-    required init(withAdditionalPath path: String) {
+    required init(withURL url: URL? = nil, additionalPath path: String) {
+        if url != nil {
+            print("This Command Object has a designated URL, So 'withURL' parameter will be ignored")
+        }
+
         let path = path.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "[\\s\n]+", with: "-",options: .regularExpression)
 
-        super.init(withAdditionalPath: path)
+        super.init(additionalPath: path)
+
         baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
-        type = .GettyImageGallery
     }
 
-    override func executeScraping<Element:VO>(fromURL url: URL) throws -> [Element] {
+    override func execute<Element:VO>() throws -> [Element]? {
         do {
+            guard let url = self.requestURL else {
+                throw NSError()
+            }
+
             let doc = try HTML(url: url, encoding: .utf8)
 
-            var arr: [ImageVO] = []
+            var result: [ImageVO] = []
 
             for node in doc.css("div img[class=jq-lazy]") { // css selector로 해당하는 노드들을 찾아서 순회한다.
                 if let imageURL = node["data-src"] { // 노드에서 원하는 attribute의 값을 string으로 추출한다.
@@ -34,10 +42,10 @@ final class GIGCollectionScrapingCommand: ScrapCommand {
                     let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://")
 
                     let image = ImageVO(imageURL: httpURL)
-                    arr.append(image)
+                    result.append(image)
                 }
             }
-            return arr as? [Element] ?? []
+            return result as? [Element]
         } catch {
             throw error
         }

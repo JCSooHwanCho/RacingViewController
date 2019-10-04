@@ -1,5 +1,5 @@
 //
-//  ViewBindable.swift
+//  SequenceDataViewModelType.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -13,7 +13,9 @@ import RxRelay
 protocol SequenceDataViewModelType {
     associatedtype Element
 
-    var relay: BehaviorRelay<[Element]> {get}
+    var command: SequenceDataCommand? { get set }
+
+    var itemsRelay: PublishRelay<[Element]> {get}
 
     func loadData()
 }

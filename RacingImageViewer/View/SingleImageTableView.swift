@@ -18,12 +18,11 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var dataModel: NetworkSequenceViewModel<ImageVO>?
+    private var viewModel: NetworkSequenceViewModel<ImageVO>?
     private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
 
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
-    var scrapType: ScrapType? = .GettyImageGallery
     var additionalPath: String? = "auto-racing"
 
     // MARK: - Delegate
@@ -39,24 +38,18 @@ class SingleImageTableView: UIViewController {
         bindItem() //ViewModel을 View와 바인딩해준다.
         bindTableViewDelegate() // 위에서 만든 delegate들을 ViewModel과 바인딩해주고, tableView에 세팅한다.
         configureRefreshControl() // tableView의 refreshControl을 설정한다.
-
+        commandToViewModel()
+        
         self.navigationItem.title = additionalPath // 네비게이션 타이틀 설정. 네비바가 없으면 뷰에는 나타나지 않는다.
     }
 
     // MARK: - Configure Method
     private func createDataModel() {
-
-        guard let scrapType = self.scrapType,
-            let additionalPath = self.additionalPath else {
-                return
-        }
-        let command = ScrapCommand.getCommand(withCommandType: scrapType, additionalPath: additionalPath)
-
-        self.dataModel = ScrapListViewModel<ImageVO>(scrapingCommand: command)
+        self.viewModel = ScrapListViewModel<ImageVO>()
     }
 
     private func bindItem() {
-        guard let model = self.dataModel else {
+        guard let model = self.viewModel else {
             return
         }
 
@@ -67,30 +60,28 @@ class SingleImageTableView: UIViewController {
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
 
-        let modelRelay = model.relay
+        let modelRelay = model.itemsRelay
 
         modelRelay
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
         model.networkRelay
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe { event in
 
             switch event {
             case let .next((isSuccess, _)):
                 if isSuccess {
-                    DispatchQueue.main.async {
-                        self.networkIndicator.stopAnimating()
-                        self.networkIndicator.isHidden = true
-                    }
+                    self.networkIndicator.stopAnimating()
+                    self.networkIndicator.isHidden = true
                 } else {
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController.getAlert(withTitle: "네트워크 오류",
-                                                               message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
-                            model.loadData()
-                        }
-                       self.present(alert, animated: true)
-                    }
+                    let alert = UIAlertController
+                        .getAlert(withTitle: "네트워크 오류",
+                                  message: "인터넷 연결 상태를 다시 확인해주세요"){ _ in
+                                    self.commandToViewModel() }
+
+                    self.present(alert, animated: true)
                 }
             default:
                 break
@@ -121,6 +112,14 @@ class SingleImageTableView: UIViewController {
 
     }
 
+    private func commandToViewModel() {
+        guard let additionalPath = self.additionalPath else {
+                return
+        }
+        let command = GIGCollectionScrapingCommand(additionalPath: additionalPath)
+
+        self.viewModel?.command = command
+    }
     // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
         defer {
@@ -128,7 +127,8 @@ class SingleImageTableView: UIViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
-        dataModel?.loadData()
+
+        commandToViewModel()
     }
 
     // MARK: - Deinit
