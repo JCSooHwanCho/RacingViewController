@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import RxSwift
 import RxRelay
 
 final class SingleImageTableViewDelegate: NSObject, UITableViewDelegate {

@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import CoreGraphics
-import UIKit.UIImage
-import RxRelay
 
 // Image를 Data 상태로 저장하는 Cache
 final class DataCache {

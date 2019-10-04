@@ -8,7 +8,6 @@
 
 import Foundation
 
-// ScrapCommand의 최상위 추상 객체
 class SequenceDataCommand: SequenceDataCommandType {
     var baseURL: URL?
     var additionalPath: String
