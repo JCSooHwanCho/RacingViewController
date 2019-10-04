@@ -11,12 +11,12 @@ import RxSwift
 import RxRelay
 
 // NetworkSequence 뷰모델의 추상 클래스
-class NetworkSequenceViewModel<Element> :NetworkStatusViewModelType,
+class NetworkSequenceViewModel<Element> :RequestStatusViewModelType,
 SequenceDataViewModelType {
     typealias Element = Element
 
     var itemsRelay: PublishRelay<[Element]> = PublishRelay()
-    var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+    var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
 
     var command: SequenceDataCommand? {

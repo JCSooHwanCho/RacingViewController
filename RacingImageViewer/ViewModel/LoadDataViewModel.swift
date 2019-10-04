@@ -25,7 +25,7 @@ class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
         if let value = cache[url] as? Element {
             lock.lock()
             self.itemRelay.accept(value)
-            self.networkRelay.accept((true,nil))
+            self.requestRelay.accept((true,nil))
             lock.unlock()
         } else {
             let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
@@ -37,10 +37,10 @@ class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
                     cache.addData(forKey: url, withData: DataWrapper(value: value))
                     self.lock.lock(); defer { self.lock.unlock() }
                     self.itemRelay.accept(value)
-                    self.networkRelay.accept((true, nil))
+                    self.requestRelay.accept((true, nil))
                 case let .error(error):
                     self.lock.lock(); defer { self.lock.unlock() }
-                    self.networkRelay.accept((false, error))
+                    self.requestRelay.accept((false, error))
                 case .completed:
                     break
                 }

@@ -83,7 +83,7 @@ class ImageTableViewCell: UITableViewCell {
         .bind(to:self.dataRelay)
         .disposed(by: disposeBag)
 
-        self.viewModel.networkRelay
+        self.viewModel.requestRelay
             .subscribe(onNext: { _ in
                 self.isLoading = false
             }).disposed(by: disposeBag)

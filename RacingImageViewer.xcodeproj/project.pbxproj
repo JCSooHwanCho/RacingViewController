@@ -28,7 +28,7 @@
 		FFAC5FA2233C618D001D4B62 /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */; };
 		FFAC5FA4233C9059001D4B62 /* ScraperType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* ScraperType.swift */; };
 		FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */; };
-		FFAD925C234196AE006E7C61 /* NetworkStatusViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925B234196AE006E7C61 /* NetworkStatusViewModelType.swift */; };
+		FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */; };
 		FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */; };
 		FFC7597C23456D6B00A4495F /* LoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597B23456D6B00A4495F /* LoaderType.swift */; };
 		FFC759802345711500A4495F /* SingleCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597F2345711500A4495F /* SingleCommandType.swift */; };
@@ -71,7 +71,7 @@
 		FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListViewModel.swift; sourceTree = "<group>"; };
 		FFAC5FA3233C9059001D4B62 /* ScraperType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScraperType.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataViewModelType.swift; sourceTree = "<group>"; };
-		FFAD925B234196AE006E7C61 /* NetworkStatusViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusViewModelType.swift; sourceTree = "<group>"; };
+		FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatusViewModelType.swift; sourceTree = "<group>"; };
 		FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FFC7597B23456D6B00A4495F /* LoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderType.swift; sourceTree = "<group>"; };
 		FFC7597F2345711500A4495F /* SingleCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCommandType.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		FF1430AD233DEEE100226963 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				FFAD925B234196AE006E7C61 /* NetworkStatusViewModelType.swift */,
+				FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */,
 				FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */,
 				FFC759912345800A00A4495F /* SingleDataViewModelType.swift */,
 			);
@@ -405,7 +405,7 @@
 				FFC7597C23456D6B00A4495F /* LoaderType.swift in Sources */,
 				FFAC5FA2233C618D001D4B62 /* ScrapListViewModel.swift in Sources */,
 				FFC75986234574B600A4495F /* Loader.swift in Sources */,
-				FFAD925C234196AE006E7C61 /* NetworkStatusViewModelType.swift in Sources */,
+				FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */,
 				FFC759962345811800A4495F /* NetworkSingleDataViewModel.swift in Sources */,
 				FFC759802345711500A4495F /* SingleCommandType.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,

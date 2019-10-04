@@ -10,12 +10,12 @@ import Foundation
 import RxRelay
 import RxSwift
 
-class NetworkSingleDataViewModel<Element>: NetworkStatusViewModelType,
+class NetworkSingleDataViewModel<Element>: RequestStatusViewModelType,
 SingleDataViewModelType {
     typealias Element = Element
 
     var itemRelay: PublishRelay<Element> = PublishRelay()
-    var networkRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+    var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
 
     var command: SingleDataCommand? {

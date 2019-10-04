@@ -66,7 +66,7 @@ class SingleImageTableView: UIViewController {
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
-        model.networkRelay
+        model.requestRelay
             .observeOn(MainScheduler.asyncInstance)
             .subscribe { event in
 
@@ -109,7 +109,6 @@ class SingleImageTableView: UIViewController {
     private func configureRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refreshBySwipeDown), for: .valueChanged)
-
     }
 
     private func commandToViewModel() {
@@ -120,15 +119,14 @@ class SingleImageTableView: UIViewController {
 
         self.viewModel?.command = command
     }
+
     // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
-        defer {
-            DispatchQueue.main.async {
-                self.tableView.refreshControl?.endRefreshing()
-            }
-        }
-
         commandToViewModel()
+
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
 
     // MARK: - Deinit

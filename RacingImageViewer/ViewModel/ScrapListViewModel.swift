@@ -28,10 +28,10 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
                 case let .next(value):
                     self.lock.lock(); defer { self.lock.unlock() }
                     self.itemsRelay.accept(value)
-                    self.networkRelay.accept((true, nil))
+                    self.requestRelay.accept((true, nil))
                 case let .error(error):
                     self.lock.lock(); defer { self.lock.unlock() }
-                    self.networkRelay.accept((false, error))
+                    self.requestRelay.accept((false, error))
                 case .completed:
                     break
                 }
