@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-extension CachedLoader {
+extension SingleDataCachedLoader {
     final class LoaderCache {
         static var shared = LoaderCache()
 

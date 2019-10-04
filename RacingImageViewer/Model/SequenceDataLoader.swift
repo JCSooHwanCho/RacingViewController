@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class Scraper: ScraperType {
+class SequenceDataLoader: SequenceDataLoaderType {
 
     // MARK: - Loading Observable
     func scrapData<Element>(scrapingCommand command: SequenceDataCommand) ->Observable<[Element]> {

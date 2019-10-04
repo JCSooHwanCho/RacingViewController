@@ -14,7 +14,7 @@ class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
         let lock = NSRecursiveLock()
       // MARK: - Loading Method
       override func loadData() {
-        let loader = CachedLoader()
+        let loader = SingleDataCachedLoader()
         let cache = DataCache.shared
 
         guard let command = self.command,

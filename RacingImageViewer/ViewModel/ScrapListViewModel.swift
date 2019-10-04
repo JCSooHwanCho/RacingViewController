@@ -15,7 +15,7 @@ final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
-        let scraper = Scraper()
+        let scraper = SequenceDataLoader()
 
         guard let command = command else {
             return

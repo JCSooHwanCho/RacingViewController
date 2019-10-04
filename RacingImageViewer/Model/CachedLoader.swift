@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class CachedLoader: Loader {
+class SingleDataCachedLoader: SingleDataLoader {
     override func loadData<Element>(loadCommand command: SingleDataCommand) -> Observable<Element> {
         let cache = LoaderCache.shared
 

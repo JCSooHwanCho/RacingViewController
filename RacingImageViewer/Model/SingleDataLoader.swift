@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class Loader: LoaderType {
+class SingleDataLoader: SingleDataLoaderType {
     func loadData<Element>(loadCommand command: SingleDataCommand) -> Observable<Element> {
         let observable = Observable<Element>.create { observable in
             do {
