@@ -20,7 +20,6 @@ SingleDataViewModelType {
 
     var command: SingleDataCommand? {
         didSet {
-            self.disposeBag = DisposeBag()
             self.loadData()
         }
     }

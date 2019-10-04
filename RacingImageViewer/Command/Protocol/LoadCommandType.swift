@@ -21,6 +21,10 @@ protocol SingleDataCommandType {
 
 extension SingleDataCommandType {
     var requestURL: URL? {
-        return baseURL?.appendingPathComponent(additionalPath)
+        if additionalPath != "" {
+            return baseURL?.appendingPathComponent(additionalPath)
+        } else {
+            return baseURL
+        }
     }
 }

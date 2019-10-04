@@ -13,6 +13,7 @@ import RxRelay
 // Scrap한 데이터를 나타내는 뷰모델
 final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
 
+    let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
         let scraper = Scraper()
@@ -26,9 +27,11 @@ final class ScrapListViewModel<Element:VO>: NetworkSequenceViewModel<Element> {
             scrapObservable.subscribe { event in
                 switch event {
                 case let .next(value):
+                    self.lock.lock(); defer { self.lock.unlock() }
                     self.itemsRelay.accept(value)
                     self.networkRelay.accept((true, nil))
                 case let .error(error):
+                    self.lock.lock(); defer { self.lock.unlock() }
                     self.networkRelay.accept((false, error))
                 case .completed:
                     break

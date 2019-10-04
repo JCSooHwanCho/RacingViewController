@@ -15,21 +15,21 @@ import RxRelay
 final class DataRelayCache {
     static var shared = DataRelayCache()
 
-    private let cache: NSCache<NSString,DataWrapper<VO>> = NSCache()
+    private let cache: NSCache<NSURL,DataWrapper<VO>> = NSCache()
 
     private init() {}
 
-    subscript (index: String) -> VO? {
-        let index = index as NSString
+    subscript (index: URL) -> VO? {
+        let index = index as NSURL
 
-        if let relay = cache.object(forKey: index) {
-            return relay.value
+        if let object = cache.object(forKey: index) {
+            return object.value
         }
             return nil
     }
 
-    func addData(forKey key: String, withData data: DataWrapper<VO>) {
-        let key = key as NSString
+    func addData(forKey key: URL, withData data: DataWrapper<VO>) {
+        let key = key as NSURL
 
         cache.setObject(data, forKey: key)
     }

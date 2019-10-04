@@ -22,20 +22,12 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
             let imageLink = self.itemRelay.value[indexPath.row]
 
             guard let url = URL(string: imageLink.imageURL),
-                imageCache[imageLink.imageURL] == nil,
+                imageCache[url] == nil,
                 operationCache[indexPath] == nil else { continue }
 
             let command = ImageDataLoadCommand(withURL: url)
 
             viewModel.command = command
-            
-            let operation = ImageLoadOperation(imageLink)
-
-            operation.loadingCompletionHandler = { _ in
-                operationCache.removeOperation(forKey: indexPath)
-            }
-
-            operationCache.addOperation(forKey: indexPath, operation: operation)
         }
     }
 }

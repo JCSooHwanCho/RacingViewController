@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 class ImageTableViewCell: UITableViewCell {
 
@@ -17,81 +19,85 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView!
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        bindViewModel()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        bindViewModel()
+    }
+
     // MARK: - Private Property
     var isLoading: Bool  = false {
         didSet {
-            if isLoading {
-                networkIndicator.startAnimating()
-                networkIndicator.isHidden = false
-            } else {
-                self.networkIndicator.stopAnimating()
-                self.networkIndicator.isHidden = true
+            DispatchQueue.main.async {
+                if self.isLoading {
+                    self.networkIndicator.startAnimating()
+                    self.networkIndicator.isHidden = false
+                } else {
+                    self.networkIndicator.stopAnimating()
+                    self.networkIndicator.isHidden = true
+                }
             }
         }
     }
+    
+    let viewModel = LoadDataViewModel<DataVO>()
+    let requestRelay = BehaviorRelay<URL>(value: URL(fileURLWithPath: ""))
+    let dataRelay = PublishRelay<DataVO>()
+
+    var disposeBag = DisposeBag()
 
     // MARK: - Configure Method
     func configureCell(_ tableView: UITableView,
                        withImageLinkData imageLink: ImageVO,
                        cellForRowAt indexPath: IndexPath) {
         self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
+        self.isLoading = true
 
-        let operationCache = ImageOperationCache.shared
-        let imageCache = DataRelayCache.shared
-
-        // 이미지 로딩이 완료되면 호출되는 Handler
-        let loadingCompleteHandler: (Data?) -> Void = { data in
-            guard let data = data, let photo = UIImage(data: data) else {
-                return
-            }
-
-            DispatchQueue.main.async {
-                if tableView.indexPath(for: self) == indexPath {
-                    self.isLoading = false
-                    self.photoView.image = photo
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                }
-            }
-            operationCache.removeOperation(forKey: indexPath)
+        guard let url = URL(string: imageLink.imageURL) else {
+            return
         }
 
-        // 이미지 로딩에 실패하거나 이미지 로딩이 중단 되었을 때 호출되는 Handler
-        let errorHandler: () -> Void = {
-            DispatchQueue.main.async {
-                if tableView.indexPath(for: self) == indexPath {
-                    self.isLoading = false
-                }
-            }
-        }
+        requestRelay.accept(url)
 
-        if let imageData = imageCache[imageLink.imageURL] { // 캐싱이 완료된 상태
-            guard let imageData = imageData as? DataVO,
-                let photo = UIImage(data: imageData.data) else {
-                    return
-                }
-                self.photoView.image = photo
-        } else if let operation = operationCache[indexPath] { // 요청은 들어갔지만, 아직 다운로드가 완료되지 않은 상태
-            self.isLoading = true
+        let command = ImageDataLoadCommand.init(withURL: url)
 
-            operation.loadingCompletionHandler = loadingCompleteHandler
-            operation.errorHandler = errorHandler
-        } else { // 요청조자 들어가지 않은 상태
-            let imageOperation = ImageLoadOperation(imageLink)
-            imageOperation.loadingCompletionHandler = loadingCompleteHandler
-            imageOperation.errorHandler = errorHandler
-
-            self.isLoading = true
-
-            operationCache.addOperation(forKey: indexPath, operation: imageOperation)
-        }
+        self.viewModel.command = command
     }
 
+    func bindViewModel() {
+        self.viewModel.itemRelay
+        .bind(to:self.dataRelay)
+        .disposed(by: disposeBag)
+
+        self.viewModel.networkRelay
+            .subscribe(onNext: { _ in
+                self.isLoading = false
+            }).disposed(by: disposeBag)
+
+        self.dataRelay
+            .subscribe(onNext: { value in
+                guard self.requestRelay.value == value.url else { return }
+                DispatchQueue.main.async {
+                    guard let image = UIImage(data: value.data) else {
+                        return
+                    }
+                    self.photoView.image = image
+                }
+            }).disposed(by:disposeBag)
+    }
     // MARK: - PrepareForReuse
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         self.isLoading = false
         self.photoView.image = UIImage(named: "placeholder")
     }
 
+    deinit {
+        disposeBag = DisposeBag()
+    }
 }

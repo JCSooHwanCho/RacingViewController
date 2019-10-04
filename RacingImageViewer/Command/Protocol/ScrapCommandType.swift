@@ -22,7 +22,10 @@ protocol SequenceDataCommandType {
 
 extension SequenceDataCommandType {
     var requestURL: URL? {
-        return baseURL?.appendingPathComponent(additionalPath)
+        if additionalPath != "" {
+            return baseURL?.appendingPathComponent(additionalPath)
+        } else {
+            return baseURL
+        }
     }
 }
-

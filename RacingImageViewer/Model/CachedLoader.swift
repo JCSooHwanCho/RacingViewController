@@ -26,7 +26,7 @@ class CachedLoader: Loader {
                 cache.addRequest(forKey: url,
                 withRequest: request.map{ $0 as VO })
 
-                return request
+                return cache[url]?.compactMap { $0 as? Element } ?? Observable.error(RxError.noElements)
             }
         }
     }

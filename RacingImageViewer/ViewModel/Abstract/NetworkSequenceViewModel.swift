@@ -21,7 +21,6 @@ SequenceDataViewModelType {
 
     var command: SequenceDataCommand? {
         didSet {
-            disposeBag = DisposeBag()
             self.loadData()
         }
     }

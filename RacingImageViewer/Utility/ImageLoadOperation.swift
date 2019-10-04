@@ -43,7 +43,7 @@ final class ImageLoadOperation: Operation {
             let imageCache = DataRelayCache.shared
             let dataObject = DataWrapper<VO>(value: DataVO(data: data, url: url))
 
-            imageCache.addData(forKey: self.image.imageURL, withData: dataObject)
+            imageCache.addData(forKey: url, withData: dataObject)
             self.loadingCompletionHandler?(data)
         }
 
