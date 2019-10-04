@@ -8,16 +8,15 @@
 
 import Foundation
 
-// Image를 Data 상태로 저장하는 Cache
 final class DataCache {
     static var shared = DataCache()
 
-    private let cache: NSCache<NSURL, DataWrapper<Any>> = NSCache()
+    private let cache: NSCache<NSString, DataWrapper<Any>> = NSCache()
 
     private init() {}
 
-    subscript (index: URL) -> Any? {
-        let index = index as NSURL
+    subscript (index: String) -> Any? {
+        let index = index as NSString
 
         if let object = cache.object(forKey: index) {
             return object.value
@@ -25,8 +24,8 @@ final class DataCache {
             return nil
     }
 
-    func addData(forKey key: URL, withData data: DataWrapper<Any>) {
-        let key = key as NSURL
+    func addData(forKey key: String, withData data: DataWrapper<Any>) {
+        let key = key as NSString
 
         cache.setObject(data, forKey: key)
     }

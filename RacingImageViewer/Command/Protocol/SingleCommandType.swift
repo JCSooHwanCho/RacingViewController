@@ -10,21 +10,18 @@ import Foundation
 
 protocol SingleDataCommandType {
 
-    var baseURL: URL? { get }
+    var baseURL: String { get }
 
     var additionalPath: String { get set }
-
-    var requestURL: URL? { get }
 
     func execute<Element>() throws -> Element?
 }
 
 extension SingleDataCommandType {
     var requestURL: URL? {
-        if additionalPath != "" {
-            return baseURL?.appendingPathComponent(additionalPath)
-        } else {
-            return baseURL
+        guard let url = URL(string: baseURL + additionalPath) else {
+            return nil
         }
+        return url
     }
 }

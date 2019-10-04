@@ -60,18 +60,13 @@ class SingleImageTableView: UIViewController {
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
 
-        let modelRelay = model.itemsRelay
-
-        modelRelay
+        model.itemsRelay
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
         model.requestRelay
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe { event in
-
-            switch event {
-            case let .next((isSuccess, _)):
+            .subscribe (onNext:{ (isSuccess, _) in
                 if isSuccess {
                     self.networkIndicator.stopAnimating()
                     self.networkIndicator.isHidden = true
@@ -83,10 +78,7 @@ class SingleImageTableView: UIViewController {
 
                     self.present(alert, animated: true)
                 }
-            default:
-                break
-            }
-        }.disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
 
     private func bindTableViewDelegate() {

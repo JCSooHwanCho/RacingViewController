@@ -12,8 +12,8 @@ import Kanna
 // gettyImagesGallery를 스크랩하기 위한 Command 객체
 final class GIGCollectionScrapCommand: SequenceDataCommand {
 
-    required init(withURL url: URL? = nil, additionalPath path: String) {
-        if url != nil {
+    required init(withURLString urlString: String = "", additionalPath path: String = "") {
+        if urlString != "" {
             print("This Command Object has a designated URL, So 'withURL' parameter will be ignored")
         }
 
@@ -23,7 +23,7 @@ final class GIGCollectionScrapCommand: SequenceDataCommand {
 
         super.init(additionalPath: path)
 
-        baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
+        self.baseURL = "http://www.gettyimagesgallery.com/collection/"
     }
 
     override func execute<Element>() throws -> [Element]? {

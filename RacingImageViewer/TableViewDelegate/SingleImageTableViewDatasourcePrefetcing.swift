@@ -18,12 +18,11 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
         let imageCache = DataCache.shared
 
         for indexPath in indexPaths {
-            let imageLink = self.itemRelay.value[indexPath.row]
+            let imageURL = self.itemRelay.value[indexPath.row].imageURL
 
-            guard let url = URL(string: imageLink.imageURL),
-                imageCache[url] == nil else { continue }
+            guard imageCache[imageURL] == nil else { continue }
 
-            let command = ImageDataLoadCommand(withURL: url)
+            let command = ImageDataLoadCommand(withURLString: imageURL)
 
             viewModel.command = command
         }

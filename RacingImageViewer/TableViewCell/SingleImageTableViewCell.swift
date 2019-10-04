@@ -42,12 +42,12 @@ class SingleImageTableViewCell: UITableViewCell {
     var disposeBag = DisposeBag()
 
     // MARK: - Initializer
-    // 코드 생성시 생성자
+    // 코드용 생성자
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         bindViewModel()
     }
-    //
+    // 스토리 보드용 생성자
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         bindViewModel()
@@ -57,7 +57,6 @@ class SingleImageTableViewCell: UITableViewCell {
     func configureCell(_ tableView: UITableView,
                        withImageLinkData imageLink: ImageVO,
                        cellForRowAt indexPath: IndexPath) {
-        self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
 
         let cache = DataCache.shared
 
@@ -68,14 +67,15 @@ class SingleImageTableViewCell: UITableViewCell {
         self.requestURL = url
         self.requestIndex = indexPath
 
-        if let imageData = cache[url] as? DataVO {
+        let key = url.absoluteString
+        if let imageData = cache[key] as? DataVO {
             guard let image = UIImage(data: imageData.data) else {
                    return
                }
                self.photoView.image = image
         } else {
             self.isLoading = true
-            let command = ImageDataLoadCommand(withURL: url)
+            let command = ImageDataLoadCommand(withURLString: imageLink.imageURL)
             self.viewModel.command = command
         }
     }
@@ -93,16 +93,16 @@ class SingleImageTableViewCell: UITableViewCell {
         self.dataRelay
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { value in
-                    guard self.requestURL == value.url,
-                     let tableView = self.superview as? UITableView,
-                        tableView.indexPath(for: self) == self.requestIndex else { return }
+                guard self.requestURL == value.url,
+                 let tableView = self.superview as? UITableView,
+                    tableView.indexPath(for: self) == self.requestIndex else { return }
 
-                    guard let image = UIImage(data: value.data) else {
-                        return
-                    }
-                    self.photoView.image = image
+                guard let image = UIImage(data: value.data) else {
+                    return
+                }
+                self.photoView.image = image
 
-                    tableView.reloadRows(at: [self.requestIndex], with: .automatic)
+                tableView.reloadRows(at: [self.requestIndex], with: .automatic)
             }).disposed(by: disposeBag)
 
     }

@@ -8,12 +8,13 @@
 
 import Foundation
 
+// 여러개의 데이터를 가져오기 위한 Command 객체
 class SequenceDataCommand: SequenceDataCommandType {
-    var baseURL: URL?
+    var baseURL: String
     var additionalPath: String
 
-    required init(withURL url: URL? = nil, additionalPath path: String = "") {
-        baseURL = url
+    required init(withURLString urlString: String = "", additionalPath path: String = "") {
+        baseURL = urlString
         self.additionalPath = path
     }
 

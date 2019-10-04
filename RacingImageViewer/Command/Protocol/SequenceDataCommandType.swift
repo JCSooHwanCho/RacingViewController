@@ -8,23 +8,21 @@
 
 import Foundation
 
+
 protocol SequenceDataCommandType {
 
-    var baseURL: URL? { get }
+    var baseURL: String { get } // 요청을 넣는 기본 URL
 
-    var additionalPath: String { get set}
-
-    var requestURL: URL? { get }
+    var additionalPath: String { get set } // 요청을 넣는 세부 경로
 
     func execute<Element>() throws -> [Element]?
  }
 
 extension SequenceDataCommandType {
     var requestURL: URL? {
-        if additionalPath != "" {
-            return baseURL?.appendingPathComponent(additionalPath)
-        } else {
-            return baseURL
+        guard let url = URL(string: baseURL + additionalPath) else {
+            return nil
         }
+        return url
     }
 }
