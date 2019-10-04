@@ -15,15 +15,13 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
     let viewModel = LoadDataViewModel<DataVO>()
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let operationCache = ImageOperationCache.shared
         let imageCache = DataRelayCache.shared
 
         for indexPath in indexPaths {
             let imageLink = self.itemRelay.value[indexPath.row]
 
             guard let url = URL(string: imageLink.imageURL),
-                imageCache[url] == nil,
-                operationCache[indexPath] == nil else { continue }
+                imageCache[url] == nil else { continue }
 
             let command = ImageDataLoadCommand(withURL: url)
 

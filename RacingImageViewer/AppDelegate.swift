@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        let operationCache = ImageOperationCache.shared
 
-        operationCache.cancelAllOperations()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
