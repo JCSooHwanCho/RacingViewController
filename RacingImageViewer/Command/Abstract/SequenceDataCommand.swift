@@ -17,7 +17,7 @@ class SequenceDataCommand: SequenceDataCommandType {
         self.additionalPath = path
     }
 
-    func execute<Element: VO>() throws -> [Element]? {
+    func execute<Element>() throws -> [Element]? {
         fatalError()
     }
 }

@@ -26,7 +26,7 @@ final class GIGCollectionScrapingCommand: SequenceDataCommand {
         baseURL = URL(string: "http://www.gettyimagesgallery.com/collection/")
     }
 
-    override func execute<Element: VO>() throws -> [Element]? {
+    override func execute<Element>() throws -> [Element]? {
         do {
             guard let url = self.requestURL else {
                 throw NSError()

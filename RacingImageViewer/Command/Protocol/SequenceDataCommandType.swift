@@ -17,7 +17,7 @@ protocol SequenceDataCommandType {
 
     var requestURL: URL? { get }
 
-    func execute<Element: VO>() throws -> [Element]?
+    func execute<Element>() throws -> [Element]?
  }
 
 extension SequenceDataCommandType {

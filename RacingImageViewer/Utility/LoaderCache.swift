@@ -13,11 +13,11 @@ extension CachedLoader {
     final class LoaderCache {
         static var shared = LoaderCache()
 
-        private let cache: NSCache<NSURL, Observable<VO>> = NSCache()
+        private let cache: NSCache<NSURL, Observable<Any>> = NSCache()
 
         private init() { }
 
-        subscript(index: URL) -> Observable<VO>? {
+        subscript(index: URL) -> Observable<Any>? {
             let index = index as NSURL
 
             if let value = cache.object(forKey: index) {
@@ -26,7 +26,7 @@ extension CachedLoader {
             return nil
         }
 
-        func addRequest(forKey key: URL, withRequest request: Observable<VO>) {
+        func addRequest(forKey key: URL, withRequest request: Observable<Any>) {
             let key = key as NSURL
             let request = request.share(replay: 1)
                 .do(onDispose: {

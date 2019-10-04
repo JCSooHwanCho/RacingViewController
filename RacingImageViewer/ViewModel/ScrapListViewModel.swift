@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 // Scrap한 데이터를 나타내는 뷰모델
-final class ScrapListViewModel<Element: VO>: RequestSequenceViewModel<Element> {
+final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
 
     let lock = NSRecursiveLock()
     // MARK: - Loading Method

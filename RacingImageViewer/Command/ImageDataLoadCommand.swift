@@ -9,7 +9,7 @@
 import Foundation
 
 class ImageDataLoadCommand: SingleDataCommand {
-    override func execute<Element:VO>() throws -> Element? {
+    override func execute<Element>() throws -> Element? {
         do {
             guard let url = self.requestURL else {
                 return nil

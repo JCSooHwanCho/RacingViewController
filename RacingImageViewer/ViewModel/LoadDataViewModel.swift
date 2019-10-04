@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class LoadDataViewModel<Element: VO>: RequestSingleDataViewModel<Element> {
+class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
 
         let lock = NSRecursiveLock()
       // MARK: - Loading Method

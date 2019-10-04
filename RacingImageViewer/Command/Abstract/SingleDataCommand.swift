@@ -10,7 +10,6 @@ import Foundation
 
 class SingleDataCommand: SingleDataCommandType {
     var baseURL: URL?
-
     var additionalPath: String
 
     required init(withURL url: URL? = nil, additionalPath path: String = "") {
@@ -18,7 +17,7 @@ class SingleDataCommand: SingleDataCommandType {
         self.additionalPath = path
     }
 
-    func execute<Element: VO>() throws -> Element? {
+    func execute<Element>() throws -> Element? {
         fatalError()
     }
 }

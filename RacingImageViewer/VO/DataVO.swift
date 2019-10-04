@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DataVO: VO {
+struct DataVO {
     let data: Data
     let url: URL
 }
