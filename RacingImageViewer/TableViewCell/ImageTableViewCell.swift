@@ -58,7 +58,7 @@ class ImageTableViewCell: UITableViewCell {
         self.selectionStyle = .none // 선택시 아무런 효과가 없도록 해준다
         self.isLoading = true
 
-        let cache = DataRelayCache.shared
+        let cache = DataCache.shared
 
         guard let url = URL(string: imageLink.imageURL) else {
             return

@@ -15,7 +15,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
     let viewModel = LoadDataViewModel<DataVO>()
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let imageCache = DataRelayCache.shared
+        let imageCache = DataCache.shared
 
         for indexPath in indexPaths {
             let imageLink = self.itemRelay.value[indexPath.row]

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
-		FF14309F233D7EC900226963 /* DataRelayCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* DataRelayCache.swift */; };
+		FF14309F233D7EC900226963 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* DataCache.swift */; };
 		FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */; };
 		FF1430A6233DC6CC00226963 /* NetworkSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */; };
 		FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */; };
@@ -49,7 +49,7 @@
 		0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
-		FF14309E233D7EC900226963 /* DataRelayCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRelayCache.swift; sourceTree = "<group>"; };
+		FF14309E233D7EC900226963 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDelegate.swift; sourceTree = "<group>"; };
 		FF1430A5233DC6CC00226963 /* NetworkSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSequenceViewModel.swift; sourceTree = "<group>"; };
 		FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasource.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		FFAC5FA7233CAB45001D4B62 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				FF14309E233D7EC900226963 /* DataRelayCache.swift */,
+				FF14309E233D7EC900226963 /* DataCache.swift */,
 				FFC7598D234579DB00A4495F /* LoaderCache.swift */,
 			);
 			path = Utility;
@@ -411,7 +411,7 @@
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
 				FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */,
-				FF14309F233D7EC900226963 /* DataRelayCache.swift in Sources */,
+				FF14309F233D7EC900226963 /* DataCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* ImageTableViewCell.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* ScraperType.swift in Sources */,

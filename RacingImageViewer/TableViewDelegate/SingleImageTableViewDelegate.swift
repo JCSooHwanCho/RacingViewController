@@ -18,7 +18,7 @@ final class SingleImageTableViewDelegate: NSObject, UITableViewDelegate {
         let imageLink = self.itemRelay.value[indexPath.row]
 
         guard let url = URL(string: imageLink.imageURL),
-            let imageData = DataRelayCache.shared[url] as? DataVO else { // 아직 캐싱되지 않은 경우
+            let imageData = DataCache.shared[url] as? DataVO else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.
         }
 

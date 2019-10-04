@@ -15,7 +15,7 @@ class LoadDataViewModel<Element:VO>: NetworkSingleDataViewModel<Element> {
       // MARK: - Loading Method
       override func loadData() {
         let loader = CachedLoader()
-        let cache = DataRelayCache.shared
+        let cache = DataCache.shared
 
         guard let command = self.command,
             let url = command.requestURL else {

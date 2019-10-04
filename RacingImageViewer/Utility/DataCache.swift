@@ -12,8 +12,8 @@ import UIKit.UIImage
 import RxRelay
 
 // Image를 Data 상태로 저장하는 Cache
-final class DataRelayCache {
-    static var shared = DataRelayCache()
+final class DataCache {
+    static var shared = DataCache()
 
     private let cache: NSCache<NSURL,DataWrapper<VO>> = NSCache()
 
