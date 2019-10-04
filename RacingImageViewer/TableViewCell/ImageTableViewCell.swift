@@ -89,8 +89,8 @@ class ImageTableViewCell: UITableViewCell {
             }).disposed(by: disposeBag)
 
         self.dataRelay
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { value in
-                DispatchQueue.main.async {
                     guard self.requestURL == value.url,
                      let tv = self.superview as? UITableView,
                         tv.indexPath(for:self) == self.requestIndex else { return }
@@ -101,8 +101,9 @@ class ImageTableViewCell: UITableViewCell {
                     self.photoView.image = image
 
                     tv.reloadRows(at: [self.requestIndex], with: .automatic)
-                }
             }).disposed(by:disposeBag)
+
+        
     }
 
     // MARK: - PrepareForReuse

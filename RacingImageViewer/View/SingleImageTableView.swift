@@ -67,23 +67,21 @@ class SingleImageTableView: UIViewController {
             .disposed(by: disposeBag)
 
         model.networkRelay
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe { event in
 
             switch event {
             case let .next((isSuccess, _)):
                 if isSuccess {
-                    DispatchQueue.main.async {
-                        self.networkIndicator.stopAnimating()
-                        self.networkIndicator.isHidden = true
-                    }
+                    self.networkIndicator.stopAnimating()
+                    self.networkIndicator.isHidden = true
                 } else {
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController.getAlert(withTitle: "네트워크 오류",
-                                                               message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
-                            model.loadData()
-                        }
-                       self.present(alert, animated: true)
-                    }
+                    let alert = UIAlertController
+                        .getAlert(withTitle: "네트워크 오류",
+                                  message: "인터넷 연결 상태를 다시 확인해주세요"){ _ in
+                                    self.commandToViewModel() }
+
+                    self.present(alert, animated: true)
                 }
             default:
                 break
@@ -129,7 +127,8 @@ class SingleImageTableView: UIViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
-        viewModel?.loadData()
+
+        commandToViewModel()
     }
 
     // MARK: - Deinit
