@@ -10,4 +10,5 @@ import Foundation
 
 struct DataVO: VO {
     let data: Data
+    let url: URL
 }

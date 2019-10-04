@@ -13,7 +13,7 @@ class SingleDataCommand: SingleDataCommandType {
 
     var additionalPath: String
 
-    required init(withURL url:URL? = nil, additionalPath path: String) {
+    required init(withURL url:URL? = nil, additionalPath path: String = "") {
         baseURL = url
         self.additionalPath = path
     }

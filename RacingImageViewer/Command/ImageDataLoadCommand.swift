@@ -17,7 +17,7 @@ class ImageDataLoadCommand: SingleDataCommand {
 
             let data = try Data(contentsOf: url)
 
-            let result = DataVO(data: data)
+            let result = DataVO(data: data, url: url)
 
             return result as? Element
             
