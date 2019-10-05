@@ -28,8 +28,8 @@ extension SingleDataCachedLoader {
 
         func addRequest(forKey key: URL, withRequest request: Observable<Any>) {
             let key = key as NSURL
-            let request = request.share(replay: 1)
-                .do(onDispose: {
+            let request = request.share(replay: 1, scope: .forever)
+                .do(onError: { _ in
                 self.cache.removeObject(forKey: key)
                 })
 

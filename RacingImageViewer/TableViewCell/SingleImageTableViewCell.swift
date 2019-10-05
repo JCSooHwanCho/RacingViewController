@@ -67,8 +67,7 @@ class SingleImageTableViewCell: UITableViewCell {
         self.requestURL = url
         self.requestIndex = indexPath
 
-        let key = url.absoluteString
-        if let imageData = cache[key] as? DataVO {
+        if let imageData = cache[url] as? DataVO {
             guard let image = UIImage(data: imageData.data) else {
                    return
                }
@@ -102,7 +101,11 @@ class SingleImageTableViewCell: UITableViewCell {
                 }
                 self.photoView.image = image
 
-                tableView.reloadRows(at: [self.requestIndex], with: .automatic)
+                let cache = DataCache.shared
+                if cache[value.url] == nil {
+                    cache.addData(forKey: value.url, withData: value)
+                    tableView.reloadRows(at: [self.requestIndex], with: .automatic)
+                }
             }).disposed(by: disposeBag)
 
     }

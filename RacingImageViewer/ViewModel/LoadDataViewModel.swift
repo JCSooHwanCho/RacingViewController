@@ -15,35 +15,27 @@ class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
       // MARK: - Loading Method
       override func loadData() {
         let loader = SingleDataCachedLoader()
-        let cache = DataCache.shared
 
         guard let command = self.command,
             let url = command.requestURL else {
             return
         }
 
-        if let value = cache[url] as? Element {
-            self.lock.lock(); defer { self.lock.unlock() }
-            self.itemRelay.accept(value)
-            self.requestRelay.accept((true, nil))
-        } else {
-            let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
+        let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
 
-            loadObservable
-                .subscribe { event in
-                switch event {
-                case let .next(value):
-                    cache.addData(forKey: url, withData: value)
-                    self.lock.lock(); defer { self.lock.unlock() }
-                    self.itemRelay.accept(value)
-                    self.requestRelay.accept((true, nil))
-                case let .error(error):
-                    self.lock.lock(); defer { self.lock.unlock() }
-                    self.requestRelay.accept((false, error))
-                case .completed:
-                    break
-                }
-            }.disposed(by: disposeBag)
-        }
+        loadObservable
+            .subscribe { event in
+            switch event {
+            case let .next(value):
+                self.lock.lock(); defer { self.lock.unlock() }
+                self.itemRelay.accept(value)
+                self.requestRelay.accept((true, nil))
+            case let .error(error):
+                self.lock.lock(); defer { self.lock.unlock() }
+                self.requestRelay.accept((false, error))
+            case .completed:
+                break
+            }
+        }.disposed(by: disposeBag)
     }
 }
