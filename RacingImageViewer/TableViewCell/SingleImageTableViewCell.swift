@@ -102,12 +102,9 @@ class SingleImageTableViewCell: UITableViewCell {
                 self.photoView.image = image
 
                 let cache = DataCache.shared
-                if cache[value.url] == nil {
-                    cache.addData(forKey: value.url, withData: value)
-                    tableView.reloadRows(at: [self.requestIndex], with: .automatic)
-                }
+                cache.addData(forKey: value.url, withData: value)
+                tableView.reloadRows(at: [self.requestIndex], with: .automatic)
             }).disposed(by: disposeBag)
-
     }
 
     // MARK: - PrepareForReuse
