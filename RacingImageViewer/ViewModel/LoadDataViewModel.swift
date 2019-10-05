@@ -22,8 +22,7 @@ class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
             return
         }
 
-        let key = url.absoluteString
-        if let value = cache[key] as? Element {
+        if let value = cache[url] as? Element {
             self.lock.lock(); defer { self.lock.unlock() }
             self.itemRelay.accept(value)
             self.requestRelay.accept((true, nil))
@@ -34,7 +33,7 @@ class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
                 .subscribe { event in
                 switch event {
                 case let .next(value):
-                    cache.addData(forKey: key, withData: DataWrapper(value: value))
+                    cache.addData(forKey: url, withData: value)
                     self.lock.lock(); defer { self.lock.unlock() }
                     self.itemRelay.accept(value)
                     self.requestRelay.accept((true, nil))

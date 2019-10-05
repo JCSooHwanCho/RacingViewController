@@ -11,12 +11,12 @@ import Foundation
 final class DataCache {
     static var shared = DataCache()
 
-    private let cache: NSCache<NSString, DataWrapper<Any>> = NSCache()
+    private let cache: NSCache<NSURL, DataWrapper<Any>> = NSCache()
 
     private init() {}
 
-    subscript (index: String) -> Any? {
-        let index = index as NSString
+    subscript (index: URL) -> Any? {
+        let index = index as NSURL
 
         if let object = cache.object(forKey: index) {
             return object.value
@@ -24,10 +24,18 @@ final class DataCache {
             return nil
     }
 
-    func addData(forKey key: String, withData data: DataWrapper<Any>) {
-        let key = key as NSString
+    subscript (index: String) -> Any? {
+        guard let url = URL(string: index) else {
+            return nil
+        }
 
-        cache.setObject(data, forKey: key)
+        return self[url]
+    }
+
+    func addData(forKey key: URL, withData data: Any) {
+        let key = key as NSURL
+
+        cache.setObject(DataWrapper(value: data), forKey: key)
     }
 
     static func clearCache() {
