@@ -33,6 +33,6 @@ final class SingleImageTableViewDelegate: NSObject, UITableViewDelegate {
         // (cell width) : (cell height) = (image Width) : (image height)
         // cell width == safe area width
         // (cell height) = (cell width) * (image height) / (image width)
-        return (safeAreaSize.width * imageSize.height)/imageSize.width
+        return (safeAreaSize.width * imageSize.height)/imageSize.width + 5
     }
 }
