@@ -35,7 +35,6 @@ class SingleImageTableViewCell: UITableViewCell {
     }
 
     private let viewModel = LoadDataViewModel<DataVO>()
-    private let dataRelay = PublishRelay<DataVO>()
     private var requestURL = URL(fileURLWithPath: "")
     private var requestIndex = IndexPath()
 
@@ -80,16 +79,12 @@ class SingleImageTableViewCell: UITableViewCell {
     }
 
     func bindViewModel() {
-        self.viewModel.itemRelay
-        .bind(to: self.dataRelay)
-        .disposed(by: disposeBag)
-
         self.viewModel.requestRelay
             .subscribe(onNext: { _ in
                 self.isLoading = false
             }).disposed(by: disposeBag)
 
-        self.dataRelay
+        self.viewModel.itemRelay
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { value in
                 guard self.requestURL == value.url,
