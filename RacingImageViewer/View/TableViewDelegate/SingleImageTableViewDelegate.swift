@@ -27,7 +27,7 @@ final class SingleImageTableViewDelegate: NSObject, UITableViewDelegate {
         guard let safeAreaSize = UIApplication.shared.windows[0].rootViewController?
             .view.safeAreaLayoutGuide.layoutFrame.size,
             let imageSize = UIImage(data: imageData.data)?.size else {
-            return UITableView.automaticDimension
+                return UITableView.automaticDimension
         }
 
         // (cell width) : (cell height) = (image Width) : (image height)

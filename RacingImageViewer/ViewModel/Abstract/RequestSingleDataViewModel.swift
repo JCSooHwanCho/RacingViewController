@@ -13,22 +13,22 @@ import RxSwift
 class RequestSingleDataViewModel<Element>: RequestStatusViewModelType,
 SingleDataViewModelType {
     typealias Element = Element
-
+    
     var itemRelay: PublishRelay<Element> = PublishRelay()
     var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
-
+    
     var command: ProcessToSingleCommand? {
         didSet {
             self.loadData()
         }
     }
-
+    
     func loadData() {
         fatalError()
     }
-
+    
     deinit {
-         disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
     }
 }

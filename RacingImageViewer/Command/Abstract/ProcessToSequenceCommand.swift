@@ -1,5 +1,5 @@
 //
-//  SequenceDataCommand.swift
+//  ProcessToSequenceCommand.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/27.
@@ -13,12 +13,12 @@ import Foundation
 class ProcessToSequenceCommand: ProcessToSequenceCommandType {
     var baseURL: String
     var additionalPath: String
-
+    
     required init(withURLString urlString: String = "", additionalPath path: String = "") {
         baseURL = urlString
         self.additionalPath = path
     }
-
+    
     func execute<Element>(withData data: Data) -> [Element]? {
         fatalError()
     }

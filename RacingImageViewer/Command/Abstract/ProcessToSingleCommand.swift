@@ -1,5 +1,5 @@
 //
-//  SingleDataCommand.swift
+//  ProcessToSingleCommand.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -23,3 +23,4 @@ class ProcessToSingleCommand: ProcessToSingleCommandType {
         fatalError()
     }
 }
+

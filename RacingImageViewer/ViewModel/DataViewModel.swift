@@ -10,25 +10,26 @@ import Foundation
 import RxSwift
 
 class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
-
-        let lock = NSRecursiveLock()
-      // MARK: - Loading Method
-      override func loadData() {
+    
+    private let lock = NSRecursiveLock()
+    
+    // MARK: - Loading Method
+    override func loadData() {
         let loader = DataCachedLoader()
-
+        
         guard let command = self.command,
             let url = command.requestURL else {
-            return
+                return
         }
-
+        
         let loadObservable = loader.loadData(withURL: url)
-
+        
         loadObservable
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .compactMap { value -> Element? in
                 command.execute(withData: value)
                 
-            }.subscribe { event in
+        }.subscribe { event in
             switch event {
             case let .next(value):
                 self.lock.lock(); defer { self.lock.unlock() }

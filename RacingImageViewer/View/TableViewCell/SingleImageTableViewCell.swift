@@ -1,5 +1,5 @@
 //
-//  ImageTableViewCell.swift
+//  SingleImageTableViewCell.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -22,13 +22,13 @@ class SingleImageTableViewCell: UITableViewCell {
     // MARK: - Private Property
     var isLoading: Bool  = false {
         didSet {
-                if self.isLoading {
-                    self.networkIndicator.startAnimating()
-                    self.networkIndicator.isHidden = false
-                } else {
-                    self.networkIndicator.stopAnimating()
-                    self.networkIndicator.isHidden = true
-                }
+            if self.isLoading {
+                self.networkIndicator.startAnimating()
+                self.networkIndicator.isHidden = false
+            } else {
+                self.networkIndicator.stopAnimating()
+                self.networkIndicator.isHidden = true
+            }
         }
     }
 
@@ -61,9 +61,9 @@ class SingleImageTableViewCell: UITableViewCell {
 
         if let imageData = cache[url] as? DataVO { // 캐싱이 되어 있으면
             guard let image = UIImage(data: imageData.data) else {
-                   return
-               }
-               self.photoView.image = image // 추가적인 로딩없이 이미지를 세팅한다.
+                return
+            }
+            self.photoView.image = image // 추가적인 로딩없이 이미지를 세팅한다.
         } else {
             self.isLoading = true // 인디케이터를 킨다
             let command = DataLoadCommand(withURLString: imageLink.link)
@@ -76,8 +76,8 @@ class SingleImageTableViewCell: UITableViewCell {
         // 요청 성공 여부와 관계없이, 인디케이터를 끈다.
         self.viewModel.requestRelay
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { _ in
-                self.isLoading = false
+            .subscribe(onNext: { [weak self] _ in
+                self?.isLoading = false
             }).disposed(by: disposeBag)
 
         // 요청한 데이터를 받게 되면
@@ -86,18 +86,16 @@ class SingleImageTableViewCell: UITableViewCell {
             .do(onNext: { // 캐싱을 시도한다.
                 let cache = DataCache.shared
                 if cache[$0.url] == nil {
-                   cache.addData(forKey: $0.url, withData: $0)
+                    cache.addData(forKey: $0.url, withData: $0)
                 }
             })
             .filter { self.requestURL == $0.url } // 셀이 현재 요청한 데이터가 들어왔는지 확인한다.
-            .compactMap { // 실제 이미지로 변환한다.
-                UIImage(data: $0.data)
-            }
+            .compactMap { UIImage(data: $0.data) } // 실제 이미지로 변환한다.
             .observeOn(MainScheduler.asyncInstance) // UI 코드는 모두 메인 스레드에서 실행한다.
             .subscribe(onNext: { image in
                 // 현재 셀이 테이블뷰에 있는지 확인한다.
-                 guard let tableView = self.superview as? UITableView,
-                 let indexPath = tableView.indexPath(for: self) else { return }
+                guard let tableView = self.superview as? UITableView,
+                    let indexPath = tableView.indexPath(for: self) else { return }
 
                 self.photoView.image = image
 

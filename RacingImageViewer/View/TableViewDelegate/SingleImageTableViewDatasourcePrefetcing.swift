@@ -23,12 +23,12 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
         viewModel.itemRelay
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .subscribe(onNext: { value in
-            let cache = DataCache.shared
+                let cache = DataCache.shared
 
-            if cache[value.url] == nil {
-                cache.addData(forKey: value.url, withData: value)
-            }
-        }).disposed(by:disposeBag)
+                if cache[value.url] == nil {
+                    cache.addData(forKey: value.url, withData: value)
+                }
+            }).disposed(by:disposeBag)
     }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

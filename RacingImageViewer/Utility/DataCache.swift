@@ -21,14 +21,14 @@ final class DataCache {
         if let object = cache.object(forKey: index) {
             return object.value
         }
-            return nil
+        return nil
     }
 
     subscript (index: String) -> Any? {
         guard let url = URL(string: index) else {
             return nil
         }
-
+        
         return self[url]
     }
 

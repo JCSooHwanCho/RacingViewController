@@ -62,14 +62,15 @@ class SingleImageTableView: UIViewController {
         // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
         self.items
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             }).disposed(by: disposeBag)
 
         // 뷰모델의 요청 결과에 따라 네트워크 인디케이터를 끄거나, 경고창을 띄운다.
         model.requestRelay
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe (onNext:{ (isSuccess, _) in
+            .subscribe (onNext:{ [weak self] (isSuccess, _) in
+                guard let self = self else { return }
                 if isSuccess {
                     self.networkIndicator.stopAnimating()
                     self.networkIndicator.isHidden = true
@@ -81,22 +82,22 @@ class SingleImageTableView: UIViewController {
 
                     self.present(alert, animated: true)
                 }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
 
     private func bindTableViewDelegate() {
         // delegate, datasource, prefetchingDatasource와 데이터를 바인딩한다.
         self.items
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
-            .bind(to: self.tableViewDelegate.itemRelay,
-                  self.tableViewDatasource.itemRelay,
-                  self.tableViewDataSourcePrefetching.itemRelay)
+            .bind(to: tableViewDelegate.itemRelay,
+                  tableViewDatasource.itemRelay,
+                  tableViewDataSourcePrefetching.itemRelay)
             .disposed(by: disposeBag)
 
         // 테이블뷰에 delegate와 datasource를 세팅한다.
-        self.tableView.delegate = self.tableViewDelegate
-        self.tableView.dataSource = self.tableViewDatasource
-        self.tableView.prefetchDataSource = self.tableViewDataSourcePrefetching
+        self.tableView.delegate = tableViewDelegate
+        self.tableView.dataSource = tableViewDatasource
+        self.tableView.prefetchDataSource = tableViewDataSourcePrefetching
     }
 
     private func configureRefreshControl() {
@@ -109,7 +110,7 @@ class SingleImageTableView: UIViewController {
 
         self.viewModel?.command = command
     }
-
+    
     // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
         commandToViewModel()

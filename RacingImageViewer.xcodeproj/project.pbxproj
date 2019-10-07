@@ -27,7 +27,7 @@
 		FFAC5FA2233C618D001D4B62 /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */; };
 		FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */; };
 		FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */; };
-		FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */; };
+		FFAD926023419AA7006E7C61 /* UIAlertController+getAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925F23419AA7006E7C61 /* UIAlertController+getAlert.swift */; };
 		FFC7597C23456D6B00A4495F /* DataLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597B23456D6B00A4495F /* DataLoaderType.swift */; };
 		FFC759802345711500A4495F /* ProcessToSingleCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597F2345711500A4495F /* ProcessToSingleCommandType.swift */; };
 		FFC759822345734200A4495F /* DataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759812345734200A4495F /* DataVO.swift */; };
@@ -67,7 +67,7 @@
 		FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListViewModel.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataViewModelType.swift; sourceTree = "<group>"; };
 		FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatusViewModelType.swift; sourceTree = "<group>"; };
-		FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		FFAD925F23419AA7006E7C61 /* UIAlertController+getAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+getAlert.swift"; sourceTree = "<group>"; };
 		FFC7597B23456D6B00A4495F /* DataLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderType.swift; sourceTree = "<group>"; };
 		FFC7597F2345711500A4495F /* ProcessToSingleCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessToSingleCommandType.swift; sourceTree = "<group>"; };
 		FFC759812345734200A4495F /* DataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVO.swift; sourceTree = "<group>"; };
@@ -161,15 +161,12 @@
 		FF94DE54233AF7200045E010 /* RacingImageViewer */ = {
 			isa = PBXGroup;
 			children = (
-				FFEFEF892342E50700E4164C /* Extension */,
 				FFD5086C2342029D0048C804 /* Command */,
 				FFD5086B234202890048C804 /* ViewModel */,
 				FFAC5FAC233CF71F001D4B62 /* VO */,
 				FFAC5FA7233CAB45001D4B62 /* Utility */,
 				FFAC5F9A233C4116001D4B62 /* Model */,
-				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
 				FFAC5F95233C3E14001D4B62 /* View */,
-				FF1430A2233DC3FF00226963 /* TableViewDelegate */,
 				FF94DE55233AF7200045E010 /* AppDelegate.swift */,
 				FF94DE5B233AF7200045E010 /* Main.storyboard */,
 				FF94DE5E233AF7240045E010 /* Assets.xcassets */,
@@ -182,6 +179,9 @@
 		FFAC5F95233C3E14001D4B62 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFEFEF892342E50700E4164C /* Extension */,
+				FFAC5F97233C3FA3001D4B62 /* TableViewCell */,
+				FF1430A2233DC3FF00226963 /* TableViewDelegate */,
 				FF94DE59233AF7200045E010 /* SingleImageTableView.swift */,
 			);
 			path = View;
@@ -276,7 +276,7 @@
 		FFEFEF892342E50700E4164C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */,
+				FFAD925F23419AA7006E7C61 /* UIAlertController+getAlert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 				FF1430AC233DEE7D00226963 /* ProcessToSequenceCommandType.swift in Sources */,
 				FFEF8F43234641CC00A0B79F /* DataViewModel.swift in Sources */,
 				FFC75984234573A000A4495F /* ProcessToSingleCommand.swift in Sources */,
-				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
+				FFAD926023419AA7006E7C61 /* UIAlertController+getAlert.swift in Sources */,
 				FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */,
 				FFC7598E234579DB00A4495F /* DataLoaderCache.swift in Sources */,
 				FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */,
