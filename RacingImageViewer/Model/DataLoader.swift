@@ -10,15 +10,14 @@ import Foundation
 import RxSwift
 
 // command를 이용해서 단일 데이터를 가져오는 Loader 객체
-class SingleDataLoader: SingleDataLoaderType {
+class DataLoader: DataLoaderType {
 
     // MARK: - Loading Method
-    func loadData<Element>(withCommand command: SingleDataCommand) -> Observable<Element> {
-        let observable = Observable<Element>.create { observable in
+    func loadData(withURL url: URL) -> Observable<Data> {
+        let observable = Observable<Data>.create { observable in
             do {
-                guard let data: Element = try command.execute() else {
-                    throw RxError.noElements
-                }
+
+                let data = try Data(contentsOf: url)
 
                 observable.onNext(data)
                 observable.onCompleted()

@@ -14,17 +14,21 @@ class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
         let lock = NSRecursiveLock()
       // MARK: - Loading Method
       override func loadData() {
-        let loader = SingleDataCachedLoader()
+        let loader = DataCachedLoader()
 
         guard let command = self.command,
             let url = command.requestURL else {
             return
         }
 
-        let loadObservable: Observable<Element> = loader.loadData(withCommand: command)
+        let loadObservable = loader.loadData(withURL: url)
 
         loadObservable
-            .subscribe { event in
+            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .compactMap { value -> Element? in
+                let value: Element? = command.execute(withData: value)
+                return value
+            }.subscribe { event in
             switch event {
             case let .next(value):
                 self.lock.lock(); defer { self.lock.unlock() }

@@ -18,7 +18,7 @@ SingleDataViewModelType {
     var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
 
-    var command: SingleDataCommand? {
+    var command: ProcessToSingleCommand? {
         didSet {
             self.loadData()
         }

@@ -1,15 +1,15 @@
 //
-//  SingleDataCommand.swift
+//  SequenceDataCommand.swift
 //  RacingImageViewer
 //
-//  Created by 조수환 on 2019/10/03.
+//  Created by 조수환 on 2019/09/27.
 //  Copyright © 2019 조수환. All rights reserved.
 //
 
 import Foundation
 
-// 단일 데이터를 가져오기 위한 Command 객체
-class SingleDataCommand: SingleLoadCommandType {
+// 여러개의 데이터를 가져오기 위한 Command 객체
+class ProcessToSequenceCommand: ProcessToSequenceCommandType {
     var baseURL: String
     var additionalPath: String
 
@@ -18,7 +18,7 @@ class SingleDataCommand: SingleLoadCommandType {
         self.additionalPath = path
     }
 
-    func execute<Element>() throws -> Element? {
+    func execute<Element>(withData data: Data) -> [Element]? {
         fatalError()
     }
 }

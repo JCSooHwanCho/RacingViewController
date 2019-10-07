@@ -9,6 +9,6 @@
 import Foundation
 import RxSwift
 
-protocol SingleDataLoaderType {
-    func loadData<Element>(withCommand command: SingleDataCommand) -> Observable<Element>
+protocol DataLoaderType {
+    func loadData(withURL url: URL) -> Observable<Data>
 }

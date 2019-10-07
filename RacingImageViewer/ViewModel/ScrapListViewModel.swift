@@ -15,14 +15,21 @@ final class DataListViewModel<Element>: RequestSequenceViewModel<Element> {
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
-        let scraper = SequenceDataLoader()
+        let loader = DataCachedLoader()
 
-        guard let command = command else {
+        guard let command = command,
+            let url = command.requestURL else {
             return
         }
 
-        let scrapObservable: Observable<[Element]> = scraper.loadData( withCommand: command)
-            scrapObservable.subscribe { event in
+        let scrapObservable = loader.loadData(withURL: url)
+
+            scrapObservable
+                .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+                .compactMap{ value -> [Element]? in
+                    let value: [Element]? = command.execute(withData: value)
+                    return value
+                }.subscribe { event in
                 switch event {
                 case let .next(value):
                     self.lock.lock(); defer { self.lock.unlock() }

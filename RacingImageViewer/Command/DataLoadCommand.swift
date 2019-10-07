@@ -9,19 +9,13 @@
 import Foundation
 
 // Data를 가져오기 위한 구체 Command 객체
-class DataLoadCommand: SingleDataCommand {
-    override func execute<Element>() throws -> Element? {
-        do {
-            guard let url = self.requestURL else {
-                return nil
-            }
-            let data = try Data(contentsOf: url)
-
-            let result = DataVO(data: data, url: url)
-
-            return result as? Element
-        } catch {
-            throw error
+class DataLoadCommand: ProcessToSingleCommand {
+    override func execute<Element>(withData data: Data) -> Element? {
+        guard let url = self.requestURL else {
+            return nil
         }
+        let result = DataVO(data: data, url: url)
+
+        return result as? Element
     }
 }

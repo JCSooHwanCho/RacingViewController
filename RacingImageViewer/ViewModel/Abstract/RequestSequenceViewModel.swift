@@ -19,7 +19,7 @@ SequenceDataViewModelType {
     var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
 
-    var command: SequenceLoadCommand? {
+    var command: ProcessToSequenceCommand? {
         didSet {
             self.loadData()
         }
