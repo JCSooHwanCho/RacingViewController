@@ -1,5 +1,5 @@
 //
-//  LoadDataViewModel.swift
+//  DataViewModel.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
+class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
 
         let lock = NSRecursiveLock()
       // MARK: - Loading Method

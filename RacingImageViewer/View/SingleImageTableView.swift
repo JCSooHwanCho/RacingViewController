@@ -45,7 +45,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Configure Method
     private func createDataModel() {
-        self.viewModel = ScrapListViewModel<LinkVO>()
+        self.viewModel = DataListViewModel<LinkVO>()
     }
 
     private func bindItem() {

@@ -1,5 +1,5 @@
 //
-//  ScrapListViewModel.swift
+//  DataListViewModel.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 // Scrap한 데이터를 나타내는 뷰모델
-final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
+final class DataListViewModel<Element>: RequestSequenceViewModel<Element> {
 
     let lock = NSRecursiveLock()
     // MARK: - Loading Method

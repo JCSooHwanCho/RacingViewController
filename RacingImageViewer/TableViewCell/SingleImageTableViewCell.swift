@@ -32,7 +32,7 @@ class SingleImageTableViewCell: UITableViewCell {
         }
     }
 
-    private let viewModel = LoadDataViewModel<DataVO>()
+    private let viewModel = DataViewModel<DataVO>()
     private var requestURL: URL?
     var disposeBag = DisposeBag()
 
