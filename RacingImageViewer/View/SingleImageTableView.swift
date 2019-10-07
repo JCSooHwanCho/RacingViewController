@@ -23,7 +23,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
-    var additionalPath: String? = "auto-racing"
+    var additionalPath: String = "auto-racing"
 
     // MARK: - Delegate
     var tableViewDelegate = SingleImageTableViewDelegate()
@@ -32,7 +32,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
-        defer { commandToViewModel() }
+        defer { commandToViewModel() } // 뷰모델에 command를 전달한다.
         super.viewDidLoad()
 
         createDataModel() // ViewModel을 만든다.
@@ -57,13 +57,15 @@ class SingleImageTableView: UIViewController {
         self.items
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
-            self.tableView.reloadData()
+                self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             }).disposed(by: disposeBag)
 
+        // 뷰모델에서 나오는 데이터를 바인딩한다.
         model.itemsRelay
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
+        // 뷰모델의 요청 결과에 따라 네트워크 인디케이터를 끄거나, 경고창을 띄운다.
         model.requestRelay
             .observeOn(MainScheduler.asyncInstance)
             .subscribe (onNext:{ (isSuccess, _) in
@@ -82,6 +84,7 @@ class SingleImageTableView: UIViewController {
     }
 
     private func bindTableViewDelegate() {
+        // delegate, datasource, prefetchingDatasource와 데이터를 바인딩한다.
         self.items
             .bind(to: self.tableViewDelegate.itemRelay)
             .disposed(by: disposeBag)
@@ -93,6 +96,7 @@ class SingleImageTableView: UIViewController {
             .bind(to: self.tableViewDataSourcePrefetching.itemRelay)
             .disposed(by: disposeBag)
 
+        // 테이블뷰에 delegate와 datasource를 세팅한다.
         self.tableView.delegate = self.tableViewDelegate
         self.tableView.dataSource = self.tableViewDatasource
         self.tableView.prefetchDataSource = self.tableViewDataSourcePrefetching
@@ -104,9 +108,6 @@ class SingleImageTableView: UIViewController {
     }
 
     private func commandToViewModel() {
-        guard let additionalPath = self.additionalPath else {
-                return
-        }
         let command = GIGCollectionScrapCommand(additionalPath: additionalPath)
 
         self.viewModel?.command = command

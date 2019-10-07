@@ -19,6 +19,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
     override init() {
         super.init()
 
+        // 요청한 데이터를 캐싱한다.
         viewModel.itemRelay.subscribe(onNext: { value in
             let cache = DataCache.shared
 
@@ -32,11 +33,11 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
         let imageCache = DataCache.shared
 
         for indexPath in indexPaths {
-            let imageURL = self.itemRelay.value[indexPath.row].link
+            let imageLink = self.itemRelay.value[indexPath.row].link
 
-            guard imageCache[imageURL] == nil else { continue }
+            guard imageCache[imageLink] == nil else { continue }
 
-            let command = DataLoadCommand(withURLString: imageURL)
+            let command = DataLoadCommand(withURLString: imageLink)
 
             viewModel.command = command
         }

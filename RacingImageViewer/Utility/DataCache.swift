@@ -37,8 +37,4 @@ final class DataCache {
 
         cache.setObject(DataWrapper(value: data), forKey: key)
     }
-
-    static func clearCache() {
-        shared.cache.removeAllObjects()
-    }
 }
