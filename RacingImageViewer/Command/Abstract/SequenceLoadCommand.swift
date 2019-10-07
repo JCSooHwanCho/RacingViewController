@@ -9,7 +9,7 @@
 import Foundation
 
 // 여러개의 데이터를 가져오기 위한 Command 객체
-class SequenceDataCommand: SequenceDataCommandType {
+class SequenceLoadCommand: SequenceLoadCommandType {
     var baseURL: String
     var additionalPath: String
 

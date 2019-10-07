@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol SequenceDataLoaderType {
-    func scrapData<Element>(scrapingCommand command: SequenceDataCommand) ->Observable<[Element]>
+    func loadData<Element>(withCommand command: SequenceLoadCommand) ->Observable<[Element]>
 }

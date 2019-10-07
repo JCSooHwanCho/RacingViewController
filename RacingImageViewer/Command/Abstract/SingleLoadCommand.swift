@@ -9,7 +9,7 @@
 import Foundation
 
 // 단일 데이터를 가져오기 위한 Command 객체
-class SingleDataCommand: SingleDataCommandType {
+class SingleDataCommand: SingleLoadCommandType {
     var baseURL: String
     var additionalPath: String
 

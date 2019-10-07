@@ -21,7 +21,7 @@ class LoadDataViewModel<Element>: RequestSingleDataViewModel<Element> {
             return
         }
 
-        let loadObservable: Observable<Element> = loader.loadData(loadCommand: command)
+        let loadObservable: Observable<Element> = loader.loadData(withCommand: command)
 
         loadObservable
             .subscribe { event in

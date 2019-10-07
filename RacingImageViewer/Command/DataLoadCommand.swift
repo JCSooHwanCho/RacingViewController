@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Data를 가져오기 위한 구체 Command 객체
 class DataLoadCommand: SingleDataCommand {
     override func execute<Element>() throws -> Element? {
         do {

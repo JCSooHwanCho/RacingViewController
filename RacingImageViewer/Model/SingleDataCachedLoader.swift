@@ -9,8 +9,10 @@
 import Foundation
 import RxSwift
 
+// 요청을 캐싱해서, 반복적인 요청에 대한 네트워크 요청을 줄이고
+// 빠른 응답을 하도록 하는 Loader
 class SingleDataCachedLoader: SingleDataLoader {
-    override func loadData<Element>(loadCommand command: SingleDataCommand) -> Observable<Element> {
+    override func loadData<Element>(withCommand command: SingleDataCommand) -> Observable<Element> {
         let cache = SingleDataLoaderCache.shared
 
         guard let url = command.requestURL else {
@@ -21,7 +23,7 @@ class SingleDataCachedLoader: SingleDataLoader {
             if let request = cache[url] {
                 return request.compactMap { $0 as? Element }
             } else {
-                let request: Observable<Element> = super.loadData(loadCommand: command)
+                let request: Observable<Element> = super.loadData(withCommand: command)
 
                 cache.addRequest(forKey: url,
                                  withRequest: request.map { $0 as Any })

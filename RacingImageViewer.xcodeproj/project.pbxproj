@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
+		FF0C2408234B006F003DDDD7 /* SequenceDataCachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */; };
+		FF0C240A234B00BB003DDDD7 /* SequenceDataLoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */; };
 		FF14309F233D7EC900226963 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* DataCache.swift */; };
 		FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */; };
 		FF1430A6233DC6CC00226963 /* RequestSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */; };
 		FF1430A8233DCA7E00226963 /* SingleImageTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */; };
 		FF1430AA233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */; };
-		FF1430AC233DEE7D00226963 /* SequenceDataCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* SequenceDataCommandType.swift */; };
-		FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */; };
+		FF1430AC233DEE7D00226963 /* SequenceLoadCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* SequenceLoadCommandType.swift */; };
+		FF1430B0233DEFC700226963 /* SequenceLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* SequenceLoadCommand.swift */; };
 		FF1430B3233DF25D00226963 /* GIGCollectionScrapCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B2233DF25D00226963 /* GIGCollectionScrapCommand.swift */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* SingleImageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* SingleImageTableView.swift */; };
@@ -30,12 +32,12 @@
 		FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */; };
 		FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */; };
 		FFC7597C23456D6B00A4495F /* SingleDataLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597B23456D6B00A4495F /* SingleDataLoaderType.swift */; };
-		FFC759802345711500A4495F /* SingleCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597F2345711500A4495F /* SingleCommandType.swift */; };
+		FFC759802345711500A4495F /* SingleLoadCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7597F2345711500A4495F /* SingleLoadCommandType.swift */; };
 		FFC759822345734200A4495F /* DataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759812345734200A4495F /* DataVO.swift */; };
-		FFC75984234573A000A4495F /* SingleDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759832345739F00A4495F /* SingleDataCommand.swift */; };
+		FFC75984234573A000A4495F /* SingleLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759832345739F00A4495F /* SingleLoadCommand.swift */; };
 		FFC75986234574B600A4495F /* SingleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC75985234574B600A4495F /* SingleDataLoader.swift */; };
 		FFC7598A2345765200A4495F /* DataLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759892345765200A4495F /* DataLoadCommand.swift */; };
-		FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* CachedLoader.swift */; };
+		FFC7598C234579A300A4495F /* SingleDataCachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* SingleDataCachedLoader.swift */; };
 		FFC7598E234579DB00A4495F /* SingleDataLoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */; };
 		FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759912345800A00A4495F /* SingleDataViewModelType.swift */; };
 		FFC759962345811800A4495F /* RequestSingleDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759952345811800A4495F /* RequestSingleDataViewModel.swift */; };
@@ -48,13 +50,15 @@
 		0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCachedLoader.swift; sourceTree = "<group>"; };
+		FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataLoaderCache.swift; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDelegate.swift; sourceTree = "<group>"; };
 		FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010RequestSequenceViewModel.swift"; sourceTree = "<group>"; };
 		FF1430A7233DCA7E00226963 /* SingleImageTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasource.swift; sourceTree = "<group>"; };
 		FF1430A9233DCBB400226963 /* SingleImageTableViewDatasourcePrefetcing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDatasourcePrefetcing.swift; sourceTree = "<group>"; };
-		FF1430AB233DEE7D00226963 /* SequenceDataCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCommandType.swift; sourceTree = "<group>"; };
-		FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCommand.swift; sourceTree = "<group>"; };
+		FF1430AB233DEE7D00226963 /* SequenceLoadCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLoadCommandType.swift; sourceTree = "<group>"; };
+		FF1430AF233DEFC700226963 /* SequenceLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLoadCommand.swift; sourceTree = "<group>"; };
 		FF1430B2233DF25D00226963 /* GIGCollectionScrapCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGCollectionScrapCommand.swift; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,12 +76,12 @@
 		FFAD925B234196AE006E7C61 /* RequestStatusViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatusViewModelType.swift; sourceTree = "<group>"; };
 		FFAD925F23419AA7006E7C61 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FFC7597B23456D6B00A4495F /* SingleDataLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataLoaderType.swift; sourceTree = "<group>"; };
-		FFC7597F2345711500A4495F /* SingleCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCommandType.swift; sourceTree = "<group>"; };
+		FFC7597F2345711500A4495F /* SingleLoadCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLoadCommandType.swift; sourceTree = "<group>"; };
 		FFC759812345734200A4495F /* DataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVO.swift; sourceTree = "<group>"; };
-		FFC759832345739F00A4495F /* SingleDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataCommand.swift; sourceTree = "<group>"; };
+		FFC759832345739F00A4495F /* SingleLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLoadCommand.swift; sourceTree = "<group>"; };
 		FFC75985234574B600A4495F /* SingleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataLoader.swift; sourceTree = "<group>"; };
 		FFC759892345765200A4495F /* DataLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadCommand.swift; sourceTree = "<group>"; };
-		FFC7598B234579A300A4495F /* CachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedLoader.swift; sourceTree = "<group>"; };
+		FFC7598B234579A300A4495F /* SingleDataCachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataCachedLoader.swift; sourceTree = "<group>"; };
 		FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataLoaderCache.swift; sourceTree = "<group>"; };
 		FFC759912345800A00A4495F /* SingleDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataViewModelType.swift; sourceTree = "<group>"; };
 		FFC759952345811800A4495F /* RequestSingleDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSingleDataViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 				49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF0C2406234AFF56003DDDD7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC5FA3233C9059001D4B62 /* SequenceDataLoaderType.swift */,
+				FFC7597B23456D6B00A4495F /* SingleDataLoaderType.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		FF1430A2233DC3FF00226963 /* TableViewDelegate */ = {
@@ -194,11 +207,11 @@
 		FFAC5F9A233C4116001D4B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC5FA3233C9059001D4B62 /* SequenceDataLoaderType.swift */,
+				FF0C2406234AFF56003DDDD7 /* Protocol */,
 				FFAC5F9B233C415E001D4B62 /* SequenceDataLoader.swift */,
-				FFC7597B23456D6B00A4495F /* SingleDataLoaderType.swift */,
 				FFC75985234574B600A4495F /* SingleDataLoader.swift */,
-				FFC7598B234579A300A4495F /* CachedLoader.swift */,
+				FFC7598B234579A300A4495F /* SingleDataCachedLoader.swift */,
+				FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +221,7 @@
 			children = (
 				FF14309E233D7EC900226963 /* DataCache.swift */,
 				FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */,
+				FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -225,8 +239,8 @@
 		FFC7597E234570E800A4495F /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				FF1430AB233DEE7D00226963 /* SequenceDataCommandType.swift */,
-				FFC7597F2345711500A4495F /* SingleCommandType.swift */,
+				FF1430AB233DEE7D00226963 /* SequenceLoadCommandType.swift */,
+				FFC7597F2345711500A4495F /* SingleLoadCommandType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -234,8 +248,8 @@
 		FFC759882345763700A4495F /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				FFC759832345739F00A4495F /* SingleDataCommand.swift */,
-				FF1430AF233DEFC700226963 /* SequenceDataCommand.swift */,
+				FFC759832345739F00A4495F /* SingleLoadCommand.swift */,
+				FF1430AF233DEFC700226963 /* SequenceLoadCommand.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -404,18 +418,20 @@
 				FFC75986234574B600A4495F /* SingleDataLoader.swift in Sources */,
 				FFAD925C234196AE006E7C61 /* RequestStatusViewModelType.swift in Sources */,
 				FFC759962345811800A4495F /* RequestSingleDataViewModel.swift in Sources */,
-				FFC759802345711500A4495F /* SingleCommandType.swift in Sources */,
+				FFC759802345711500A4495F /* SingleLoadCommandType.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* LinkVO.swift in Sources */,
-				FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */,
+				FFC7598C234579A300A4495F /* SingleDataCachedLoader.swift in Sources */,
+				FF0C2408234B006F003DDDD7 /* SequenceDataCachedLoader.swift in Sources */,
 				FF14309F233D7EC900226963 /* DataCache.swift in Sources */,
-				FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */,
+				FF1430B0233DEFC700226963 /* SequenceLoadCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* SingleImageTableViewCell.swift in Sources */,
 				FFAC5FA4233C9059001D4B62 /* SequenceDataLoaderType.swift in Sources */,
-				FF1430AC233DEE7D00226963 /* SequenceDataCommandType.swift in Sources */,
+				FF1430AC233DEE7D00226963 /* SequenceLoadCommandType.swift in Sources */,
 				FFEF8F43234641CC00A0B79F /* LoadDataViewModel.swift in Sources */,
-				FFC75984234573A000A4495F /* SingleDataCommand.swift in Sources */,
+				FFC75984234573A000A4495F /* SingleLoadCommand.swift in Sources */,
 				FFEF8F452346DCB800A0B79F /* DataWrapper.swift in Sources */,
+				FF0C240A234B00BB003DDDD7 /* SequenceDataLoaderCache.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
 				FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */,
 				FFC7598E234579DB00A4495F /* SingleDataLoaderCache.swift in Sources */,

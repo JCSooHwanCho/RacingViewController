@@ -9,8 +9,8 @@
 import Foundation
 import Kanna
 
-// gettyImagesGallery를 스크랩하기 위한 Command 객체
-final class GIGCollectionScrapCommand: SequenceDataCommand {
+// gettyImagesGallery를 스크랩하기 위한 구체 Command 객체.
+final class GIGCollectionScrapCommand: SequenceLoadCommand {
 
     required init(withURLString urlString: String = "", additionalPath path: String = "") {
         if urlString != "" {
@@ -18,8 +18,8 @@ final class GIGCollectionScrapCommand: SequenceDataCommand {
         }
 
         let path = path.lowercased()
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines) // 양쪽 공백을 치환한다.
+            .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression) // 공백을 언더바로 치환한다.
 
         super.init(additionalPath: path)
 

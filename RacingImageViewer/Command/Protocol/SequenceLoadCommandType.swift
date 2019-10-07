@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol SequenceDataCommandType {
+protocol SequenceLoadCommandType {
 
     var baseURL: String { get } // 요청을 넣는 기본 URL
 
@@ -18,7 +18,7 @@ protocol SequenceDataCommandType {
     func execute<Element>() throws -> [Element]? //실제 데이터를 가져오는 메소드
  }
 
-extension SequenceDataCommandType {
+extension SequenceLoadCommandType {
     var requestURL: URL? { // baseURL + additionalPath로 실제로 사용할 URL을 구성한다.
         guard let url = URL(string: baseURL + additionalPath) else {
             return nil

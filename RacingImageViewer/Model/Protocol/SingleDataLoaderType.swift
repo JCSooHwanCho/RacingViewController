@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol SingleDataLoaderType {
-    func loadData<Element>(loadCommand command: SingleDataCommand) -> Observable<Element>
+    func loadData<Element>(withCommand command: SingleDataCommand) -> Observable<Element>
 }

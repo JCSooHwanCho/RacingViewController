@@ -15,13 +15,13 @@ final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
-        let scraper = SequenceDataLoader()
+        let scraper = SequenceDataCachedLoader()
 
         guard let command = command else {
             return
         }
 
-        let scrapObservable: Observable<[Element]> = scraper.scrapData( scrapingCommand: command)
+        let scrapObservable: Observable<[Element]> = scraper.loadData( withCommand: command)
             scrapObservable.subscribe { event in
                 switch event {
                 case let .next(value):
