@@ -53,17 +53,18 @@ class SingleImageTableView: UIViewController {
             return
         }
 
+        // 뷰모델에서 나오는 데이터를 바인딩한다.
+        model.itemsRelay
+            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .bind(to: self.items)
+            .disposed(by: disposeBag)
+        
         // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
         self.items
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             }).disposed(by: disposeBag)
-
-        // 뷰모델에서 나오는 데이터를 바인딩한다.
-        model.itemsRelay
-            .bind(to: self.items)
-            .disposed(by: disposeBag)
 
         // 뷰모델의 요청 결과에 따라 네트워크 인디케이터를 끄거나, 경고창을 띄운다.
         model.requestRelay
@@ -86,14 +87,10 @@ class SingleImageTableView: UIViewController {
     private func bindTableViewDelegate() {
         // delegate, datasource, prefetchingDatasource와 데이터를 바인딩한다.
         self.items
-            .bind(to: self.tableViewDelegate.itemRelay)
-            .disposed(by: disposeBag)
-
-        self.items
-            .bind(to: self.tableViewDatasource.itemRelay)
-            .disposed(by: disposeBag)
-        self.items
-            .bind(to: self.tableViewDataSourcePrefetching.itemRelay)
+            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .bind(to: self.tableViewDelegate.itemRelay,
+                  self.tableViewDatasource.itemRelay,
+                  self.tableViewDataSourcePrefetching.itemRelay)
             .disposed(by: disposeBag)
 
         // 테이블뷰에 delegate와 datasource를 세팅한다.
