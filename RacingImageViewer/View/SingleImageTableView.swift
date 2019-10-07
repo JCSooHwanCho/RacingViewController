@@ -62,15 +62,14 @@ class SingleImageTableView: UIViewController {
         // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
         self.items
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+            .subscribe(onNext: { _ in
+                self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             }).disposed(by: disposeBag)
 
         // 뷰모델의 요청 결과에 따라 네트워크 인디케이터를 끄거나, 경고창을 띄운다.
         model.requestRelay
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe (onNext:{ [weak self] (isSuccess, _) in
-                guard let self = self else { return }
+            .subscribe (onNext:{ (isSuccess, _) in
                 if isSuccess {
                     self.networkIndicator.stopAnimating()
                     self.networkIndicator.isHidden = true

@@ -76,8 +76,8 @@ class SingleImageTableViewCell: UITableViewCell {
         // 요청 성공 여부와 관계없이, 인디케이터를 끈다.
         self.viewModel.requestRelay
             .observeOn(MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.isLoading = false
+            .subscribe(onNext: { _ in
+                self.isLoading = false
             }).disposed(by: disposeBag)
 
         // 요청한 데이터를 받게 되면
