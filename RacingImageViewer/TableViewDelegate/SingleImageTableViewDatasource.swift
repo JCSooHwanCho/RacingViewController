@@ -11,7 +11,7 @@ import UIKit
 import RxRelay
 
 final class SingleImageTableViewDatasource: NSObject, UITableViewDataSource {
-    let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    let itemRelay: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemRelay.value.count

@@ -12,7 +12,7 @@ import RxRelay
 import RxSwift
 
 final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewDataSourcePrefetching {
-    let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    let itemRelay: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
     let viewModel = LoadDataViewModel<DataVO>()
     var disposeBag = DisposeBag()
 
@@ -32,7 +32,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
         let imageCache = DataCache.shared
 
         for indexPath in indexPaths {
-            let imageURL = self.itemRelay.value[indexPath.row].imageURL
+            let imageURL = self.itemRelay.value[indexPath.row].link
 
             guard imageCache[imageURL] == nil else { continue }
 

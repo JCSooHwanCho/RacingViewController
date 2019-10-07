@@ -23,7 +23,7 @@
 		FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE60233AF7240045E010 /* LaunchScreen.storyboard */; };
 		FFAC5F99233C3FC3001D4B62 /* SingleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F98233C3FC3001D4B62 /* SingleImageTableViewCell.swift */; };
 		FFAC5F9C233C415E001D4B62 /* SequenceDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9B233C415E001D4B62 /* SequenceDataLoader.swift */; };
-		FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */; };
+		FFAC5F9E233C5D21001D4B62 /* LinkVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5F9D233C5D21001D4B62 /* LinkVO.swift */; };
 		FFAC5FA2233C618D001D4B62 /* ScrapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */; };
 		FFAC5FA4233C9059001D4B62 /* SequenceDataLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA3233C9059001D4B62 /* SequenceDataLoaderType.swift */; };
 		FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */; };
@@ -65,7 +65,7 @@
 		FF94DE63233AF7240045E010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFAC5F98233C3FC3001D4B62 /* SingleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewCell.swift; sourceTree = "<group>"; };
 		FFAC5F9B233C415E001D4B62 /* SequenceDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataLoader.swift; sourceTree = "<group>"; };
-		FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVO.swift; sourceTree = "<group>"; };
+		FFAC5F9D233C5D21001D4B62 /* LinkVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkVO.swift; sourceTree = "<group>"; };
 		FFAC5FA1233C618D001D4B62 /* ScrapListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapListViewModel.swift; sourceTree = "<group>"; };
 		FFAC5FA3233C9059001D4B62 /* SequenceDataLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataLoaderType.swift; sourceTree = "<group>"; };
 		FFAC5FA5233CA997001D4B62 /* SequenceDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataViewModelType.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 		FFAC5FAC233CF71F001D4B62 /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC5F9D233C5D21001D4B62 /* ImageVO.swift */,
+				FFAC5F9D233C5D21001D4B62 /* LinkVO.swift */,
 				FFC759812345734200A4495F /* DataVO.swift */,
 				FFEF8F442346DCB800A0B79F /* DataWrapper.swift */,
 			);
@@ -406,7 +406,7 @@
 				FFC759962345811800A4495F /* RequestSingleDataViewModel.swift in Sources */,
 				FFC759802345711500A4495F /* SingleCommandType.swift in Sources */,
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
-				FFAC5F9E233C5D21001D4B62 /* ImageVO.swift in Sources */,
+				FFAC5F9E233C5D21001D4B62 /* LinkVO.swift in Sources */,
 				FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */,
 				FF14309F233D7EC900226963 /* DataCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* SequenceDataCommand.swift in Sources */,

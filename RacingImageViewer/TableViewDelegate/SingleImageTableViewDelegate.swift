@@ -11,10 +11,10 @@ import UIKit
 import RxRelay
 
 final class SingleImageTableViewDelegate: NSObject, UITableViewDelegate {
-    let itemRelay: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    let itemRelay: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        let imageURL = self.itemRelay.value[indexPath.row].imageURL
+        let imageURL = self.itemRelay.value[indexPath.row].link
 
         guard let imageData = DataCache.shared[imageURL] as? DataVO else { // 아직 캐싱되지 않은 경우
             return UITableView.automaticDimension // 기본 이미지 사이즈에 맞춘다.

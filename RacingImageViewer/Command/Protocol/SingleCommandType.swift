@@ -10,15 +10,15 @@ import Foundation
 
 protocol SingleDataCommandType {
 
-    var baseURL: String { get }
+    var baseURL: String { get } // 요청을 넣는 기본 URL
 
-    var additionalPath: String { get set }
+    var additionalPath: String { get set } // 요청을 넣는 세부 경로
 
-    func execute<Element>() throws -> Element?
+    func execute<Element>() throws -> Element? // 실제 데이터를 가져오는 메소드
 }
 
 extension SingleDataCommandType {
-    var requestURL: URL? {
+    var requestURL: URL? { // baseURL + additionalPath로 실제로 사용할 URL을 구성한다.
         guard let url = URL(string: baseURL + additionalPath) else {
             return nil
         }

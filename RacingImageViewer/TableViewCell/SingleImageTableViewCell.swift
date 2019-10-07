@@ -54,12 +54,12 @@ class SingleImageTableViewCell: UITableViewCell {
 
     // MARK: - Configure Method
     func configureCell(_ tableView: UITableView,
-                       withImageLinkData imageLink: ImageVO,
+                       withImageLinkData imageLink: LinkVO,
                        cellForRowAt indexPath: IndexPath) {
 
         let cache = DataCache.shared
 
-        guard let url = URL(string: imageLink.imageURL) else {
+        guard let url = URL(string: imageLink.link) else {
             return
         }
 
@@ -73,7 +73,7 @@ class SingleImageTableViewCell: UITableViewCell {
                self.photoView.image = image
         } else {
             self.isLoading = true
-            let command = ImageDataLoadCommand(withURLString: imageLink.imageURL)
+            let command = ImageDataLoadCommand(withURLString: imageLink.link)
             self.viewModel.command = command
         }
     }

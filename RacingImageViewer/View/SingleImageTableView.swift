@@ -18,8 +18,8 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var viewModel: RequestSequenceViewModel<ImageVO>?
-    private var items: BehaviorRelay<[ImageVO]> = BehaviorRelay(value: [])
+    private var viewModel: RequestSequenceViewModel<LinkVO>?
+    private var items: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
 
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
@@ -45,7 +45,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Configure Method
     private func createDataModel() {
-        self.viewModel = ScrapListViewModel<ImageVO>()
+        self.viewModel = ScrapListViewModel<LinkVO>()
     }
 
     private func bindItem() {

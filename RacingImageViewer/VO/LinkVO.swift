@@ -1,5 +1,5 @@
 //
-//  ImageVO.swift
+//  LinkVO.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/09/26.
@@ -9,6 +9,6 @@
 import Foundation
 
 // 스크랩한 이미지를 저장하는 Value Object
-struct ImageVO {
-    let imageURL: String
+struct LinkVO {
+    let link: String
 }
