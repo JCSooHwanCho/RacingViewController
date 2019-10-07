@@ -20,7 +20,8 @@ class SingleImageTableView: UIViewController {
     private var disposeBag = DisposeBag()
     private var viewModel: RequestSequenceViewModel<LinkVO>?
     private var items: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
-
+    private var isLoading: BehaviorRelay<Bool>  = BehaviorRelay(value: true)
+    
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
     var additionalPath: String = "auto-racing"
@@ -53,6 +54,18 @@ class SingleImageTableView: UIViewController {
             return
         }
 
+        // 뷰모델의 요청 결과에 따라 인디케이터 상태를 변화시킨다.
+        isLoading.observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: {
+                if $0 {
+                    self.networkIndicator.startAnimating()
+                    self.networkIndicator.isHidden = false
+                } else {
+                    self.networkIndicator.stopAnimating()
+                    self.networkIndicator.isHidden = true
+                }
+            }).disposed(by: disposeBag)
+
         // 뷰모델에서 나오는 데이터를 바인딩한다.
         model.itemsRelay
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
@@ -60,8 +73,7 @@ class SingleImageTableView: UIViewController {
             .disposed(by: disposeBag)
         
         // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
-        self.items
-            .observeOn(ConcurrentMainScheduler.instance)
+        items.observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             }).disposed(by: disposeBag)
@@ -70,15 +82,16 @@ class SingleImageTableView: UIViewController {
         model.requestRelay
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe (onNext:{ (isSuccess, _) in
-                if isSuccess {
-                    self.networkIndicator.stopAnimating()
-                    self.networkIndicator.isHidden = true
-                } else {
+
+                self.isLoading.accept(false)
+
+                if !isSuccess  {
                     let alert = UIAlertController
                         .getAlert(withTitle: "네트워크 오류",
                                   message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
-                                    self.commandToViewModel() }
-
+                                    self.isLoading.accept(true)
+                                    self.commandToViewModel()
+                    }
                     self.present(alert, animated: true)
                 }
             }).disposed(by: disposeBag)

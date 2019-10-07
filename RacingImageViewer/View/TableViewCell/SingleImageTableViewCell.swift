@@ -20,21 +20,11 @@ class SingleImageTableViewCell: UITableViewCell {
     @IBOutlet weak var networkIndicator: UIActivityIndicatorView!
 
     // MARK: - Private Property
-    var isLoading: Bool  = false {
-        didSet {
-            if self.isLoading {
-                self.networkIndicator.startAnimating()
-                self.networkIndicator.isHidden = false
-            } else {
-                self.networkIndicator.stopAnimating()
-                self.networkIndicator.isHidden = true
-            }
-        }
-    }
+    var isLoading: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
     private let viewModel = DataViewModel<DataVO>()
     private var requestURL: URL?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     // MARK: - Initializer
     // 코드용 생성자
@@ -65,7 +55,7 @@ class SingleImageTableViewCell: UITableViewCell {
             }
             self.photoView.image = image // 추가적인 로딩없이 이미지를 세팅한다.
         } else {
-            self.isLoading = true // 인디케이터를 킨다
+            self.isLoading.accept(true) // 인디케이터를 킨다
             let command = DataLoadCommand(withURLString: imageLink.link)
             self.viewModel.command = command // 뷰모델에 이미지를 요청한다.
         }
@@ -73,11 +63,30 @@ class SingleImageTableViewCell: UITableViewCell {
 
     // MARK: - ViewModel Binding Method
     func bindViewModel() {
+
+        // 인디케이터가 꺼지고 켜지는 것을 조정한다.
+        self.isLoading
+            .observeOn(ConcurrentMainScheduler.instance)
+            .subscribe(onNext: {
+                // init에서 호출될 때 nil일 수 있기 때문에 반드시 체크를 해줘야 한다.
+                guard let indicator = self.networkIndicator else {
+                    return
+                }
+
+                if $0 {
+                    indicator.startAnimating()
+                    indicator.isHidden = false
+                } else {
+                    indicator.stopAnimating()
+                    indicator.isHidden = true
+                }
+            }).disposed(by: disposeBag)
+
         // 요청 성공 여부와 관계없이, 인디케이터를 끈다.
         self.viewModel.requestRelay
             .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { _ in
-                self.isLoading = false
+                self.isLoading.accept(false)
             }).disposed(by: disposeBag)
 
         // 요청한 데이터를 받게 되면
@@ -107,7 +116,7 @@ class SingleImageTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        self.isLoading = false
+        self.isLoading.accept(false)
         self.photoView.image = UIImage(named: "placeholder")
     }
 

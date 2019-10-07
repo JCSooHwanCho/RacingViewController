@@ -43,7 +43,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="networkIndicator" destination="hvm-pd-jO8" id="e6d-P9-MFA"/>
+                                            <outlet property="networkIndicator" destination="hvm-pd-jO8" id="qTJ-FB-9gi"/>
                                             <outlet property="photoView" destination="4Dg-9w-qDD" id="IUF-N5-uf0"/>
                                         </connections>
                                     </tableViewCell>
