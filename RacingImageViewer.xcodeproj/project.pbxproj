@@ -34,7 +34,7 @@
 		FFC759822345734200A4495F /* DataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759812345734200A4495F /* DataVO.swift */; };
 		FFC75984234573A000A4495F /* SingleDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759832345739F00A4495F /* SingleDataCommand.swift */; };
 		FFC75986234574B600A4495F /* SingleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC75985234574B600A4495F /* SingleDataLoader.swift */; };
-		FFC7598A2345765200A4495F /* ImageDataLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759892345765200A4495F /* ImageDataLoadCommand.swift */; };
+		FFC7598A2345765200A4495F /* DataLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759892345765200A4495F /* DataLoadCommand.swift */; };
 		FFC7598C234579A300A4495F /* CachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598B234579A300A4495F /* CachedLoader.swift */; };
 		FFC7598E234579DB00A4495F /* SingleDataLoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */; };
 		FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC759912345800A00A4495F /* SingleDataViewModelType.swift */; };
@@ -76,7 +76,7 @@
 		FFC759812345734200A4495F /* DataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVO.swift; sourceTree = "<group>"; };
 		FFC759832345739F00A4495F /* SingleDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataCommand.swift; sourceTree = "<group>"; };
 		FFC75985234574B600A4495F /* SingleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataLoader.swift; sourceTree = "<group>"; };
-		FFC759892345765200A4495F /* ImageDataLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoadCommand.swift; sourceTree = "<group>"; };
+		FFC759892345765200A4495F /* DataLoadCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadCommand.swift; sourceTree = "<group>"; };
 		FFC7598B234579A300A4495F /* CachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedLoader.swift; sourceTree = "<group>"; };
 		FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataLoaderCache.swift; sourceTree = "<group>"; };
 		FFC759912345800A00A4495F /* SingleDataViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataViewModelType.swift; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 				FFC759882345763700A4495F /* Abstract */,
 				FFC7597E234570E800A4495F /* Protocol */,
 				FF1430B2233DF25D00226963 /* GIGCollectionScrapCommand.swift */,
-				FFC759892345765200A4495F /* ImageDataLoadCommand.swift */,
+				FFC759892345765200A4495F /* DataLoadCommand.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 				FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */,
 				FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */,
 				FF1430B3233DF25D00226963 /* GIGCollectionScrapCommand.swift in Sources */,
-				FFC7598A2345765200A4495F /* ImageDataLoadCommand.swift in Sources */,
+				FFC7598A2345765200A4495F /* DataLoadCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

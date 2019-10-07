@@ -73,7 +73,7 @@ class SingleImageTableViewCell: UITableViewCell {
                self.photoView.image = image
         } else {
             self.isLoading = true
-            let command = ImageDataLoadCommand(withURLString: imageLink.link)
+            let command = DataLoadCommand(withURLString: imageLink.link)
             self.viewModel.command = command
         }
     }

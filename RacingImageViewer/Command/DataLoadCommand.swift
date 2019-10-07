@@ -1,5 +1,5 @@
 //
-//  ImageDataLoadCommand.swift
+//  DataLoadCommand.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageDataLoadCommand: SingleDataCommand {
+class DataLoadCommand: SingleDataCommand {
     override func execute<Element>() throws -> Element? {
         do {
             guard let url = self.requestURL else {

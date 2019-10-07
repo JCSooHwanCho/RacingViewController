@@ -36,7 +36,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
 
             guard imageCache[imageURL] == nil else { continue }
 
-            let command = ImageDataLoadCommand(withURLString: imageURL)
+            let command = DataLoadCommand(withURLString: imageURL)
 
             viewModel.command = command
         }
