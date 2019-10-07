@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		240E8F853B84065B98C971C3 /* Pods_RacingImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */; };
-		FF0C2408234B006F003DDDD7 /* SequenceDataCachedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */; };
-		FF0C240A234B00BB003DDDD7 /* SequenceDataLoaderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */; };
 		FF14309F233D7EC900226963 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14309E233D7EC900226963 /* DataCache.swift */; };
 		FF1430A4233DC42600226963 /* SingleImageTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */; };
 		FF1430A6233DC6CC00226963 /* RequestSequenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */; };
@@ -50,8 +48,6 @@
 		0BAF7A47C003F64AC8CA24B4 /* Pods_RacingImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DDBA2194B4685A53D2E52E /* Pods-RacingImageViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.release.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		FA6895B243F62691A7B90D1D /* Pods-RacingImageViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingImageViewer.debug.xcconfig"; path = "Target Support Files/Pods-RacingImageViewer/Pods-RacingImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
-		FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataCachedLoader.swift; sourceTree = "<group>"; };
-		FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceDataLoaderCache.swift; sourceTree = "<group>"; };
 		FF14309E233D7EC900226963 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		FF1430A3233DC42600226963 /* SingleImageTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewDelegate.swift; sourceTree = "<group>"; };
 		FF1430A5233DC6CC00226963 /* RequestSequenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010RequestSequenceViewModel.swift"; sourceTree = "<group>"; };
@@ -211,7 +207,6 @@
 				FFAC5F9B233C415E001D4B62 /* SequenceDataLoader.swift */,
 				FFC75985234574B600A4495F /* SingleDataLoader.swift */,
 				FFC7598B234579A300A4495F /* SingleDataCachedLoader.swift */,
-				FF0C2407234B006F003DDDD7 /* SequenceDataCachedLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,7 +216,6 @@
 			children = (
 				FF14309E233D7EC900226963 /* DataCache.swift */,
 				FFC7598D234579DB00A4495F /* SingleDataLoaderCache.swift */,
-				FF0C2409234B00BB003DDDD7 /* SequenceDataLoaderCache.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -422,7 +416,6 @@
 				FFAC5FA6233CA997001D4B62 /* SequenceDataViewModelType.swift in Sources */,
 				FFAC5F9E233C5D21001D4B62 /* LinkVO.swift in Sources */,
 				FFC7598C234579A300A4495F /* SingleDataCachedLoader.swift in Sources */,
-				FF0C2408234B006F003DDDD7 /* SequenceDataCachedLoader.swift in Sources */,
 				FF14309F233D7EC900226963 /* DataCache.swift in Sources */,
 				FF1430B0233DEFC700226963 /* SequenceLoadCommand.swift in Sources */,
 				FFAC5F99233C3FC3001D4B62 /* SingleImageTableViewCell.swift in Sources */,
@@ -431,7 +424,6 @@
 				FFEF8F43234641CC00A0B79F /* DataViewModel.swift in Sources */,
 				FFC75984234573A000A4495F /* SingleLoadCommand.swift in Sources */,
 				FFEF8F452346DCB800A0B79F /* DataWrapper.swift in Sources */,
-				FF0C240A234B00BB003DDDD7 /* SequenceDataLoaderCache.swift in Sources */,
 				FFAD926023419AA7006E7C61 /* UIAlertController+Extension.swift in Sources */,
 				FFC759922345800A00A4495F /* SingleDataViewModelType.swift in Sources */,
 				FFC7598E234579DB00A4495F /* SingleDataLoaderCache.swift in Sources */,
