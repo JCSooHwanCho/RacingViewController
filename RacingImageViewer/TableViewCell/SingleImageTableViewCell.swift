@@ -35,8 +35,7 @@ class SingleImageTableViewCell: UITableViewCell {
     }
 
     private let viewModel = LoadDataViewModel<DataVO>()
-    private var requestURL = URL(fileURLWithPath: "")
-    private var requestIndex = IndexPath()
+    private var requestURL: URL?
 
     var disposeBag = DisposeBag()
 
@@ -53,9 +52,7 @@ class SingleImageTableViewCell: UITableViewCell {
     }
 
     // MARK: - Configure Method
-    func configureCell(_ tableView: UITableView,
-                       withImageLinkData imageLink: LinkVO,
-                       cellForRowAt indexPath: IndexPath) {
+    func configureCell(withImageLinkData imageLink: LinkVO) {
 
         let cache = DataCache.shared
 
@@ -64,7 +61,6 @@ class SingleImageTableViewCell: UITableViewCell {
         }
 
         self.requestURL = url
-        self.requestIndex = indexPath
 
         if let imageData = cache[url] as? DataVO {
             guard let image = UIImage(data: imageData.data) else {
@@ -89,7 +85,7 @@ class SingleImageTableViewCell: UITableViewCell {
             .subscribe(onNext: { value in
                 guard self.requestURL == value.url,
                  let tableView = self.superview as? UITableView,
-                    tableView.indexPath(for: self) == self.requestIndex else { return }
+                 let indexPath = tableView.indexPath(for: self) else { return }
 
                 guard let image = UIImage(data: value.data) else {
                     return
@@ -98,7 +94,8 @@ class SingleImageTableViewCell: UITableViewCell {
 
                 let cache = DataCache.shared
                 cache.addData(forKey: value.url, withData: value)
-                tableView.reloadRows(at: [self.requestIndex], with: .automatic)
+
+                tableView.reloadRows(at: [indexPath], with: .automatic)
             }).disposed(by: disposeBag)
     }
 

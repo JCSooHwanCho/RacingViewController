@@ -27,7 +27,7 @@ final class SingleImageTableViewDatasource: NSObject, UITableViewDataSource {
         let itemList = self.itemRelay.value
         let imageLink = itemList[indexPath.row]
 
-        imageCell.configureCell(tableView, withImageLinkData: imageLink, cellForRowAt: indexPath)
+        imageCell.configureCell(withImageLinkData: imageLink)
 
         return imageCell
     }
