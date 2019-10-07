@@ -8,7 +8,8 @@
 
 import Foundation
 
-// 여러개의 데이터를 가져오기 위한 Command 객체
+// 특정 URL에서 데이터를 요청하고 이를 가공하는 Command
+// 가공 결과값은 Sequence다.
 class ProcessToSequenceCommand: ProcessToSequenceCommandType {
     var baseURL: String
     var additionalPath: String

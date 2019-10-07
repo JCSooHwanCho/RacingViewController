@@ -15,7 +15,7 @@ protocol ProcessToSequenceCommandType {
 
     var additionalPath: String { get set } // 요청을 넣는 세부 경로
 
-    func execute<Element>(withData data: Data) -> [Element]? //실제 데이터를 가져오는 메소드
+    func execute<Element>(withData data: Data) -> [Element]? // 데이터를 가공하는 메서드
  }
 
 extension ProcessToSequenceCommandType {

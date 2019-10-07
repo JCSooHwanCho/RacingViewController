@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Data를 가져오기 위한 구체 Command 객체
+// Data와 출처URL을 함께 묶어주기 위한 구체 Command객체
 class DataLoadCommand: ProcessToSingleCommand {
     override func execute<Element>(withData data: Data) -> Element? {
         guard let url = self.requestURL else {

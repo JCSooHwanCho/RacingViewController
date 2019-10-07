@@ -26,8 +26,8 @@ class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
         loadObservable
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .compactMap { value -> Element? in
-                let value: Element? = command.execute(withData: value)
-                return value
+                command.execute(withData: value)
+                
             }.subscribe { event in
             switch event {
             case let .next(value):

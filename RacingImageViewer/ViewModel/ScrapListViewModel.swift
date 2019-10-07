@@ -9,8 +9,8 @@
 import Foundation
 import RxSwift
 
-// Scrap한 데이터를 나타내는 뷰모델
-final class DataListViewModel<Element>: RequestSequenceViewModel<Element> {
+// HTML을 불러오고, 원하는 데이터를 Scrap해서 전파하는
+final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
 
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
@@ -22,25 +22,23 @@ final class DataListViewModel<Element>: RequestSequenceViewModel<Element> {
             return
         }
 
-        let scrapObservable = loader.loadData(withURL: url)
+        loader.loadData(withURL: url)
+            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .compactMap{ value -> [Element]? in
+                command.execute(withData: value)
 
-            scrapObservable
-                .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
-                .compactMap{ value -> [Element]? in
-                    let value: [Element]? = command.execute(withData: value)
-                    return value
-                }.subscribe { event in
-                switch event {
-                case let .next(value):
-                    self.lock.lock(); defer { self.lock.unlock() }
-                    self.itemsRelay.accept(value)
-                    self.requestRelay.accept((true, nil))
-                case let .error(error):
-                    self.lock.lock(); defer { self.lock.unlock() }
-                    self.requestRelay.accept((false, error))
-                case .completed:
-                    break
-                }
+            }.subscribe { event in
+            switch event {
+            case let .next(value):
+                self.lock.lock(); defer { self.lock.unlock() }
+                self.itemsRelay.accept(value)
+                self.requestRelay.accept((true, nil))
+            case let .error(error):
+                self.lock.lock(); defer { self.lock.unlock() }
+                self.requestRelay.accept((false, error))
+            case .completed:
+                break
+            }
         }.disposed(by: disposeBag)
     }
 }

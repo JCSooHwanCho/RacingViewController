@@ -11,8 +11,8 @@ import RxSwift
 
 // CachedLoader가 사용하는 캐시
 extension DataCachedLoader {
-    final class SingleDataLoaderCache {
-        static var shared = SingleDataLoaderCache()
+    final class DataLoaderCache {
+        static var shared = DataLoaderCache()
 
         private let cache: NSCache<NSURL, Observable<Data>> = NSCache()
 

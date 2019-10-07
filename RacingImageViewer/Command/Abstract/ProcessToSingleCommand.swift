@@ -8,7 +8,8 @@
 
 import Foundation
 
-// 단일 데이터를 가져오기 위한 Command 객체
+// 특정 URL에서 데이터를 요청하고 이를 가공하는 Command
+// 가공 결과값이 단일 값이다.
 class ProcessToSingleCommand: ProcessToSingleCommandType {
     var baseURL: String
     var additionalPath: String

@@ -19,7 +19,7 @@ final class GIGCollectionScrapCommand: ProcessToSequenceCommand {
 
         let path = path.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines) // 양쪽 공백을 치환한다.
-            .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression) // 공백을 언더바로 치환한다.
+            .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression) // 공백을 대시로 치환한다.
 
         super.init(additionalPath: path)
 
