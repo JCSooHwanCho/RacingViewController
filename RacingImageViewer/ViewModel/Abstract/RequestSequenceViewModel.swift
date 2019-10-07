@@ -14,21 +14,21 @@ import RxRelay
 class RequestSequenceViewModel<Element>: RequestStatusViewModelType,
 SequenceDataViewModelType {
     typealias Element = Element
-    
+
     var itemsRelay: PublishRelay<[Element]> = PublishRelay()
     var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
     var disposeBag = DisposeBag()
-    
+
     var command: ProcessToSequenceCommand? {
         didSet {
             self.loadData()
         }
     }
-    
+
     func loadData() {
         fatalError()
     }
-    
+
     deinit {
         disposeBag = DisposeBag()
     }

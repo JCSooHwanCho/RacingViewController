@@ -31,14 +31,14 @@ final class GIGCollectionScrapCommand: ProcessToSequenceCommand {
     override func execute<Element>(withData data: Data) -> [Element]? {
         do {
             let doc = try HTML(html: data, encoding: .utf8)
-            
+
             var result: [LinkVO] = []
-            
+
             for node in doc.css("div img[class=jq-lazy]") { // css selector로 해당하는 노드들을 찾아서 순회한다.
                 if let imageURL = node["data-src"] { // 노드에서 원하는 attribute의 값을 string으로 추출한다.
                     // http요청을 위해 https를 http로 바꾼다.
                     let httpURL = imageURL.replacingOccurrences(of: "https://", with: "http://")
-                    
+
                     let image = LinkVO(link: httpURL)
                     result.append(image)
                 }

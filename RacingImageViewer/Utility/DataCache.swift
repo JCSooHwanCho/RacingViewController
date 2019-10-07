@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 뷰가 사용하는 이미지 데이터 캐시
 final class DataCache {
     static var shared = DataCache()
 

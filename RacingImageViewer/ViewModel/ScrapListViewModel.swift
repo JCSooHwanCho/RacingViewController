@@ -11,7 +11,7 @@ import RxSwift
 
 // HTML을 불러오고, 원하는 데이터를 Scrap해서 전파하는
 final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
-    
+
     let lock = NSRecursiveLock()
     // MARK: - Loading Method
     override func loadData() {
@@ -24,9 +24,8 @@ final class ScrapListViewModel<Element>: RequestSequenceViewModel<Element> {
         
         loader.loadData(withURL: url)
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
-            .compactMap{ value -> [Element]? in
+            .compactMap { value -> [Element]? in
                 command.execute(withData: value)
-                
         }.subscribe { event in
             switch event {
             case let .next(value):

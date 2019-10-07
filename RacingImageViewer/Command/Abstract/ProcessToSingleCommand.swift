@@ -23,4 +23,3 @@ class ProcessToSingleCommand: ProcessToSingleCommandType {
         fatalError()
     }
 }
-

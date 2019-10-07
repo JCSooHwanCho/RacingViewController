@@ -28,7 +28,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
                 if cache[value.url] == nil {
                     cache.addData(forKey: value.url, withData: value)
                 }
-            }).disposed(by:disposeBag)
+            }).disposed(by: disposeBag)
     }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

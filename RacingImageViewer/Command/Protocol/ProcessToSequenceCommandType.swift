@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol ProcessToSequenceCommandType {
 
     var baseURL: String { get } // 요청을 넣는 기본 URL
