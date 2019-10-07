@@ -75,7 +75,7 @@ class SingleImageTableViewCell: UITableViewCell {
     func bindViewModel() {
         // 요청 성공 여부와 관계없이, 인디케이터를 끈다.
         self.viewModel.requestRelay
-            .observeOn(MainScheduler.asyncInstance)
+            .observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.isLoading = false
             }).disposed(by: disposeBag)
@@ -91,7 +91,7 @@ class SingleImageTableViewCell: UITableViewCell {
             })
             .filter { self.requestURL == $0.url } // 셀이 현재 요청한 데이터가 들어왔는지 확인한다.
             .compactMap { UIImage(data: $0.data) } // 실제 이미지로 변환한다.
-            .observeOn(MainScheduler.asyncInstance) // UI 코드는 모두 메인 스레드에서 실행한다.
+            .observeOn(ConcurrentMainScheduler.instance) // UI 코드는 모두 메인 스레드에서 실행한다.
             .subscribe(onNext: { image in
                 // 현재 셀이 테이블뷰에 있는지 확인한다.
                 guard let tableView = self.superview as? UITableView,
