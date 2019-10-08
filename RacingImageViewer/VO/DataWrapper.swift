@@ -8,6 +8,7 @@
 
 import Foundation
 
+// NSCache에 구조체를 저장하기 위한 Wrapper Class
 class DataWrapper<Element> {
     let value: Element
 

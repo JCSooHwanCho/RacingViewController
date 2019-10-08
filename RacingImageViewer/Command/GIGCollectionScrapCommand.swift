@@ -11,22 +11,22 @@ import Kanna
 
 // gettyImagesGallery를 스크랩하기 위한 구체 Command 객체.
 final class GIGCollectionScrapCommand: ProcessingCommand {
-    
+
     // MARK: - Initializer
     required init(withURLString urlString: String = "", additionalPath path: String = "") {
         if urlString != "" {
             print("This Command Object has a designated URL, So 'withURL' parameter will be ignored")
         }
-        
+
         let path = path.lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines) // 양쪽 공백을 치환한다.
             .replacingOccurrences(of: "[\\s\n]+", with: "-", options: .regularExpression) // 공백을 대시로 치환한다.
-        
+
         super.init(additionalPath: path)
-        
+
         self.baseURL = "http://www.gettyimagesgallery.com/collection/"
     }
-    
+
     // MARK: - Method
     override func execute<Element>(withData data: Data) -> Element? {
         do {

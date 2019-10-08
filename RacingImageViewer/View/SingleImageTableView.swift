@@ -21,7 +21,7 @@ class SingleImageTableView: UIViewController {
     private var viewModel: ProcessedDataViewModel<[LinkVO]>?
     private var items: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
     private var isLoading: BehaviorRelay<Bool>  = BehaviorRelay(value: true)
-    
+
     // MARK: - Public Property
     // PresentingViewController에서 설정한뒤 Present하는 것을 것을 상정한 Property
     var additionalPath: String = "auto-racing"
@@ -33,7 +33,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
-        defer { commandToViewModel() } // 뷰모델에 command를 전달한다.
+        defer { commandToViewModel() } // 가장 마지막에 뷰모델에 command를 전달한다.
         super.viewDidLoad()
 
         createDataModel() // ViewModel을 만든다.
@@ -71,7 +71,7 @@ class SingleImageTableView: UIViewController {
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .bind(to: self.items)
             .disposed(by: disposeBag)
-        
+
         // 데이터가 새로 들어올 때 마다 테이블 뷰를 리로드한다.
         items.observeOn(ConcurrentMainScheduler.instance)
             .subscribe(onNext: { _ in
@@ -81,11 +81,11 @@ class SingleImageTableView: UIViewController {
         // 뷰모델의 요청 결과에 따라 네트워크 인디케이터를 끄거나, 경고창을 띄운다.
         model.requestRelay
             .observeOn(ConcurrentMainScheduler.instance)
-            .subscribe (onNext:{ (isSuccess, _) in
+            .subscribe (onNext: { (isSuccess, _) in
 
                 self.isLoading.accept(false)
 
-                if !isSuccess  {
+                if !isSuccess {
                     let alert = UIAlertController
                         .getAlert(withTitle: "네트워크 오류",
                                   message: "인터넷 연결 상태를 다시 확인해주세요") { _ in
@@ -122,7 +122,7 @@ class SingleImageTableView: UIViewController {
 
         self.viewModel?.command = command
     }
-    
+
     // MARK: - Action Method
     @objc private func refreshBySwipeDown() {
         commandToViewModel()

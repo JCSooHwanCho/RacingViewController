@@ -29,7 +29,7 @@ final class DataCache {
         guard let url = URL(string: index) else {
             return nil
         }
-        
+
         return self[url]
     }
 

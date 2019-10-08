@@ -15,11 +15,11 @@ extension UIAlertController {
                          message: String,
                          actionHandler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
+
         let okButton = UIAlertAction(title: "확인", style: .default, handler: actionHandler)
-        
+
         alert.addAction(okButton)
-        
+
         return alert
     }
 }

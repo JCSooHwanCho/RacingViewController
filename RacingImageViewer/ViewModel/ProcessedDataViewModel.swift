@@ -1,5 +1,5 @@
 //
-//  DataViewModel.swift
+//  ProcessedDataViewModel.swift
 //  RacingImageViewer
 //
 //  Created by 조수환 on 2019/10/03.
@@ -40,6 +40,9 @@ class ProcessedDataViewModel<Element>: ProcessedDataViewModelType {
         loadObservable
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .compactMap { value -> Element? in
+                // 데이터를 가공한다.
+                // 만약 원하는 데이터 타입과 command가 반환하는 데이터 타입이 다르면
+                // 여기서 걸러진다.
                 command.execute(withData: value)
         }.subscribe { event in
             switch event {

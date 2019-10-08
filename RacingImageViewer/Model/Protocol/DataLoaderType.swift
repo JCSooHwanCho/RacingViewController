@@ -10,5 +10,6 @@ import Foundation
 import RxSwift
 
 protocol DataLoaderType {
+    // 주어진 URL에서 데이터를 가져온다.
     func loadData(withURL url: URL) -> Observable<Data>
 }
