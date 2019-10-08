@@ -8,13 +8,26 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
-class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
+class ProcessedDataViewModel<Element>: ProcessedDataViewModelType {
+    typealias Element = Element
 
+    // MARK: - Property
+    var itemRelay: PublishRelay<Element> = PublishRelay()
+    var requestRelay: PublishRelay<(Bool, Error?)> = PublishRelay()
+    var command: ProcessingCommand? {
+        didSet {
+            self.loadData()
+        }
+    }
+
+    // MARK: - Private Property
+    private var disposeBag = DisposeBag()
     private let lock = NSRecursiveLock()
 
     // MARK: - Loading Method
-    override func loadData() {
+    func loadData() {
         let loader = DataCachedLoader()
 
         guard let command = self.command,
@@ -41,5 +54,9 @@ class DataViewModel<Element>: RequestSingleDataViewModel<Element> {
                 break
             }
         }.disposed(by: disposeBag)
+    }
+
+    deinit {
+        disposeBag = DisposeBag()
     }
 }

@@ -18,7 +18,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Private Property
     private var disposeBag = DisposeBag()
-    private var viewModel: RequestSequenceViewModel<LinkVO>?
+    private var viewModel: ProcessedDataViewModel<[LinkVO]>?
     private var items: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
     private var isLoading: BehaviorRelay<Bool>  = BehaviorRelay(value: true)
     
@@ -46,7 +46,7 @@ class SingleImageTableView: UIViewController {
 
     // MARK: - Configure Method
     private func createDataModel() {
-        self.viewModel = ScrapListViewModel<LinkVO>()
+        self.viewModel = ProcessedDataViewModel<[LinkVO]>()
     }
 
     private func bindItem() {
@@ -67,7 +67,7 @@ class SingleImageTableView: UIViewController {
             }).disposed(by: disposeBag)
 
         // 뷰모델에서 나오는 데이터를 바인딩한다.
-        model.itemsRelay
+        model.itemRelay
             .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .bind(to: self.items)
             .disposed(by: disposeBag)

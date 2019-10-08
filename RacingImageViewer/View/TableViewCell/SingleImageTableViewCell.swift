@@ -22,7 +22,7 @@ class SingleImageTableViewCell: UITableViewCell {
     // MARK: - Private Property
     var isLoading: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
-    private let viewModel = DataViewModel<DataVO>()
+    private let viewModel = ProcessedDataViewModel<DataVO>()
     private var requestURL: URL?
     private var disposeBag = DisposeBag()
 

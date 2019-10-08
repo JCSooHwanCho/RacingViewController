@@ -9,7 +9,7 @@
 import Foundation
 
 // Data와 출처URL을 함께 묶어주기 위한 구체 Command객체
-class DataLoadCommand: ProcessToSingleCommand {
+class DataLoadCommand: ProcessingCommand {
     
     // MARK: - Method
     override func execute<Element>(withData data: Data) -> Element? {

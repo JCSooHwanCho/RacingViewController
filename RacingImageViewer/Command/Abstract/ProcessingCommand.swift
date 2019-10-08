@@ -10,7 +10,7 @@ import Foundation
 
 // 특정 URL에서 데이터를 요청하고 이를 가공하는 Command
 // 가공 결과값이 단일 값이다.
-class ProcessToSingleCommand: ProcessToSingleCommandType {
+class ProcessingCommand: ProcessingCommandType {
     var baseURL: String
     var additionalPath: String
 

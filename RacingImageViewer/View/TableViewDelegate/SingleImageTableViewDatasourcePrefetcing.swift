@@ -13,7 +13,7 @@ import RxSwift
 
 final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewDataSourcePrefetching {
     let itemRelay: BehaviorRelay<[LinkVO]> = BehaviorRelay(value: [])
-    let viewModel = DataViewModel<DataVO>()
+    let viewModel = ProcessedDataViewModel<DataVO>()
     var disposeBag = DisposeBag()
 
     override init() {

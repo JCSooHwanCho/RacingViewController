@@ -10,7 +10,7 @@ import Foundation
 import Kanna
 
 // gettyImagesGallery를 스크랩하기 위한 구체 Command 객체.
-final class GIGCollectionScrapCommand: ProcessToSequenceCommand {
+final class GIGCollectionScrapCommand: ProcessingCommand {
     
     // MARK: - Initializer
     required init(withURLString urlString: String = "", additionalPath path: String = "") {
@@ -28,7 +28,7 @@ final class GIGCollectionScrapCommand: ProcessToSequenceCommand {
     }
     
     // MARK: - Method
-    override func execute<Element>(withData data: Data) -> [Element]? {
+    override func execute<Element>(withData data: Data) -> Element? {
         do {
             let doc = try HTML(html: data, encoding: .utf8)
 
@@ -43,7 +43,7 @@ final class GIGCollectionScrapCommand: ProcessToSequenceCommand {
                     result.append(image)
                 }
             }
-            return result as? [Element]
+            return result as? Element
         } catch {
             return nil
         }
