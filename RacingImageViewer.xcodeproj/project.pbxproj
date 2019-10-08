@@ -17,6 +17,7 @@
 		FF1430AC233DEE7D00226963 /* ProcessToSequenceCommandType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AB233DEE7D00226963 /* ProcessToSequenceCommandType.swift */; };
 		FF1430B0233DEFC700226963 /* ProcessToSequenceCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430AF233DEFC700226963 /* ProcessToSequenceCommand.swift */; };
 		FF1430B3233DF25D00226963 /* GIGCollectionScrapCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1430B2233DF25D00226963 /* GIGCollectionScrapCommand.swift */; };
+		FF7ABAAF234C3A0F00557C8C /* RacingImageViewerAppStructure.png in Resources */ = {isa = PBXBuildFile; fileRef = FF7ABAAE234C3A0F00557C8C /* RacingImageViewerAppStructure.png */; };
 		FF94DE56233AF7200045E010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE55233AF7200045E010 /* AppDelegate.swift */; };
 		FF94DE5A233AF7200045E010 /* SingleImageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94DE59233AF7200045E010 /* SingleImageTableView.swift */; };
 		FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF94DE5B233AF7200045E010 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		FF1430AB233DEE7D00226963 /* ProcessToSequenceCommandType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessToSequenceCommandType.swift; sourceTree = "<group>"; };
 		FF1430AF233DEFC700226963 /* ProcessToSequenceCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessToSequenceCommand.swift; sourceTree = "<group>"; };
 		FF1430B2233DF25D00226963 /* GIGCollectionScrapCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGCollectionScrapCommand.swift; sourceTree = "<group>"; };
+		FF7ABAAE234C3A0F00557C8C /* RacingImageViewerAppStructure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RacingImageViewerAppStructure.png; sourceTree = "<group>"; };
 		FF94DE52233AF7200045E010 /* RacingImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RacingImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF94DE55233AF7200045E010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF94DE59233AF7200045E010 /* SingleImageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableView.swift; sourceTree = "<group>"; };
@@ -139,9 +141,18 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		FF7ABAAD234C39E300557C8C /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				FF7ABAAE234C3A0F00557C8C /* RacingImageViewerAppStructure.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		FF94DE49233AF7200045E010 = {
 			isa = PBXGroup;
 			children = (
+				FF7ABAAD234C39E300557C8C /* Image */,
 				FFD5086E234209B50048C804 /* README.md */,
 				FF94DE54233AF7200045E010 /* RacingImageViewer */,
 				FF94DE53233AF7200045E010 /* Products */,
@@ -343,6 +354,7 @@
 			files = (
 				FF94DE62233AF7240045E010 /* LaunchScreen.storyboard in Resources */,
 				FF94DE5F233AF7240045E010 /* Assets.xcassets in Resources */,
+				FF7ABAAF234C3A0F00557C8C /* RacingImageViewerAppStructure.png in Resources */,
 				FFD5086F234209B50048C804 /* README.md in Resources */,
 				FF94DE5D233AF7200045E010 /* Main.storyboard in Resources */,
 			);
