@@ -27,6 +27,6 @@ class DataLoader: DataLoaderType {
             return Disposables.create()
         }
         return observable
-            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .utility))
     }
 }
