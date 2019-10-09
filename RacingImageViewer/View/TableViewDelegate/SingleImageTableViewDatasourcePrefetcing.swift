@@ -21,7 +21,7 @@ final class SingleImageTableViewDatasourcePrefetching: NSObject, UITableViewData
 
         // 요청한 데이터를 캐싱한다.
         viewModel.itemRelay
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { value in
                 let cache = DataCache.shared
 
