@@ -68,7 +68,7 @@ class SingleImageTableView: UIViewController {
 
         // 뷰모델에서 나오는 데이터를 바인딩한다.
         model.itemRelay
-            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .utility))
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .bind(to: self.items)
             .disposed(by: disposeBag)
 
@@ -100,7 +100,7 @@ class SingleImageTableView: UIViewController {
     private func bindTableViewDelegate() {
         // delegate, datasource, prefetchingDatasource와 데이터를 바인딩한다.
         self.items
-            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .utility))
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .bind(to: tableViewDelegate.itemRelay,
                   tableViewDatasource.itemRelay,
                   tableViewDataSourcePrefetching.itemRelay)

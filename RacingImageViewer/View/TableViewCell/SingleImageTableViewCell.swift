@@ -91,7 +91,7 @@ class SingleImageTableViewCell: UITableViewCell {
 
         // 요청한 데이터를 받게 되면
         self.viewModel.itemRelay
-            .observeOn(ConcurrentDispatchQueueScheduler.init(qos: .utility)) // 이하의 동작은 모두 백그라운드에서 수행된다.
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .default)) // 이하의 동작은 모두 백그라운드에서 수행된다.
             .do(onNext: { // 캐싱을 시도한다.
                 let cache = DataCache.shared
                 if cache[$0.url] == nil {
