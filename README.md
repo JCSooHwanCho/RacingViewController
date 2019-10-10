@@ -86,4 +86,14 @@
       * 해결  
         * relay에 접근하는 코드 앞뒤로 lock을 걸고 해제하는 코드 추가  
 
-
+   5. 면접 후 주요 지적 사항
+      1. 뷰에서 메인 스케쥴러로 전환을 할 때 ConcurrentMainScheduler를 사용했는데, 이것이 적절하지 않다 -> 기능에는 문제가 없으나 의미상으로는 적절치 못하다.
+      
+      2. DataCachedLoader에서 deferred를 사용했는데, 이 경우는 굳이 deferred가 필요하지 않고, 사용의미도 적절하지 않다.
+      
+      3. 뷰에서 캐싱을 하고 있는데 이 캐시 사이즈를 극단적으로 줄일 경우 앱이 정상적으로 동작하지 않는다.
+      
+      4. Cell에서 상위 뷰인 Tableview의 인스턴스를 호출하는 것이 적절하지 않다 
+      
+      5. Cell의 높이를 구하게 하기 위해 ReloadRows를 호출했는데, 이 방법이 적절하지 않다. -> 다른 방법이 있다는데, 무엇일가? 
+         * 정답: beginUpdate(), endUpdate() 쌍 혹은 performBatchUpdates() -> performBatchUpdates()가 권장된다.  
